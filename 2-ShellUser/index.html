@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <title>lab2</title>
+      <style>.markdown-preview:not([data-use-github-style]) { padding: 2em; font-size: 1.2em; color: rgb(171, 178, 191); overflow: auto; background-color: rgb(40, 44, 52); }
+.markdown-preview:not([data-use-github-style]) > :first-child { margin-top: 0px; }
+.markdown-preview:not([data-use-github-style]) h1, .markdown-preview:not([data-use-github-style]) h2, .markdown-preview:not([data-use-github-style]) h3, .markdown-preview:not([data-use-github-style]) h4, .markdown-preview:not([data-use-github-style]) h5, .markdown-preview:not([data-use-github-style]) h6 { line-height: 1.2; margin-top: 1.5em; margin-bottom: 0.5em; color: rgb(255, 255, 255); }
+.markdown-preview:not([data-use-github-style]) h1 { font-size: 2.4em; font-weight: 300; }
+.markdown-preview:not([data-use-github-style]) h2 { font-size: 1.8em; font-weight: 400; }
+.markdown-preview:not([data-use-github-style]) h3 { font-size: 1.5em; font-weight: 500; }
+.markdown-preview:not([data-use-github-style]) h4 { font-size: 1.2em; font-weight: 600; }
+.markdown-preview:not([data-use-github-style]) h5 { font-size: 1.1em; font-weight: 600; }
+.markdown-preview:not([data-use-github-style]) h6 { font-size: 1em; font-weight: 600; }
+.markdown-preview:not([data-use-github-style]) strong { color: rgb(255, 255, 255); }
+.markdown-preview:not([data-use-github-style]) del { color: rgb(124, 135, 156); }
+.markdown-preview:not([data-use-github-style]) a, .markdown-preview:not([data-use-github-style]) a code { color: rgb(82, 139, 255); }
+.markdown-preview:not([data-use-github-style]) img { max-width: 100%; }
+.markdown-preview:not([data-use-github-style]) > p { margin-top: 0px; margin-bottom: 1.5em; }
+.markdown-preview:not([data-use-github-style]) > ul, .markdown-preview:not([data-use-github-style]) > ol { margin-bottom: 1.5em; }
+.markdown-preview:not([data-use-github-style]) blockquote { margin: 1.5em 0px; font-size: inherit; color: rgb(124, 135, 156); border-color: rgb(75, 83, 98); border-width: 4px; }
+.markdown-preview:not([data-use-github-style]) hr { margin: 3em 0px; border-top-width: 2px; border-top-style: dashed; border-top-color: rgb(75, 83, 98); background: none; }
+.markdown-preview:not([data-use-github-style]) table { margin: 1.5em 0px; }
+.markdown-preview:not([data-use-github-style]) th { color: rgb(255, 255, 255); }
+.markdown-preview:not([data-use-github-style]) th, .markdown-preview:not([data-use-github-style]) td { padding: 0.66em 1em; border: 1px solid rgb(75, 83, 98); }
+.markdown-preview:not([data-use-github-style]) code { color: rgb(255, 255, 255); background-color: rgb(58, 63, 75); }
+.markdown-preview:not([data-use-github-style]) pre.editor-colors { margin: 1.5em 0px; padding: 1em; font-size: 0.92em; border-radius: 3px; background-color: rgb(49, 54, 63); }
+.markdown-preview:not([data-use-github-style]) kbd { color: rgb(255, 255, 255); border-width: 1px 1px 2px; border-style: solid; border-color: rgb(75, 83, 98) rgb(75, 83, 98) rgb(62, 68, 81); background-color: rgb(58, 63, 75); }
+.markdown-preview[data-use-github-style] { font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; line-height: 1.6; word-wrap: break-word; padding: 30px; font-size: 16px; color: rgb(51, 51, 51); overflow: scroll; background-color: rgb(255, 255, 255); }
+.markdown-preview[data-use-github-style] > :first-child { margin-top: 0px !important; }
+.markdown-preview[data-use-github-style] > :last-child { margin-bottom: 0px !important; }
+.markdown-preview[data-use-github-style] a:not([href]) { color: inherit; text-decoration: none; }
+.markdown-preview[data-use-github-style] .absent { color: rgb(204, 0, 0); }
+.markdown-preview[data-use-github-style] .anchor { position: absolute; top: 0px; left: 0px; display: block; padding-right: 6px; padding-left: 30px; margin-left: -30px; }
+.markdown-preview[data-use-github-style] .anchor:focus { outline: none; }
+.markdown-preview[data-use-github-style] h1, .markdown-preview[data-use-github-style] h2, .markdown-preview[data-use-github-style] h3, .markdown-preview[data-use-github-style] h4, .markdown-preview[data-use-github-style] h5, .markdown-preview[data-use-github-style] h6 { position: relative; margin-top: 1em; margin-bottom: 16px; font-weight: bold; line-height: 1.4; }
+.markdown-preview[data-use-github-style] h1 .octicon-link, .markdown-preview[data-use-github-style] h2 .octicon-link, .markdown-preview[data-use-github-style] h3 .octicon-link, .markdown-preview[data-use-github-style] h4 .octicon-link, .markdown-preview[data-use-github-style] h5 .octicon-link, .markdown-preview[data-use-github-style] h6 .octicon-link { display: none; color: rgb(0, 0, 0); vertical-align: middle; }
+.markdown-preview[data-use-github-style] h1:hover .anchor, .markdown-preview[data-use-github-style] h2:hover .anchor, .markdown-preview[data-use-github-style] h3:hover .anchor, .markdown-preview[data-use-github-style] h4:hover .anchor, .markdown-preview[data-use-github-style] h5:hover .anchor, .markdown-preview[data-use-github-style] h6:hover .anchor { padding-left: 8px; margin-left: -30px; text-decoration: none; }
+.markdown-preview[data-use-github-style] h1:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h2:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h3:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h4:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h5:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h6:hover .anchor .octicon-link { display: inline-block; }
+.markdown-preview[data-use-github-style] h1 tt, .markdown-preview[data-use-github-style] h2 tt, .markdown-preview[data-use-github-style] h3 tt, .markdown-preview[data-use-github-style] h4 tt, .markdown-preview[data-use-github-style] h5 tt, .markdown-preview[data-use-github-style] h6 tt, .markdown-preview[data-use-github-style] h1 code, .markdown-preview[data-use-github-style] h2 code, .markdown-preview[data-use-github-style] h3 code, .markdown-preview[data-use-github-style] h4 code, .markdown-preview[data-use-github-style] h5 code, .markdown-preview[data-use-github-style] h6 code { font-size: inherit; }
+.markdown-preview[data-use-github-style] h1 { padding-bottom: 0.3em; font-size: 2.25em; line-height: 1.2; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(238, 238, 238); }
+.markdown-preview[data-use-github-style] h1 .anchor { line-height: 1; }
+.markdown-preview[data-use-github-style] h2 { padding-bottom: 0.3em; font-size: 1.75em; line-height: 1.225; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(238, 238, 238); }
+.markdown-preview[data-use-github-style] h2 .anchor { line-height: 1; }
+.markdown-preview[data-use-github-style] h3 { font-size: 1.5em; line-height: 1.43; }
+.markdown-preview[data-use-github-style] h3 .anchor { line-height: 1.2; }
+.markdown-preview[data-use-github-style] h4 { font-size: 1.25em; }
+.markdown-preview[data-use-github-style] h4 .anchor { line-height: 1.2; }
+.markdown-preview[data-use-github-style] h5 { font-size: 1em; }
+.markdown-preview[data-use-github-style] h5 .anchor { line-height: 1.1; }
+.markdown-preview[data-use-github-style] h6 { font-size: 1em; color: rgb(119, 119, 119); }
+.markdown-preview[data-use-github-style] h6 .anchor { line-height: 1.1; }
+.markdown-preview[data-use-github-style] p, .markdown-preview[data-use-github-style] blockquote, .markdown-preview[data-use-github-style] ul, .markdown-preview[data-use-github-style] ol, .markdown-preview[data-use-github-style] dl, .markdown-preview[data-use-github-style] table, .markdown-preview[data-use-github-style] pre { margin-top: 0px; margin-bottom: 16px; }
+.markdown-preview[data-use-github-style] hr { height: 4px; padding: 0px; margin: 16px 0px; border: 0px none; background-color: rgb(231, 231, 231); }
+.markdown-preview[data-use-github-style] ul, .markdown-preview[data-use-github-style] ol { padding-left: 2em; }
+.markdown-preview[data-use-github-style] ul.no-list, .markdown-preview[data-use-github-style] ol.no-list { padding: 0px; list-style-type: none; }
+.markdown-preview[data-use-github-style] ul ul, .markdown-preview[data-use-github-style] ul ol, .markdown-preview[data-use-github-style] ol ol, .markdown-preview[data-use-github-style] ol ul { margin-top: 0px; margin-bottom: 0px; }
+.markdown-preview[data-use-github-style] li > p { margin-top: 16px; }
+.markdown-preview[data-use-github-style] dl { padding: 0px; }
+.markdown-preview[data-use-github-style] dl dt { padding: 0px; margin-top: 16px; font-size: 1em; font-style: italic; font-weight: bold; }
+.markdown-preview[data-use-github-style] dl dd { padding: 0px 16px; margin-bottom: 16px; }
+.markdown-preview[data-use-github-style] blockquote { padding: 0px 15px; color: rgb(119, 119, 119); border-left-width: 4px; border-left-style: solid; border-left-color: rgb(221, 221, 221); }
+.markdown-preview[data-use-github-style] blockquote > :first-child { margin-top: 0px; }
+.markdown-preview[data-use-github-style] blockquote > :last-child { margin-bottom: 0px; }
+.markdown-preview[data-use-github-style] table { display: block; width: 100%; overflow: auto; word-break: keep-all; }
+.markdown-preview[data-use-github-style] table th { font-weight: bold; }
+.markdown-preview[data-use-github-style] table th, .markdown-preview[data-use-github-style] table td { padding: 6px 13px; border: 1px solid rgb(221, 221, 221); }
+.markdown-preview[data-use-github-style] table tr { border-top-width: 1px; border-top-style: solid; border-top-color: rgb(204, 204, 204); background-color: rgb(255, 255, 255); }
+.markdown-preview[data-use-github-style] table tr:nth-child(2n) { background-color: rgb(248, 248, 248); }
+.markdown-preview[data-use-github-style] img { max-width: 100%; box-sizing: border-box; }
+.markdown-preview[data-use-github-style] .emoji { max-width: none; }
+.markdown-preview[data-use-github-style] span.frame { display: block; overflow: hidden; }
+.markdown-preview[data-use-github-style] span.frame > span { display: block; float: left; width: auto; padding: 7px; margin: 13px 0px 0px; overflow: hidden; border: 1px solid rgb(221, 221, 221); }
+.markdown-preview[data-use-github-style] span.frame span img { display: block; float: left; }
+.markdown-preview[data-use-github-style] span.frame span span { display: block; padding: 5px 0px 0px; clear: both; color: rgb(51, 51, 51); }
+.markdown-preview[data-use-github-style] span.align-center { display: block; overflow: hidden; clear: both; }
+.markdown-preview[data-use-github-style] span.align-center > span { display: block; margin: 13px auto 0px; overflow: hidden; text-align: center; }
+.markdown-preview[data-use-github-style] span.align-center span img { margin: 0px auto; text-align: center; }
+.markdown-preview[data-use-github-style] span.align-right { display: block; overflow: hidden; clear: both; }
+.markdown-preview[data-use-github-style] span.align-right > span { display: block; margin: 13px 0px 0px; overflow: hidden; text-align: right; }
+.markdown-preview[data-use-github-style] span.align-right span img { margin: 0px; text-align: right; }
+.markdown-preview[data-use-github-style] span.float-left { display: block; float: left; margin-right: 13px; overflow: hidden; }
+.markdown-preview[data-use-github-style] span.float-left span { margin: 13px 0px 0px; }
+.markdown-preview[data-use-github-style] span.float-right { display: block; float: right; margin-left: 13px; overflow: hidden; }
+.markdown-preview[data-use-github-style] span.float-right > span { display: block; margin: 13px auto 0px; overflow: hidden; text-align: right; }
+.markdown-preview[data-use-github-style] code, .markdown-preview[data-use-github-style] tt { padding: 0.2em 0px; margin: 0px; font-size: 85%; border-radius: 3px; background-color: rgba(0, 0, 0, 0.0392157); }
+.markdown-preview[data-use-github-style] code::before, .markdown-preview[data-use-github-style] tt::before, .markdown-preview[data-use-github-style] code::after, .markdown-preview[data-use-github-style] tt::after { letter-spacing: -0.2em; content: " "; }
+.markdown-preview[data-use-github-style] code br, .markdown-preview[data-use-github-style] tt br { display: none; }
+.markdown-preview[data-use-github-style] del code { text-decoration: inherit; }
+.markdown-preview[data-use-github-style] pre > code { padding: 0px; margin: 0px; font-size: 100%; word-break: normal; white-space: pre; border: 0px; background: transparent; }
+.markdown-preview[data-use-github-style] .highlight { margin-bottom: 16px; }
+.markdown-preview[data-use-github-style] .highlight pre, .markdown-preview[data-use-github-style] pre { padding: 16px; overflow: auto; font-size: 85%; line-height: 1.45; border-radius: 3px; background-color: rgb(247, 247, 247); }
+.markdown-preview[data-use-github-style] .highlight pre { margin-bottom: 0px; word-break: normal; }
+.markdown-preview[data-use-github-style] pre { word-wrap: normal; }
+.markdown-preview[data-use-github-style] pre code, .markdown-preview[data-use-github-style] pre tt { display: inline; max-width: initial; padding: 0px; margin: 0px; overflow: initial; line-height: inherit; word-wrap: normal; border: 0px; background-color: transparent; }
+.markdown-preview[data-use-github-style] pre code::before, .markdown-preview[data-use-github-style] pre tt::before, .markdown-preview[data-use-github-style] pre code::after, .markdown-preview[data-use-github-style] pre tt::after { content: normal; }
+.markdown-preview[data-use-github-style] kbd { display: inline-block; padding: 3px 5px; font-size: 11px; line-height: 10px; color: rgb(85, 85, 85); vertical-align: middle; border-style: solid; border-width: 1px; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(187, 187, 187); border-radius: 3px; box-shadow: rgb(187, 187, 187) 0px -1px 0px inset; background-color: rgb(252, 252, 252); }
+.markdown-preview[data-use-github-style] a { color: rgb(51, 122, 183); }
+.markdown-preview[data-use-github-style] code { color: inherit; }
+.markdown-preview[data-use-github-style] pre.editor-colors { padding: 0.8em 1em; margin-bottom: 1em; font-size: 0.85em; border-radius: 4px; overflow: auto; }
+.scrollbars-visible-always .markdown-preview pre.editor-colors::shadow .vertical-scrollbar, .scrollbars-visible-always .markdown-preview pre.editor-colors::shadow .horizontal-scrollbar { visibility: hidden; }
+.scrollbars-visible-always .markdown-preview pre.editor-colors:hover::shadow .vertical-scrollbar, .scrollbars-visible-always .markdown-preview pre.editor-colors:hover::shadow .horizontal-scrollbar { visibility: visible; }
+.bracket-matcher .region {
+  border-bottom: 1px dotted lime;
+  position: absolute;
+}
+
+.spell-check-misspelling .region {
+  border-bottom: 2px dotted rgba(255, 51, 51, 0.75);
+}
+
+pre.editor-colors,
+.host {
+  background-color: #282c34;
+  color: #abb2bf;
+}
+pre.editor-colors .line.cursor-line,
+.host .line.cursor-line {
+  background-color: rgba(153, 187, 255, 0.04);
+}
+pre.editor-colors .invisible,
+.host .invisible {
+  color: #abb2bf;
+}
+pre.editor-colors .cursor,
+.host .cursor {
+  border-left: 2px solid #528bff;
+}
+pre.editor-colors .selection .region,
+.host .selection .region {
+  background-color: #3e4451;
+}
+pre.editor-colors .bracket-matcher .region,
+.host .bracket-matcher .region {
+  border-bottom: 1px solid #528bff;
+  box-sizing: border-box;
+}
+pre.editor-colors .invisible-character,
+.host .invisible-character {
+  color: rgba(171, 178, 191, 0.15);
+}
+pre.editor-colors .indent-guide,
+.host .indent-guide {
+  color: rgba(171, 178, 191, 0.15);
+}
+pre.editor-colors .wrap-guide,
+.host .wrap-guide {
+  background-color: rgba(171, 178, 191, 0.15);
+}
+pre.editor-colors .gutter .line-number,
+.host .gutter .line-number {
+  color: #636d83;
+  -webkit-font-smoothing: antialiased;
+}
+pre.editor-colors .gutter .line-number.cursor-line,
+.host .gutter .line-number.cursor-line {
+  color: #abb2bf;
+  background-color: #2c313a;
+}
+pre.editor-colors .gutter .line-number.cursor-line-no-selection,
+.host .gutter .line-number.cursor-line-no-selection {
+  background-color: transparent;
+}
+pre.editor-colors .gutter .line-number .icon-right,
+.host .gutter .line-number .icon-right {
+  color: #abb2bf;
+}
+pre.editor-colors .gutter:not(.git-diff-icon) .line-number.git-line-removed.git-line-removed::before,
+.host .gutter:not(.git-diff-icon) .line-number.git-line-removed.git-line-removed::before {
+  bottom: -3px;
+}
+pre.editor-colors .gutter:not(.git-diff-icon) .line-number.git-line-removed::after,
+.host .gutter:not(.git-diff-icon) .line-number.git-line-removed::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 25px;
+  border-bottom: 1px dotted rgba(224, 82, 82, 0.5);
+  pointer-events: none;
+}
+pre.editor-colors .gutter .line-number.folded,
+.host .gutter .line-number.folded,
+pre.editor-colors .gutter .line-number:after,
+.host .gutter .line-number:after,
+pre.editor-colors .fold-marker:after,
+.host .fold-marker:after {
+  color: #abb2bf;
+}
+.comment {
+  color: #5c6370;
+  font-style: italic;
+}
+.comment .markup.link {
+  color: #5c6370;
+}
+.entity.name.type {
+  color: #e5c07b;
+}
+.entity.other.inherited-class {
+  color: #98c379;
+}
+.keyword {
+  color: #c678dd;
+}
+.keyword.control {
+  color: #c678dd;
+}
+.keyword.operator {
+  color: #abb2bf;
+}
+.keyword.other.special-method {
+  color: #61afef;
+}
+.keyword.other.unit {
+  color: #d19a66;
+}
+.storage {
+  color: #c678dd;
+}
+.storage.type.annotation,
+.storage.type.primitive {
+  color: #c678dd;
+}
+.storage.modifier.package,
+.storage.modifier.import {
+  color: #abb2bf;
+}
+.constant {
+  color: #d19a66;
+}
+.constant.variable {
+  color: #d19a66;
+}
+.constant.character.escape {
+  color: #56b6c2;
+}
+.constant.numeric {
+  color: #d19a66;
+}
+.constant.other.color {
+  color: #56b6c2;
+}
+.constant.other.symbol {
+  color: #56b6c2;
+}
+.variable {
+  color: #e06c75;
+}
+.variable.interpolation {
+  color: #be5046;
+}
+.variable.parameter {
+  color: #abb2bf;
+}
+.string {
+  color: #98c379;
+}
+.string.regexp {
+  color: #56b6c2;
+}
+.string.regexp .source.ruby.embedded {
+  color: #e5c07b;
+}
+.string.other.link {
+  color: #e06c75;
+}
+.punctuation.definition.comment {
+  color: #5c6370;
+}
+.punctuation.definition.method-parameters,
+.punctuation.definition.function-parameters,
+.punctuation.definition.parameters,
+.punctuation.definition.separator,
+.punctuation.definition.seperator,
+.punctuation.definition.array {
+  color: #abb2bf;
+}
+.punctuation.definition.heading,
+.punctuation.definition.identity {
+  color: #61afef;
+}
+.punctuation.definition.bold {
+  color: #e5c07b;
+  font-weight: bold;
+}
+.punctuation.definition.italic {
+  color: #c678dd;
+  font-style: italic;
+}
+.punctuation.section.embedded {
+  color: #be5046;
+}
+.punctuation.section.method,
+.punctuation.section.class,
+.punctuation.section.inner-class {
+  color: #abb2bf;
+}
+.support.class {
+  color: #e5c07b;
+}
+.support.type {
+  color: #56b6c2;
+}
+.support.function {
+  color: #56b6c2;
+}
+.support.function.any-method {
+  color: #61afef;
+}
+.entity.name.function {
+  color: #61afef;
+}
+.entity.name.class,
+.entity.name.type.class {
+  color: #e5c07b;
+}
+.entity.name.section {
+  color: #61afef;
+}
+.entity.name.tag {
+  color: #e06c75;
+}
+.entity.other.attribute-name {
+  color: #d19a66;
+}
+.entity.other.attribute-name.id {
+  color: #61afef;
+}
+.meta.class {
+  color: #e5c07b;
+}
+.meta.class.body {
+  color: #abb2bf;
+}
+.meta.method-call,
+.meta.method {
+  color: #abb2bf;
+}
+.meta.definition.variable {
+  color: #e06c75;
+}
+.meta.link {
+  color: #d19a66;
+}
+.meta.require {
+  color: #61afef;
+}
+.meta.selector {
+  color: #c678dd;
+}
+.meta.separator {
+  background-color: #373b41;
+  color: #abb2bf;
+}
+.meta.tag {
+  color: #abb2bf;
+}
+.underline {
+  text-decoration: underline;
+}
+.none {
+  color: #abb2bf;
+}
+.invalid.deprecated {
+  color: #523d14 !important;
+  background-color: #e0c285 !important;
+}
+.invalid.illegal {
+  color: #ffffff !important;
+  background-color: #e05252 !important;
+}
+.markup.bold {
+  color: #d19a66;
+  font-weight: bold;
+}
+.markup.changed {
+  color: #c678dd;
+}
+.markup.deleted {
+  color: #e06c75;
+}
+.markup.italic {
+  color: #c678dd;
+  font-style: italic;
+}
+.markup.heading {
+  color: #e06c75;
+}
+.markup.heading .punctuation.definition.heading {
+  color: #61afef;
+}
+.markup.link {
+  color: #c678dd;
+}
+.markup.inserted {
+  color: #98c379;
+}
+.markup.quote {
+  color: #d19a66;
+}
+.markup.raw {
+  color: #98c379;
+}
+.source.cs .keyword.operator {
+  color: #c678dd;
+}
+.source.css .property-name,
+.source.css .property-value {
+  color: #828997;
+}
+.source.css .property-name.support,
+.source.css .property-value.support {
+  color: #abb2bf;
+}
+.source.gfm .markup {
+  -webkit-font-smoothing: auto;
+}
+.source.gfm .link .entity {
+  color: #61afef;
+}
+.source.ini .keyword.other.definition.ini {
+  color: #e06c75;
+}
+.source.java .storage.modifier.import {
+  color: #e5c07b;
+}
+.source.java .storage.type {
+  color: #e5c07b;
+}
+.source.java-properties .meta.key-pair {
+  color: #e06c75;
+}
+.source.java-properties .meta.key-pair > .punctuation {
+  color: #abb2bf;
+}
+.source.js .keyword.operator {
+  color: #56b6c2;
+}
+.source.js .keyword.operator.delete,
+.source.js .keyword.operator.in,
+.source.js .keyword.operator.of,
+.source.js .keyword.operator.instanceof,
+.source.js .keyword.operator.new,
+.source.js .keyword.operator.typeof,
+.source.js .keyword.operator.void {
+  color: #c678dd;
+}
+.source.json .meta.structure.dictionary.json > .string.quoted.json {
+  color: #e06c75;
+}
+.source.json .meta.structure.dictionary.json > .string.quoted.json > .punctuation.string {
+  color: #e06c75;
+}
+.source.json .meta.structure.dictionary.json > .value.json > .string.quoted.json,
+.source.json .meta.structure.array.json > .value.json > .string.quoted.json,
+.source.json .meta.structure.dictionary.json > .value.json > .string.quoted.json > .punctuation,
+.source.json .meta.structure.array.json > .value.json > .string.quoted.json > .punctuation {
+  color: #98c379;
+}
+.source.json .meta.structure.dictionary.json > .constant.language.json,
+.source.json .meta.structure.array.json > .constant.language.json {
+  color: #56b6c2;
+}
+.source.ruby .constant.other.symbol > .punctuation {
+  color: inherit;
+}
+.source.python .keyword.operator.logical.python {
+  color: #c678dd;
+}
+.source.python .variable.parameter {
+  color: #d19a66;
+}
+</style>
+  </head>
+  <body class='markdown-preview' data-use-github-style><p><a name="top"></a></p>
+<h1 id="basics-on-bash-operators-and-c-program-compilation">Basics on Bash Operators, and C program Compilation</h1>
+<p>In this lab, we will go through</p>
+<ul>
+<li>Selected environment variables</li>
+<li>Some useful Bash commands</li>
+<li>Useful operators for Bash commands</li>
+<li>Basic steps to compile C programs using <code>gcc</code> and <code>make</code></li>
+</ul>
+<p>(Prepared by <a href="http://www.cse.cuhk.edu.hk/~hwchan">Helen Chan</a> and Lequan Yu)</p>
+<h2 id="content">Content</h2>
+<ol>
+<li><a href="#bash">Selected environment variables</a><ul>
+<li><a href="#SHELL">Type of shell in-use</a></li>
+<li><a href="#HOME">Home directory and working directory</a></li>
+<li><a href="#PATH">Path to search for executables</a></li>
+</ul>
+</li>
+<li><a href="#commands">Selected Bash Commands</a><ul>
+<li><a href="#echo">Repeater, <code>echo</code></a></li>
+<li><a href="#task">Task manager, <code>top</code>/<code>htop</code></a></li>
+<li><a href="#operations">Basic operations on files</a><ul>
+<li><a href="#type">Determine file type</a></li>
+<li><a href="#show">Showing file content</a></li>
+<li><a href="#search">Searching file content</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#operators">Useful operators for Bash commands</a><ul>
+<li><a href="#ampersand">Ampersand, <code>&amp;</code></a></li>
+<li><a href="#not">Not, <code>!</code></a></li>
+<li><a href="#pipe">Pipe, <code>|</code></a></li>
+<li><a href="#redirect">Output redirect, <code>&gt;</code></a></li>
+<li><a href="#semicolon">Semi-colon, <code>;</code></a></li>
+<li><a href="#and">AND, <code>&amp;&amp;</code></a></li>
+<li><a href="#or">OR, <code>||</code></a></li>
+<li><a href="#combine">Conditional command execution using <code>&amp;&amp;</code> and <code>||</code></a></li>
+<li><a href="#group">Command combination, <code>{}</code></a></li>
+</ul>
+</li>
+<li><a href="#compile">Basics on C program compilation</a><ul>
+<li><a href="#helloworld">&quot;Hello World&quot; Example</a></li>
+<li><a href="#makefile">Makefile</a></li>
+</ul>
+</li>
+<li><a href="#reference">Reference</a></li>
+<li><a href="#extra">Extra</a></li>
+</ol>
+<p><a name="bash"></a></p>
+<h2 id="selected-environment-variables">Selected Environment variables</h2>
+<p><a name="SHELL"></a></p>
+<h3 id="type-of-shell-in-use">Type of shell in-use</h3>
+<p>In UNIX there are two major types of shells: The Bourne shell and C shell. We can find the type of shell in-use in a terminal in the environment variable <code>SHELL</code>.</p>
+<p><code>$ echo $SHELL</code></p>
+<p>In our course VM, the output is <code>/bin/bash</code>, which is the <em>path</em> to the shell executable.</p>
+<p>A <em>path</em> can be <em>absolute</em>, i.e., starting from the <em>root</em> of the file system (e.g. <code>/home/csci3150</code>), or <em>relative</em>, i.e., starting from the current directory (<code>.</code>) (we can list the current directory with <code>ls ./</code> and the parent directory with <code>ls ../</code>).</p>
+<p><a href="#top">(Back to top)</a></p>
+<p><a name="HOME"></a></p>
+<h3 id="home-directory-and-working-directory">Home directory and working directory</h3>
+<p>Every time the terminal is opened, we land on the <em>home directory</em>, which is stored in the variable <code>HOME</code>.</p>
+<p><code>$ echo $HOME</code></p>
+<p>When you navigate among folders, the absolute path to the current <em>working directory</em> is always stored in <code>PWD</code>.</p>
+<p><a href="#top">(Back to top)</a></p>
+<p><a name="PATH"></a></p>
+<h3 id="path-to-search-for-executables">Path to search for executables</h3>
+<p>When you execute a command from the terminal, e.g. <code>ls</code>, the shell first looks into the directories stored in <code>PATH</code> sequentially for the first executable named <code>ls</code>. It then runs the executable. The value of <code>PATH</code> can be shown by executing,</p>
+<p><code>$ echo $PATH</code></p>
+<p>and in the course VM, you get the following sequence of folders</p>
+<p><code>/home/csci3150/bin:/home/csci3150/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin</code></p>
+<p>with each of them separated by a colon <code>:</code>. Users can run executables under these directories without specifying the path to these executables.</p>
+<p>On the other hand, users need to specify the complete path to executables that are outside these directories, e.g. to run an executable named <code>hello_world</code> under the current directory by executing <code>./hello_world</code>.</p>
+<p>We can use the following command to add a directory to the <code>$PATH</code>.</p>
+<p><code>$ export PATH="/path/to/dir:$PATH"</code></p>
+<p>This change is temporary. If you want to make the changes permanent, you can edit <code>.bashrc</code> in your home directory and add the above command.  In practice, however, we only include a few trusted directories for better security, e.g. to avoid spoofing programs (see <a href="http://www.ibm.com/support/knowledgecenter/ssw_aix_71/com.ibm.aix.security/user_accounts_path_env_variable.htm">the explanation from IBM</a>).</p>
+<p>There are other common environment variables in Linux and users can also define their own variables using <code>export</code> (see more details <a href="https://wiki.archlinux.org/index.php/environment_variables">here</a>).</p>
+<p><a href="#top">(Back to top)</a></p>
+<p><a name="commands"></a></p>
+<h2 id="selected-bash-commands">Selected Bash Commands</h2>
+<p><a name="echo"></a></p>
+<h3 id="repeater-echo-">Repeater, <code>echo</code></h3>
+<p><code>echo</code> simply repeats the input. Here is an example,</p>
+<p><code>$ echo &quot;hello world&quot;</code></p>
+<p><img src="figs\echo.png" alt="hello world from `echo`"></p>
+<p><a href="#top">(Back to top)</a></p>
+<p><a name="task"></a></p>
+<h3 id="task-manager-top-htop-">Task manager, <code>top</code> / <code>htop</code></h3>
+<p><code>top</code> is a built-in command line task manager which shows processes and resources utilization.</p>
+<p><code>$ top</code></p>
+<p><img src="figs\top.png" alt="`top`"></p>
+<p>The first line shows the average system load in the last 1 minute, 5 minutes, and 15 minutes; the forth line reflects the utilization of physical memory.</p>
+<p>Below the fifth line, there is a table of processes with resources utilization shown. We take the fifth process as an example and name the information shown in the columns from left to right,</p>
+<ul>
+<li><strong><em>Process ID (PID)</em></strong>: 2493</li>
+<li><em>Run by the user</em>: <code>csci3150</code></li>
+<li><em>Scheduling priority (PR)</em>: 20</li>
+<li><em>Nice value (NI)</em>: 0.</li>
+<li><em>Virtual memory (VIRT)</em> allocated: 5436KB</li>
+<li><em>Physical memory (RES)</em> allocated: 2732KB</li>
+<li><em>Shared memory (SHR)</em> allocated: 2344KB</li>
+<li><em>Status (S)</em>: &quot;R&quot;, running</li>
+<li><em>CPU usage (%CPU)</em>: 0.3</li>
+<li><em>Memory usage (%MEM)</em>: 0.3</li>
+<li><em>CPU time (TIME+)</em>: 0.01 seconds</li>
+<li><em>Command line used to start the process (COMMAND)</em>: <code>top</code></li>
+</ul>
+<p>You may also refer to the <a href="http://man7.org/linux/man-pages/man1/top.1.html">manual page of top</a> for details on the information shown.</p>
+<p>To close the task manager, simply press <code>q</code>.</p>
+<p>Besides <code>top</code>, you may install and use a more colorful task manager, <code>htop</code>.</p>
+<p>To install <code>htop</code>,</p>
+<p><code>$ sudo apt-get -y install htop</code></p>
+<p>(The <code>-y</code> option means automatically answer &quot;Yes&quot; for question asked)</p>
+<p>Try calling <code>htop</code> in a terminal,</p>
+<p><code>$ htop</code></p>
+<p><img src="figs\htop.png" alt="`htop`"></p>
+<p>Same as <code>top</code>, it can be close by pressing <code>q</code>.</p>
+<p><a href="#top">(Back to top)</a></p>
+<p><a name="operations"></a></p>
+<h3 id="basic-operations-on-files">Basic operations on files</h3>
+<p><a name="type"></a></p>
+<h4 id="determine-file-type-file-">Determine file type, <code>file</code></h4>
+<p><code>file</code> tries to identify the type of files using three different methods (see <a href="http://man7.org/linux/man-pages/man1/file.1.html">its manual page for details</a>). For example, to determine the file type of <code>/bin/bash</code>, execute</p>
+<p><code>$ file /bin/bash</code></p>
+<p>and <code>file</code> reports <code>/bin/bash</code> is an 32-bit executable.</p>
+<p><a name="show"></a></p>
+<h4 id="showing-file-content-cat-more-less-head-tail-">Showing file content, <code>cat</code> / <code>more</code> / <code>less</code> / <code>head</code> / <code>tail</code></h4>
+<p><code>cat</code>, <code>more</code>, <code>less</code>, <code>head</code>, and <code>tail</code> are commonly used commands for showing file content in a terminal, i.e., printing files&#39; content to the terminal.</p>
+<p><code>cat</code> concatenates files and prints all content to the terminal at once. For example, to print the content of a file named <code>hello.txt</code>,</p>
+<p><code>$ cat hello.txt</code></p>
+<p><img src="figs\cat.png" alt="`cat` example"></p>
+<p><code>more</code> and <code>less</code> are two other commands that do a similar job as <code>cat</code>. Instead of printing all content at once, <code>more</code> and <code>less</code> divide and print one screen at a time.</p>
+<p><code>head</code> prints a certain numbers of lines, 10 by default, from the beginning of a file. The number of printed lines can be controlled via the option <code>-n</code>, e.g. to print only the first 2 lines of <code>hello.txt</code>,</p>
+<p><code>$ head -n 2 hello.txt</code></p>
+<p><img src="figs\head.png" alt="`head` example"></p>
+<p><code>tail</code> is almost the same as <code>head</code>, except that it counts lines from the end of a file.</p>
+<p>You may refer to the online post <a href="https://2buntu.com/articles/1491/viewing-text-files-on-linux-cat-head-tail-more-and-less/">here</a> for more details and examples on these commands.</p>
+<p><a href="#top">(Back to top)</a></p>
+<p><a name="search"></a></p>
+<h3 id="searching-file-content-grep-">Searching file content, <code>grep</code></h3>
+<p><code>grep</code> searches files and prints the lines in which keywords are found, with keywords highlighted.</p>
+<p><img src="figs\grep.png" alt="`grep` example"></p>
+<p>To search a phrase with one or more words, embrace the phrase with double quotes (<code>&quot;&quot;</code>).</p>
+<p>We can  search many files at the same time, e.g. <code>grep hello hello1.txt hello2.txt hello3.txt</code>.</p>
+<p>Besides, <code>grep</code> supports regular expressions (regex) besides keywords in plaintext, and you may refer to <a href="https://www.gnu.org/software/findutils/manual/html_node/find_html/grep-regular-expression-syntax.html">this guide</a> for more details on the use of regex for <code>grep</code>. Beware that the syntax for regex may differ among commands, i.e., the one works for <code>grep</code> may or may not work for other commands.</p>
+<p><a href="#top">(Back to top)</a></p>
+<p><a name="operators"></a></p>
+<h2 id="useful-operators-for-bash-commands">Useful Operators for Bash Commands</h2>
+<p>Below are some useful operators in Bash with simple examples of their usage.</p>
+<p><a name="ampersand"></a></p>
+<h3 id="ampersand-operator-">Ampersand Operator (<code>&amp;</code>)</h3>
+<p>Adding <code>&amp;</code> at the end of a command allows you to start a process in background, e.g. to start and run a task manager in background,</p>
+<p><code>$ htop &amp;</code></p>
+<p><img src="figs\ampersand.png" alt="`htop &amp;`"></p>
+<p>The command returns the number of processes currently in background inside the square barracks (<code>[]</code>), followed by the id of the last process put into background.</p>
+<p>To bring the last &quot;background-ed&quot; process foreground, execute</p>
+<p><code>$ fg</code></p>
+<p><a href="#top">(Back to top)</a></p>
+<p><a name="not"></a></p>
+<h3 id="not-operator-">NOT Operator (<code>!</code>)</h3>
+<p>The NOT operator <code>!</code> allows you specify exceptions when running a command. Let try to understand it via an example.</p>
+<p>First, create a folder <code>test</code></p>
+<p><code>$ mkdir test</code></p>
+<p>Then, we move into the folder <code>test</code> and create some files under this folder</p>
+<p><code>$ cd test</code></p>
+<p><code>$ touch a b a.txt b.txt</code></p>
+<p>By default, <code>$ ls</code> shows the four files we created under the folder <code>test</code>. To show files except those ended with the extension <code>.txt</code>, we may use</p>
+<p><code>$ ls !(*.txt)</code></p>
+<p>Note that <code>*</code> represents any number of characters, and is known as one of the <em>wild characters</em> (see the <a href="http://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm">documentation</a> for more details).</p>
+<p><img src="figs\not.png" alt="example on `!`"></p>
+<p><a href="#top">(Back to top)</a></p>
+<p><a name="pipe"></a></p>
+<h3 id="pipe-operator-">Pipe Operator (<code>|</code>)</h3>
+<p>By putting <code>|</code> between 2 commands, the output of the first command is <em>piped</em> to the second command as its input, e.g. to show the name of files with keyword <code>D</code> after listing the current directory,</p>
+<p><code>$ ls -1 | grep &quot;D&quot;</code></p>
+<p><img src="figs\pipe.png" alt="`ls -1 | grep &quot;D&quot;`"></p>
+<p><em>pipe</em> ensures that data</p>
+<ul>
+<li>flows in one-way and,</li>
+<li>is output in the order of input, i.e. first-in-first-out</li>
+</ul>
+<p>(see more details on pipe <a href="http://www.tldp.org/LDP/lpg/node10.html">here</a>).</p>
+<p><a href="#top">(Back to top)</a></p>
+<p><a name="redirect"></a></p>
+<h3 id="output-redirect-operator-">Output Redirect Operator (<code>&gt;</code>)</h3>
+<p>Adding a <code>&gt;</code> to the end of a command, followed by a file name, redirects the <em>standard output stream (<code>stdout</code>)</em> (<a href="https://en.wikipedia.org/wiki/Standard_streams#Standard_output_.28stdout.29">What are standard streams</a>?) to a file, i.e. the output is written to the file instead of the terminal , e.g.</p>
+<p><code>$ ls &gt;ls.out</code></p>
+<p><img src="figs\redirect_ls.png" alt="redirect `ls` output"></p>
+<p>The output of <code>ls</code> written to the file <code>ls.out</code> instead of the terminal. You may recap the output by executing <code>$ cat ls.out</code>.</p>
+<p>However, errors are usually output to the <em>standard error stream (<code>stderr</code>)</em> instead of <code>stdout</code>. To redirect <code>stderr</code>, we should specify its <em>file descriptor</em>, which is <code>2</code>, explicitly before <code>&gt;</code>, e.g.</p>
+<p><code>$ haha 2&gt;haha.err</code></p>
+<p><img src="figs\redirect_haha.png" alt="redirect `haha` output"></p>
+<p>The error message is then written to the file <code>haha.err</code>, instead of the terminal.</p>
+<p><a href="#top">(Back to top)</a></p>
+<p><a name="semicolon"></a></p>
+<h3 id="semi-colon-operator-">Semi-colon Operator (<code>;</code>)</h3>
+<p>To run multiple commands in series, you may chain up the commands with semi-colons (<code>;</code>). The <code>;</code> operator marks the end of each command in a series of commands. For example, to create a file <code>myfile</code>, copy it as <code>myfile_copy</code>, create a folder <code>file_copy</code>, and move the copied file into the folder,</p>
+<p><code>$ touch myfile; cp myfile myfile_copy; mkdir file_copy; mv myfile_copy file_copy/</code></p>
+<p>Note that the command is in one single line (although it may overflow in the html display).</p>
+<p><a href="#top">(Back to top)</a></p>
+<p><a name="and"></a></p>
+<h3 id="and-operator-">AND Operator (<code>&amp;&amp;</code>)</h3>
+<p>If we replace <code>;</code> with <code>&amp;&amp;</code> between two commands, the second command only runs if the first command succeeds, i.e., the first command exits with status 0 <a href="http://tldp.org/LDP/abs/html/exit-status.html">(more on exit status of Bash commands)</a>. For example,</p>
+<p>(1) <code>$ ls &amp;&amp; echo &quot;&gt;&gt; Success &lt;&lt;&quot;</code></p>
+<p>vs.</p>
+<p>(2) <code>$ haha &amp;&amp; echo &quot;&gt;&gt; Success &lt;&lt;&quot;</code></p>
+<p><img src="figs\and.png" alt="and operator"></p>
+<p>Since <code>ls</code> is a valid command but <code>haha</code> is not, <code>echo &quot;&gt;&gt; Success &lt;&lt;&quot;</code> runs in (1), but not (2).</p>
+<p><a href="#top">(Back to top)</a></p>
+<p><a name="or"></a></p>
+<h3 id="or-operator-">OR Operator (<code>||</code>)</h3>
+<p>Opposite to <code>&amp;&amp;</code>, if <code>||</code> is used between two commands, the second command only runs if the first command fails, i.e., the first command exits with a non-zero status. For example,</p>
+<p>(1) <code>$ haha || echo &quot;&gt;&gt; Failed &lt;&lt;&quot;</code></p>
+<p>vs.</p>
+<p>(2) <code>$ ls || echo &quot;&gt;&gt; Failed &lt;&lt;&quot;</code></p>
+<p><img src="figs\or.png" alt="or operator"></p>
+<p>Since <code>haha</code> is an invalid command but <code>ls</code> is a valid one, <code>echo &quot;&gt;&gt; Failed &lt;&lt;&quot;</code> runs in (1), but not (2).</p>
+<p><a href="#top">(Back to top)</a></p>
+<p><a name="combine"></a></p>
+<h3 id="conditional-command-execution-using-and-operator-and-or-operator-together">Conditional Command Execution using AND Operator (<code>&amp;&amp;</code>) and OR Operator (<code>||</code>) together</h3>
+<p><code>&amp;&amp;</code> and <code>||</code> complement each other. We may achieve similar (but not always the same) outcome as if using <code>if ... then ... else ...</code>.</p>
+<p>For example,</p>
+<p>(1) <code>$ haha &amp;&amp; echo &quot;&gt;&gt; Success &lt;&lt;&quot; || echo &quot;&gt;&gt; Failed &lt;&lt;&quot;</code></p>
+<p><img src="figs\combine_failed.png" alt="first command fails"></p>
+<p>Since <code>haha</code> is an invalid command, <code>echo &quot;&gt;&gt; Success &lt;&lt;&quot;</code> is skipped, but <code>echo &quot;&gt;&gt; Failed &lt;&lt;&quot;</code> runs.</p>
+<p>On the other hand, for</p>
+<p>(2) <code>$ ls &amp;&amp; echo &quot;&gt;&gt; Success &lt;&lt;&quot; || echo &quot;&gt;&gt; Failed &lt;&lt;&quot;</code></p>
+<p><img src="figs\combine_success.png" alt="first command succeeds"></p>
+<p>since <code>ls</code> runs successfully, <code>echo &quot;&gt;&gt; Success &lt;&lt;&quot;</code> runs. <strong>Then, since <code>echo &quot;&gt;&gt; Success &lt;&lt;&quot;</code> also runs successfully, <code>echo &quot;&gt;&gt; Failed &lt;&lt;&quot;</code> is skipped.</strong></p>
+<p>[Pitfall] By reordering (1) a bit,</p>
+<p>(3) <code>$ haha  || echo &quot;&gt;&gt; Failed &lt;&lt;&quot; &amp;&amp; echo &quot;&gt;&gt; Success &lt;&lt;&quot;</code></p>
+<p><img src="figs\combine_reorder.png" alt="first command in question"></p>
+<p>we see that <strong>both <code>&amp;&amp;</code> and <code>||</code> have the same precedence and are evaluated from left to right (see the guide <a href="http://tldp.org/LDP/abs/html/opprecedence.html">here</a>).</strong> Hence, <code>echo &quot;&gt;&gt; Failed &lt;&lt;&quot;</code> runs because <code>haha</code> fails, and <code>echo &quot;&gt;&gt; Success &lt;&lt;&quot;</code> runs because <code>echo &quot;&gt;&gt; Failed &lt;&lt;&quot;</code> succeeds.</p>
+<p><a href="#top">(Back to top)</a></p>
+<p><a name="group"></a></p>
+<h3 id="command-combination-operator-">Command Combination Operator (<code>{}</code>)</h3>
+<p>By putting multiple commands within a <code>{}</code>, the commands are run (or not run) as a whole. For example, to print both &quot;&gt;&gt; Success &lt;&lt;&quot; and &quot;XD&quot; if the first command succeeds, and &quot;&gt;&gt; Failed &lt;&lt;&quot; otherwise, we should group the first two <code>echo</code>s with <code>{}</code>,</p>
+<p><code>$ haha &amp;&amp; { echo &quot;&gt;&gt; Success &lt;&lt;&quot;; echo &quot;XD&quot;; } || echo &quot;&gt;&gt; Failed &lt;&lt;&quot;</code></p>
+<p>Without <code>{}</code>,</p>
+<p><code>$ haha &amp;&amp; echo &quot;&gt;&gt; Success &lt;&lt;&quot;; echo &quot;XD&quot; || echo &quot;&gt;&gt; Failed &lt;&lt;&quot;</code></p>
+<p><code>haha &amp;&amp; echo &quot;&gt;&gt; Success &lt;&lt;&quot;</code> is treated as the first sequence of commands, while <code>echo &quot;XD&quot; || echo &quot;&gt;&gt; Failed &lt;&lt;&quot;</code> is another. Therefore, <code>echo &quot;&gt;&gt; Success &lt;&lt;&quot;</code> is skipped when <code>haha</code> fails, but <code>echo &quot;XD&quot;</code> runs.</p>
+<p><img src="figs\combine_diff.png" alt="grouping commands into a block"></p>
+<p><a href="#top">(Back to top)</a></p>
+<p><a name="compile"></a></p>
+<h2 id="basics-on-c-program-compilation">Basics on C program Compilation</h2>
+<p><a name="helloworld"></a></p>
+<h3 id="a-review-on-the-hello-world-example">A Review on the Hello World Example</h3>
+<p>Let&#39;s briefly review how to compile a C program using the &quot;hello world&quot; example,</p>
+<p>First, create a file named <a href="code/hello.c">&#39;hello.c&#39;</a> with the following C source code,</p>
+<pre class="editor-colors lang-c"><div class="line"><span class="source c"><span>&nbsp;</span></span></div><div class="line"><span class="source c"><span class="meta preprocessor include c"><span class="keyword control directive include c"><span class="punctuation definition directive c"><span>#</span></span><span>include</span></span><span>&nbsp;</span><span class="string quoted other lt-gt include c"><span class="punctuation definition string begin c"><span>&lt;</span></span><span>stdio.h</span><span class="punctuation definition string end c"><span>&gt;</span></span></span><span>&nbsp;</span></span><span class="comment line double-slash cpp"><span class="punctuation definition comment cpp"><span>//</span></span><span>&nbsp;printf()</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source c"><span>&nbsp;</span></span></div><div class="line"><span class="source c"><span class="storage type c"><span>int</span></span><span class="meta function c"><span class="punctuation whitespace function leading c"><span>&nbsp;</span></span><span class="entity name function c"><span>main</span></span><span class="meta parens c"><span class="punctuation section parens begin c"><span>(</span></span><span class="storage type c"><span>int</span></span><span>&nbsp;argc,&nbsp;</span><span class="storage type c"><span>char</span></span><span>**&nbsp;argv</span><span class="punctuation section parens end c"><span>)</span></span></span><span>&nbsp;</span><span class="meta block c"><span class="punctuation section block begin c"><span>{</span></span></span></span></span></div><div class="line"><span class="source c"><span class="meta function c"><span class="meta block c"><span class="punctuation whitespace support function leading c"><span>&nbsp;&nbsp;</span></span><span class="support function C99 c"><span>printf</span></span><span>(</span><span class="string quoted double c"><span class="punctuation definition string begin c"><span>&quot;</span></span><span>hello&nbsp;world!</span><span class="constant character escape c"><span>\n</span></span><span class="punctuation definition string end c"><span>&quot;</span></span></span><span>);</span></span></span></span></div><div class="line"><span class="source c"><span class="meta function c"><span class="meta block c"><span>&nbsp;&nbsp;</span><span class="keyword control c"><span>return</span></span><span>&nbsp;</span><span class="constant numeric c"><span>0</span></span><span>;</span></span></span></span></div><div class="line"><span class="source c"><span class="meta function c"><span class="meta block c"><span class="punctuation section block end c"><span>}</span></span></span></span></span></div></pre>
+<p>Then, compile the code using <code>gcc</code> in a terminal under the folder where <code>hello.c</code> locates by</p>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>$&nbsp;gcc&nbsp;-c&nbsp;-o&nbsp;hello.o&nbsp;hello.c</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>$&nbsp;gcc&nbsp;-o&nbsp;hello&nbsp;hello.o</span></span></span></div></pre><p>We first compile the object <code>hello.o</code> using <code>hello.c</code> as the input in the first command. Then, we compile the executable <code>hello</code> using <code>hello.o</code> as the input in the second command.</p>
+<p>Run the program by</p>
+<p><code>$ ./hello</code></p>
+<p>And you will get &quot;<code>hello world!</code>&quot; printed to the terminal.</p>
+<p>Now we remove the executable <code>hello</code> and <code>hello.o</code> by <code>$ rm hello hello.o</code>.</p>
+<p><a name="makefile"></a></p>
+<h3 id="writing-a-makefile">Writing a Makefile</h3>
+<p>Other than repeating the commands every time to compile our program, we may use <code>make</code> to automate the compilation. We may directly create a simple <a href="code/Makefile">Makefile</a> to compile <code>hello</code> as follows:</p>
+<pre class="editor-colors lang-make"><div class="line"><span class="text plain null-grammar"><span>&nbsp;</span></span></div><div class="line"><span class="text plain null-grammar"><span>hello:&nbsp;hello.o</span></span></div><div class="line"><span class="text plain null-grammar"><span>&nbsp;&nbsp;gcc&nbsp;-o&nbsp;hello&nbsp;hello.o</span></span></div><div class="line"><span class="text plain null-grammar"><span>&nbsp;</span></span></div><div class="line"><span class="text plain null-grammar"><span>hello.o:&nbsp;hello.c</span></span></div><div class="line"><span class="text plain null-grammar"><span>&nbsp;&nbsp;gcc&nbsp;-c&nbsp;-o&nbsp;hello.o&nbsp;hello.c</span></span></div></pre>
+<p>The first and third line are two <em>rules</em> for compilation, in the format of</p>
+<p><code>[target]: [prerequisites]</code></p>
+<p><em>target</em> refers to the name of program to generate, and <em>prerequisites</em> refers to files required to run the rule. Hence, in this Makefile, <code>hello.o</code> is required to compile <code>hello</code>, and <code>hello.c</code> is required to compile <code>hello.o</code>.</p>
+<p>The second and forth line are the <em>recipes</em>, which tell <code>make</code> how the targets should be compiled. A recipe may contains multiple lines, and all lines use tabs (<code>\t</code>) for indentation, instead of spaces.</p>
+<p>Then, we can simply compile the program <code>hello</code> using the Makefile by executing</p>
+<p><code>$ make</code></p>
+<p><code>$ make</code> recompiles the program for us whenever any of the prerequisites is updated. Otherwise, it gives the message <code>make: &#39;[target]&#39; is up to date.</code>.</p>
+<p>Compiling a program is not the only thing we want to write rules for. We also want to delete all the object files and executables so that the directory is ‘clean’. We can write the following rule for cleaning the object files and executables.</p>
+
+<pre class="editor-colors lang-make"><div class="line"><span class="text plain null-grammar"><span>&nbsp;</span></span></div><div class="line"><span class="text plain null-grammar"><span>clean:</span></span></div><div class="line"><span class="text plain null-grammar"><span>&nbsp;&nbsp;rm&nbsp;-rf&nbsp;*.o&nbsp;</span></span></div><div class="line"><span class="text plain null-grammar"><span>&nbsp;&nbsp;rm&nbsp;-rf&nbsp;hello&nbsp;</span></span></div></pre>
+<p>Then we can simply clean them with the command <code>$ make clean</code>.</p>
+<p>Let&#39;s further refer to the GNU manual for the basic concepts on Makefile writing.</p>
+<ol>
+<li><a href="https://www.gnu.org/software/make/manual/make.html#Rule-Introduction">Makefile Rules</a></li>
+<li><a href="https://www.gnu.org/software/make/manual/make.html#Simple-Makefile">A Simple Makefile Example </a></li>
+<li><a href="https://www.gnu.org/software/make/manual/make.html#How-Make-Works">How <code>make</code> processes a Makefile</a></li>
+<li><a href="https://www.gnu.org/software/make/manual/make.html#Variables-Simplify">Simplifying Makefiles with variables</a></li>
+</ol>
+<p><a href="#top">(Back to top)</a></p>
+<p><a name="reference"></a></p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="http://www.tecmint.com/chaining-operators-in-linux-with-practical-examples/">10 Useful Chaining Operators</a><ul>
+<li>However, some of the examples do not work as expected...</li>
+</ul>
+</li>
+<li>Compiling C++ source code<ul>
+<li><a href="http://pages.cs.wisc.edu/~beechung/ref/gcc-intro.html">Short introduction on the common use of <code>gcc</code> and <code>g++</code></a></li>
+</ul>
+</li>
+</ul>
+<p><a href="#top">(Back to top)</a></p>
+<p><a name="extra"></a></p>
+<h2 id="extra">Extra</h2>
+<h3 id="bash-commands">Bash Commands</h3>
+<ul>
+<li>More than searching file content: <a href="http://tldp.org/LDP/abs/html/sedawk.html"><code>sed</code> and <code>awk</code></a></li>
+</ul>
+<h3 id="c-program-compilation">C Program Compilation</h3>
+<ul>
+<li><a href="http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/">Simple Tutorial for Makefile</a></li>
+<li><a href="http://www.gnu.org/software/make/manual/make.html">The complete guide to Makefile writing</a></li>
+</ul>
+<h2 id="interesting-commands-that-draw-in-a-terminal-">Interesting commands that draw in a terminal :)</h2>
+<ul>
+<li>The cow in terminal, <code>cowsay</code><ul>
+<li>Install by <code>$ sudo apt-get -y install cowsay</code></li>
+</ul>
+</li>
+<li>The train in terminal, <code>sl</code> (when you make a typo for <code>ls</code>)<ul>
+<li>Install by <code>$ sudo apt-get -y install sl</code></li>
+</ul>
+</li>
+</ul>
+<p><a href="#top">(Back to top)</a></p></body>
+</html>
