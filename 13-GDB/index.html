@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="prepa.html" />
+    <link rel="next" href="debug.html" />
     
     
 
@@ -100,20 +100,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="prepa.html">
-            
-                <a href="prepa.html">
-            
-                    
-                    Preparations
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3" data-path="debug.html">
+        <li class="chapter " data-level="1.2" data-path="debug.html">
             
                 <a href="debug.html">
             
@@ -126,7 +113,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="infor.html">
+        <li class="chapter " data-level="1.3" data-path="infor.html">
             
                 <a href="infor.html">
             
@@ -195,10 +182,54 @@
 <li>Examine what has happened, when your program has stopped.</li>
 <li>Change things in your program, so you can experiment with correcting the effects of one bug and go on to learn about another.</li>
 </ul>
-<h2 id="supported-languages">Supported Languages</h2>
-<p>gdb supports C, C++, D, Go, Objective-C, Fortran, OpenCL C, Pascal, Rust, assembly, Modula-2, and Ada. Some gdb features may be used in expressions regardless of the language you use: the gdb <code>@</code> and <code>::</code> operators, and the <code>{type}addr</code> construct can be used with the constructs of any supported language.</p>
 <h2 id="expressions">Expressions</h2>
-<p><code>print</code> and many other gdb commands accept an expression and compute its value. Any kind of constant, variable or operator defined by the programming language you are using is valid in an expression in gdb. This includes conditional expressions, function calls, casts, and string constants. It also includes preprocessor macros, if you compiled your program to include this information; see <a href="https://sourceware.org/gdb/current/onlinedocs/gdb/Compilation.html" target="_blank">Compilation</a>.</p>
+<p><code>print</code> and many other gdb commands accept an expression and compute its value. Any kind of constant, variable or operator defined by the programming language you are using is valid in an expression in gdb. This includes conditional expressions, function calls, casts, and string constants. It also includes preprocessor macros, if you compiled your program to include this information. Following commands are covered in this lab:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>run</td>
+<td>Start debugged program.</td>
+</tr>
+<tr>
+<td>info registers</td>
+<td>List of integer registers and their contents.</td>
+</tr>
+<tr>
+<td>print EXP</td>
+<td>Print value of expression <code>EXP</code>.</td>
+</tr>
+<tr>
+<td>backtrace</td>
+<td>Print backtrace of all stack frames.</td>
+</tr>
+<tr>
+<td>frame</td>
+<td>Select and print a stack frame.</td>
+</tr>
+<tr>
+<td>break</td>
+<td>Set breakpoint at specified location.</td>
+</tr>
+<tr>
+<td>condition N COND</td>
+<td>Specify breakpoint number <code>N</code> to break only if <code>COND</code> is true.</td>
+</tr>
+<tr>
+<td>step [N]</td>
+<td>Step program until it reaches a different source line.</td>
+</tr>
+<tr>
+<td>quit [EXPR]</td>
+<td>Exit gdb.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="source-code">Source Code</h2>
 <p>To help illustrate some of the debugging principles I will use a running example of a buggy program. As you progress through this tutorial, you will use the debugger to locate and fix errors in the code. The code can be downloaded <a href="src/main.c">here</a> and a simple Makefile for the program can be downloaded <a href="src/Makefile">here</a>.</p>
 <p>The code is very simple and consists of two class definitions, a node and a linked list. There is also a simple driver to test the list. All of the code was placed into a single file to make illustrating the process of debugging a little easier.</p>
@@ -230,7 +261,7 @@
             
                 
                 
-                <a href="prepa.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Preparations">
+                <a href="debug.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Debugging">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -241,7 +272,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Preparations","level":"1.2","depth":1,"path":"prepa.md","ref":"prepa.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2017-01-13T09:05:26.272Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-13T09:25:06.616Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Debugging","level":"1.2","depth":1,"path":"debug.md","ref":"debug.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2017-01-16T02:42:01.375Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-17T02:30:04.806Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
