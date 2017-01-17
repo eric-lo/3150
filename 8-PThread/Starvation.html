@@ -1,0 +1,333 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Starvation | </title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./Pass.html" />
+    
+    
+    <link rel="prev" href="./Deadlock.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="6"
+        data-chapter-title="Starvation"
+        data-filepath="Starvation.md"
+        data-basepath="."
+        data-revision="Wed Nov 02 2016 10:04:53 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Outline
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="Introduction.html">
+            
+                
+                    <a href="./Introduction.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="Configuration.html">
+            
+                
+                    <a href="./Configuration.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Configuration
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="Compile.html">
+            
+                
+                    <a href="./Compile.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Compile
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="Racing.html">
+            
+                
+                    <a href="./Racing.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Race Condition
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="Deadlock.html">
+            
+                
+                    <a href="./Deadlock.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Deadlock
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="6" data-path="Starvation.html">
+            
+                
+                    <a href="./Starvation.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        Starvation
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="Pass.html">
+            
+                
+                    <a href="./Pass.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        Passing arguments
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="Answers.html">
+            
+                
+                    <a href="./Answers.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        Answers
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="Useful.html">
+            
+                
+                    <a href="./Useful.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        Useful links
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" ></a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="starvation-problem">Starvation problem</h1>
+<p>Bob and Allen also are borrowing books from library, but now after Allen borrows a book, he doesn&apos;t want to return it to library. So Bob can&apos;t borrow this book.</p>
+<pre><code class="lang-c"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;pthread.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+
+<span class="hljs-keyword">pthread_mutex_t</span> book=PTHREAD_MUTEX_INITIALIZER;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> *<span class="hljs-title">Allen</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *arg)</span></span>;
+<span class="hljs-function"><span class="hljs-keyword">void</span> *<span class="hljs-title">Bob</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *arg)</span></span>;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">pthread_t</span> tid1, tid2;
+    pthread_create(&amp;tid1, <span class="hljs-literal">NULL</span>, *Allen, <span class="hljs-literal">NULL</span>);
+    pthread_create(&amp;tid2, <span class="hljs-literal">NULL</span>, *Bob, <span class="hljs-literal">NULL</span>);
+
+    pthread_join(tid1, <span class="hljs-literal">NULL</span>);
+    pthread_join(tid2, <span class="hljs-literal">NULL</span>);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> *<span class="hljs-title">Allen</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *arg)</span> </span>{
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;I&apos;m Allen, I borrow this book and I won&apos;t return it!\n&quot;</span>);
+    pthread_mutex_lock(&amp;book);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> *<span class="hljs-title">Bob</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *arg)</span> </span>{
+    pthread_mutex_lock(&amp;book);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;I&apos;m Bob, I can borrow it now\n&quot;</span>);
+}
+</code></pre>
+<p>I think you can solve this problem using pthread mutex, just try it!</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./Deadlock.html" class="navigation navigation-prev " aria-label="Previous page: Deadlock"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./Pass.html" class="navigation navigation-next " aria-label="Next page: Passing arguments"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

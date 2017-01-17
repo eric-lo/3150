@@ -1,0 +1,330 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Cons and pros | CSCI 3150 - Memory Management II</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./part3.html" />
+    
+    
+    <link rel="prev" href="./part2_2.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="1.3"
+        data-chapter-title="Cons and pros"
+        data-filepath="part2_3.md"
+        data-basepath="."
+        data-revision="Tue Nov 22 2016 10:32:08 GMT+0800 (HKT)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="part2.html">
+            
+                
+                    <a href="./part2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        MMAP
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="part2_1.html">
+            
+                
+                    <a href="./part2_1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Read file
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="part2_2.html">
+            
+                
+                    <a href="./part2_2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        Write to file
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3" data-path="part2_3.html">
+            
+                
+                    <a href="./part2_3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        Cons and pros
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="part3.html">
+            
+                
+                    <a href="./part3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Program optimization
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="part3_1.html">
+            
+                
+                    <a href="./part3_1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Branch prediction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="part3_2.html">
+            
+                
+                    <a href="./part3_2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        Loops unrolling
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >CSCI 3150 - Memory Management II</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="cons-and-pros">Cons and pros</h1>
+<p>Maybe you are wondering why do we use <code>mmap</code> for file access instead of
+the standard <code>read</code> and <code>write</code> system calls. We will list some 
+advantages and disadvantages of <code>mmap</code> below.</p>
+<h4 id="advantages-of-mmap">Advantages of <code>mmap</code></h4>
+<ul>
+<li><p>Reading from and writing to a memory-mapped file avoids the extraneous copy
+that occurs when using the <code>read</code> or <code>write</code> system calls, where the data
+must be copied to and from a user-space buffer.</p>
+</li>
+<li><p>Aside from any potential page faults, reading from and writing to a
+memory-mapped file does not incur any system call or context switch overhead.
+It is as simple as accessing memory.</p>
+</li>
+<li><p>When multiple processes map the same object into memory, the data is shared
+among all the processes. This can save a lot of memory, which is common in the
+kind of server systems. Read-only and shared writable mappings are shared in
+their entirety; private writable mappings have their not-yet-COW
+(<a href="https://en.wikipedia.org/wiki/Copy-on-write" target="_blank">copy-on-write</a>) pages shared.</p>
+</li>
+</ul>
+<h4 id="disadvantages-of-mmap">Disadvantages of <code>mmap</code></h4>
+<ul>
+<li><p>Memory mappings are always an integer number of pages in size. Thus, the
+difference between the size of the backing file and an integer number of pages
+is &quot;wasted&quot; as slack space. For small files, a significant percentage of the
+mapping may be wasted. For example, with 4 KB pages, a 7 byte mapping wastes
+4,089 bytes.</p>
+</li>
+<li><p>The memory mappings must fit into the process&apos; address space. With a 32-bit
+address space, a very large number of various-sized mappings can result in
+fragmentation of the address space, making it hard to find large free
+contiguous regions. This problem, of course, is much less apparent with a
+64-bit address space.</p>
+</li>
+<li><p>There is overhead in creating and maintaining the memory mappings and
+associated data structures inside the kernel. This overhead is generally
+obviated by the elimination of the double copy mentioned in the previous
+section, particularly for larger and frequently accessed files.</p>
+</li>
+</ul>
+<p><br><br>
+<strong>References</strong>:</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/258091/when-should-i-use-mmap-for-file-access" target="_blank">When should I use mmap for file access</a></li>
+<li><a href="https://www.safaribooksonline.com/library/view/linux-system-programming/0596009585/ch04s03.html" target="_blank">Linux System
+  Programming</a></li>
+</ul>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./part2_2.html" class="navigation navigation-prev " aria-label="Previous page: Write to file"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./part3.html" class="navigation navigation-next " aria-label="Next page: Program optimization"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

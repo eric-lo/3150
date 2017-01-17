@@ -1,0 +1,24 @@
+This article is about the operating system. For the kernel, see Linux kernel. For other uses, see Linux (disambiguation).
+Linux Tux the penguin
+Tux the penguin, mascot of Linux[1]
+Developer 	Community
+Written in 	Primarily C and assembly
+OS family 	Unix-like
+Working state 	Current
+Source model 	Mainly open-source, proprietary software is also available
+Initial release 	September 17, 1991; 25 years ago
+Marketing target 	Personal computers, mobile devices, embedded devices, servers, mainframes, supercomputers
+Available in 	Multilingual
+Platforms 	Alpha, ARC, ARM, AVR32, Blackfin, C6x, ETRAX CRIS, FR-V, H8/300, Hexagon, Itanium, M32R, m68k, META, Microblaze, MIPS, MN103, Nios II, OpenRISC, PA-RISC, PowerPC, s390, S+core, SuperH, SPARC, TILE64, Unicore32, x86, Xtensa
+Kernel type 	Monolithic (Linux kernel)
+Userland 	GNU and various others[a]
+Default user interface 	Many
+License 	GPLv2[7] and other free and open-source licenses, except for the "Linux" trademark[b]
+
+Linux (pronounced Listeni/ˈlɪnəks/ LIN-əks[9][10] or, less frequently, /ˈlaɪnəks/ LYN-əks[10][11]) is a Unix-like and mostly POSIX-compliant[12] computer operating system (OS) assembled under the model of free and open-source software development and distribution. The defining component of Linux is the Linux kernel,[13] an operating system kernel first released on September 17, 1991 by Linus Torvalds.[14][15][16] The Free Software Foundation uses the name GNU/Linux to describe the operating system, which has led to some controversy.[17][18]
+
+Linux was originally developed as a free operating system for personal computers based on the Intel x86 architecture, but has since been ported to more platforms than any other operating system.[19] Because of the dominance of Android on smartphones, Linux has the largest installed base of all general-purpose operating systems.[20] Linux is also the leading operating system on servers and other big iron systems such as mainframe computers and virtually all fastest supercomputers,[21][22] but is used on only around 2.3% of desktop computers[23][24] when not including Chrome OS, which has about 5% of the overall and nearly 20% of the sub-$300 notebook sales.[25] Linux also runs on embedded systems, which are devices whose operating system is typically built into the firmware and is highly tailored to the system; this includes smartphones and tablet computers running Android and other Linux derivatives,[26] TiVo and similar DVR devices, network routers, facility automation controls, televisions,[27][28] video game consoles and smartwatches.[29]
+
+The development of Linux is one of the most prominent examples of free and open-source software collaboration. The underlying source code may be used, modified and distributed—​​commercially or non-commercially—​​by anyone under the terms of its respective licenses, such as the GNU General Public License. Typically, Linux is packaged in a form known as a Linux distribution (or distro for short) for both desktop and server use. Some of the most popular mainstream Linux distributions are Arch Linux, CentOS, Debian, Fedora, Gentoo Linux, Linux Mint, Mageia, openSUSE and Ubuntu, together with commercial distributions such as Red Hat Enterprise Linux and SUSE Linux Enterprise Server. Distributions include the Linux kernel, supporting utilities and libraries, many of which are provided by the GNU Project, and usually a large amount of application software to fulfil the distribution's intended use.
+
+Distributions oriented toward desktop use typically include a windowing system, such as X11, Mir or a Wayland implementation, and an accompanying desktop environment such as GNOME or the KDE Software Compilation; some distributions may also include a less resource-intensive desktop, such as LXDE or Xfce. Distributions intended to run on servers may omit all graphical environments from the standard install, and instead include other software to set up and operate a solution stack such as LAMP. Because Linux is freely redistributable, anyone may create a distribution for any intended use.

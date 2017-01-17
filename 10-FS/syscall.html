@@ -1,0 +1,472 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Basic file functions | CSCI3150 - File System</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./dir.html" />
+    
+    
+    <link rel="prev" href="./fd.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="3.2"
+        data-chapter-title="Basic file functions"
+        data-filepath="syscall.md"
+        data-basepath="."
+        data-revision="Tue Nov 08 2016 18:19:27 GMT+0800 (HKT)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Goal of this lab
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" >
+            
+            <span><b>1.</b> Important commands</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="as.html">
+            
+                
+                    <a href="./as.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        File permission
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="mount.html">
+            
+                
+                    <a href="./mount.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        mount
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="stat.html">
+            
+                
+                    <a href="./stat.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        stat
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="df.html">
+            
+                
+                    <a href="./df.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        checking disk space utilization
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" >
+            
+            <span><b>2.</b> C functions to deal with files</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="intro.html">
+            
+                
+                    <a href="./intro.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        C File I/O
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="text.html">
+            
+                
+                    <a href="./text.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        Text I/O Functions
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="binary.html">
+            
+                
+                    <a href="./binary.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        Binary I/O Functions
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="fseek.html">
+            
+                
+                    <a href="./fseek.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        Getting data using fseek
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" >
+            
+            <span><b>3.</b> Linux file system calls</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="fd.html">
+            
+                
+                    <a href="./fd.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        File descriptor
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.2" data-path="syscall.html">
+            
+                
+                    <a href="./syscall.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        Basic file functions
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="dir.html">
+            
+                
+                    <a href="./dir.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        Directory
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="refer.html">
+            
+                
+                    <a href="./refer.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Reference
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >CSCI3150 - File System</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="basic-file-functions">Basic file functions</h1>
+<p>Linux has many system calls to handle file, the table below shows some of common system calls. You can see their manual pages for more details.</p>
+<pre><code>man 2 functionName
+</code></pre><table>
+  <tr>
+    <td>Function</td>
+    <td>Description </td>
+    <td>Returns </td>
+  </tr>
+  <tr>
+    <td>open</td>
+    <td>Open a file</td>
+    <td>If success, return a file descriptor, otherwise, return -1</td>
+  </tr>
+  <tr>
+    <td>close</td>
+    <td>Close a file </td>
+    <td>Return 0 on success, otherwise, return -1</td>
+  </tr>
+  <tr>
+    <td>read</td>
+    <td>read data from a file</td>
+    <td>On success, return the number of bytes that been read, otherwise return -1</td>
+  </tr>
+  <tr>
+    <td>write</td>
+    <td>     write data to a file </td>
+    <td>On success, the number of bytes written is returned, otherwise, return -1</td>
+  </tr>
+  <tr>
+    <td>lseek</td>
+    <td>seek to a specified position in a file </td>
+    <td>Upon successful completion, return the resulting offset location as measured in bytes from the beginning of the file, otherwise, return -1</td>
+  </tr>
+</table>
+
+
+<p>We use an example to show how to use these system calls. <a href="code/copy.c"><code>copy.c</code></a> is a simple simulation of the Linux <code>cp</code> command. The copy command can be used to make a copy of a file or a directory. <code>copy.c</code> is only the basic functionality i.e., copy the content from one file to another. It takes in two arguments namely the source file and the destination file.</p>
+<pre><code>./copy sourceFile destinationFile
+</code></pre><pre><code class="lang-c"><span class="hljs-comment">/*copy.c */</span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;fcntl.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;errno.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">define</span> BUFF_SIZE <span class="hljs-number">1024</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span>* argv[])</span>
+</span>{
+    <span class="hljs-keyword">int</span> src_fd,dest_fd,readByte,writeByte;
+    <span class="hljs-keyword">char</span> * buff[BUFF_SIZE];
+    <span class="hljs-comment">/* Check the input*/</span>
+    <span class="hljs-keyword">if</span>(argc != <span class="hljs-number">3</span>)
+    {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\nUsage: ./copy source_file destination_file\n&quot;</span>);
+        <span class="hljs-built_in">exit</span>(EXIT_FAILURE);
+    }
+    <span class="hljs-comment">/* Open source file with read only flag*/</span>
+    src_fd = open(argv[<span class="hljs-number">1</span>],O_RDONLY);
+    <span class="hljs-keyword">if</span>(src_fd == -<span class="hljs-number">1</span>)
+    {
+        perror(<span class="hljs-string">&quot;Source file open&quot;</span>);
+        <span class="hljs-built_in">exit</span>(EXIT_FAILURE);
+    }
+    <span class="hljs-comment">/* Open destination file with write only flag, if it is not existed,
+  creat it with permission 666*/</span>
+    dest_fd = open(argv[<span class="hljs-number">2</span>],O_WRONLY | O_CREAT | O_TRUNC, <span class="hljs-number">0644</span>);
+    <span class="hljs-keyword">if</span>(dest_fd == -<span class="hljs-number">1</span>)
+    {
+        perror(<span class="hljs-string">&quot;Destination file open&quot;</span>);
+        <span class="hljs-built_in">exit</span>(EXIT_FAILURE);
+    }
+    <span class="hljs-comment">/* Start data transfer from src file to dest file untill it reaches EOF*/</span>
+    <span class="hljs-keyword">while</span>((readByte = read(src_fd,buff,BUFF_SIZE)) &gt; <span class="hljs-number">0</span>)
+    {
+        <span class="hljs-keyword">if</span>(write(dest_fd,buff,readByte) != readByte){
+            perror(<span class="hljs-string">&quot;Write&quot;</span>);
+            <span class="hljs-built_in">exit</span>(EXIT_FAILURE);
+        }
+    }
+    <span class="hljs-keyword">if</span>(readByte == -<span class="hljs-number">1</span>){
+        perror(<span class="hljs-string">&quot;Read&quot;</span>);
+        <span class="hljs-built_in">exit</span>(EXIT_FAILURE);
+    }
+    close(src_fd);
+    close(dest_fd);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><strong>Analysis</strong>: First, we need to include necessary header files. Man page of every system call tells you what header files you need to include to be able to use this system call. Second we define a buffer with constant size. The buffer is used to transfer data from the source file to destination file. Then we open source and destination files, source with O_RDONLY to make it read only, destination with O_WRONLY | O_CREAT to make it writable and to create destination file with 0644 file system permission flags. We run read() to read data from the source file and run write() to write data to the destination file. If number of bytes read and number of bytes written differ this indicates error.</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./fd.html" class="navigation navigation-prev " aria-label="Previous page: File descriptor"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./dir.html" class="navigation navigation-next " aria-label="Next page: Directory"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

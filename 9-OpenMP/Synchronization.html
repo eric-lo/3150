@@ -1,0 +1,342 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Synchronization | Outline</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./References.html" />
+    
+    
+    <link rel="prev" href="./Faster.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="5"
+        data-chapter-title="Synchronization"
+        data-filepath="Synchronization.md"
+        data-basepath="."
+        data-revision="Thu Nov 03 2016 18:42:40 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Outline
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="Introduction.html">
+            
+                
+                    <a href="./Introduction.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="Hello.html">
+            
+                
+                    <a href="./Hello.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Helloworld
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="Parallel.html">
+            
+                
+                    <a href="./Parallel.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Parallel
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="Faster.html">
+            
+                
+                    <a href="./Faster.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Faster
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="5" data-path="Synchronization.html">
+            
+                
+                    <a href="./Synchronization.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Synchronization
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="References.html">
+            
+                
+                    <a href="./References.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        References
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >Outline</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="synchronization">Synchronization</h1>
+<p>We learned how to avoid some synchronization problem in lecture and also last lab. </p>
+<p>OpenMP will not check the data dependencies, data conflicts, race conditions, deadlocks, or code sequences for you. You have to deal with those problems by yourself. OpenMP can have some ways to solve it, but you can also give a better solution(.eg partition the data properly).</p>
+<p>Here we have a race condition problem in OpenMP version:</p>
+<pre><code class="lang-c"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;omp.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    omp_set_num_threads(<span class="hljs-number">2</span>);
+    <span class="hljs-keyword">int</span> a=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> i;
+    <span class="hljs-preprocessor">#<span class="hljs-keyword">pragma</span> omp parallel for</span>
+    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">20000000</span>; i++) {
+        a++;
+    }
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;a = %d\n&quot;</span>, a);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><img src="race.png" alt=""></p>
+<p>How to solve it in OpenMP using the build-in solutions?</p>
+<ul>
+<li>critical: Mutual exclusion, Only one thread at a time can enter a critical region.</li>
+</ul>
+<pre><code class="lang-c"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;omp.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    omp_set_num_threads(<span class="hljs-number">2</span>);
+    <span class="hljs-keyword">int</span> a=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> i;
+    <span class="hljs-preprocessor">#<span class="hljs-keyword">pragma</span> omp parallel for</span>
+    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">20000000</span>; i++) {
+        <span class="hljs-preprocessor">#<span class="hljs-keyword">pragma</span> omp critical</span>
+        {
+            a++;
+        }
+    }
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;a = %d\n&quot;</span>, a);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><img src="critical.png" alt=""></p>
+<ul>
+<li>reduction(op:list): A local copy of each list variable is made and initialized depending on the &quot;op&quot;. Will do calculation related with &quot;op&quot; after all the thread finish.</li>
+</ul>
+<pre><code class="lang-c"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;omp.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    omp_set_num_threads(<span class="hljs-number">2</span>);
+    <span class="hljs-keyword">int</span> a=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> i;
+    <span class="hljs-preprocessor">#<span class="hljs-keyword">pragma</span> omp parallel for reduction(+:a)</span>
+    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">20000000</span>; i++) {
+        a++;
+    }
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;a = %d\n&quot;</span>, a);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p>try it by yourself! And C compiler for OpenMP also support <code>*, -, &amp;, |, ^, &amp;&amp;, ||</code> in reduction.</p>
+<ul>
+<li>lock routines: just like lock you learn in pThread.</li>
+</ul>
+<pre><code class="lang-c"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;omp.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    omp_set_num_threads(<span class="hljs-number">2</span>);
+    <span class="hljs-keyword">int</span> a=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> i;
+    <span class="hljs-keyword">omp_lock_t</span> lock;
+    omp_init_lock(&amp;lock);
+    <span class="hljs-preprocessor">#<span class="hljs-keyword">pragma</span> omp parallel for</span>
+    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">20000000</span>; i++) {
+        omp_set_lock(&amp;lock);
+        a++;
+        omp_unset_lock(&amp;lock);
+    }
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;a = %d\n&quot;</span>, a);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p>Also try it by yourself! And compare the time using different method!</p>
+<p>OpenMP also has many other solutions to synchronization problems, such as barrier, master, single, ordered. You can Google them and get more information of them.</p>
+<p>These examples are all using <code>for</code>, can you solve synchronization problems not using <code>for</code> ?</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./Faster.html" class="navigation navigation-prev " aria-label="Previous page: Faster"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./References.html" class="navigation navigation-next " aria-label="Next page: References"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Shared memory | CSCI3150 - IPC-Synchronization Problem</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./reference.html" />
+    
+    
+    <link rel="prev" href="./intro.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="4"
+        data-chapter-title="Shared memory"
+        data-filepath="share-mem.md"
+        data-basepath="."
+        data-revision="Wed Oct 12 2016 13:40:42 GMT+0800 (HKT)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Goal of this lab
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" >
+            
+            <span><b>1.</b> Race condition</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="race_con.html">
+            
+                
+                    <a href="./race_con.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        An example of Race condition
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="solution.html">
+            
+                
+                    <a href="./solution.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        Solution:use semaphore
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" >
+            
+            <span><b>2.</b> More synchronization problems</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="mutual-ex.html">
+            
+                
+                    <a href="./mutual-ex.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Mutual exclusion
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="sync-pro.html">
+            
+                
+                    <a href="./sync-pro.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        Producer-Consumer problem
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="exercise-1.html">
+            
+                
+                    <a href="./exercise-1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        Exercise
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="intro.html">
+            
+                
+                    <a href="./intro.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Semaphore
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="4" data-path="share-mem.html">
+            
+                
+                    <a href="./share-mem.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Shared memory
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="reference.html">
+            
+                
+                    <a href="./reference.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Reference
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >CSCI3150 - IPC-Synchronization Problem</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="shared-memory">Shared memory</h1>
+<hr>
+<p>Shared memory is memory that may be simultaneously accessed by multiple programs with an intent to provide communication among them or avoid redundant copies. Shared memory is an efficient means of passing data between programs as shown in figure 1.
+<img src="assets/shared_mem.png" alt="">
+                                                                 figure 1: how shared memory works</p>
+<h4 id="if-a-process-want-to-access-shared-memory-it-should-use-posix-api">If a process want to access shared memory, it should: (use POSIX API)</h4>
+<p><em>1. Create, or gain access to, a shared memory object.</em></p>
+<p><code>int shm_open (const char *name, int oflag, mode_t mode);</code></p>
+<p><em>2. Map a shared memory object into its address space.</em></p>
+<p><code>void *mmap (void *addr, size_t length, int prot, int flags, int fd, off_t offset);</code></p>
+<p><em>3. Do operations on shared memory (read, write, update).</em></p>
+<p><em>4. Delete mappings of the shared memory object.</em></p>
+<p><code>int munmap (void *addr, size_t length);</code></p>
+<p><em>5. Destroy a shared memory object when no references to it remain open.</em></p>
+<p><code>int shm_unlink (const char *name);</code></p>
+<h4 id="if-you-want-to-learn-more-about-shared-memory-please-see-here">If you want to learn more about shared memory, please see <a href="https://www.ibm.com/developerworks/aix/library/au-spunix_sharedmemory/" target="_blank">here</a></h4>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./intro.html" class="navigation navigation-prev " aria-label="Previous page: Semaphore"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./reference.html" class="navigation navigation-next " aria-label="Next page: Reference"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

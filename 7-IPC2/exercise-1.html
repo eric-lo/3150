@@ -1,0 +1,349 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Exercise | CSCI3150 - IPC-Synchronization Problem</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./intro.html" />
+    
+    
+    <link rel="prev" href="./sync-pro.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="2.3"
+        data-chapter-title="Exercise"
+        data-filepath="exercise-1.md"
+        data-basepath="."
+        data-revision="Wed Oct 12 2016 13:40:42 GMT+0800 (HKT)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Goal of this lab
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" >
+            
+            <span><b>1.</b> Race condition</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="race_con.html">
+            
+                
+                    <a href="./race_con.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        An example of Race condition
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="solution.html">
+            
+                
+                    <a href="./solution.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        Solution:use semaphore
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" >
+            
+            <span><b>2.</b> More synchronization problems</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="mutual-ex.html">
+            
+                
+                    <a href="./mutual-ex.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Mutual exclusion
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="sync-pro.html">
+            
+                
+                    <a href="./sync-pro.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        Producer-Consumer problem
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.3" data-path="exercise-1.html">
+            
+                
+                    <a href="./exercise-1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        Exercise
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="intro.html">
+            
+                
+                    <a href="./intro.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Semaphore
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="share-mem.html">
+            
+                
+                    <a href="./share-mem.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Shared memory
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="reference.html">
+            
+                
+                    <a href="./reference.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Reference
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >CSCI3150 - IPC-Synchronization Problem</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="exercise1">Exercise-1</h1>
+<hr>
+<p><a href="code/NS-cars.c"><code>NS-cars.c</code></a> and<a href="code/EW-cars.c"> <code>EW-cars.c</code></a> are two programs that simulate traffic control. When North-South cars past the crossroads, they should ensure that road from north to south is available, if north-south road is not available, they keep waiting. This is similar to East-West cars. Please add semaphore synchronization in these two programs so that North-South cars and Easts-West cars can past the crossroads alternately and there will not be car accident. Note that when north-south road is available, east-west road is not available.
+The current result of these two programs is shown in figure 1, the expected result is shown in figure 2.
+<img src="assets/cross-1.png" alt="">
+Figure 1. current result
+<img src="assets/cross.png" alt="">
+Figure 2. Expected result</p>
+<pre><code class="lang-c"><span class="hljs-comment">/*NS-cars.c*/</span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> * argv[])</span>
+</span>{
+    <span class="hljs-keyword">int</span> i, car=<span class="hljs-number">0</span>, loop=<span class="hljs-number">3</span>;
+    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;loop;i++){
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Semaphore: The road from north to south is open\n&quot;</span>);
+        sleep(<span class="hljs-number">1</span>);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;NS-Car: car %d passed\n&quot;</span>,car++);
+    }
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;NS: Time is up. %d cars passed.\n&quot;</span>,car);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-comment">/*EW-cars.c*/</span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> * argv[])</span>
+</span>{
+    <span class="hljs-keyword">int</span> i,car=<span class="hljs-number">0</span>, loop=<span class="hljs-number">3</span>;
+    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;loop;i++){
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Semaphore: The road from east to west is open\n&quot;</span>);
+        sleep(rand()%<span class="hljs-number">2</span>+<span class="hljs-number">1</span>);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;EW-Car: car %d passed\n&quot;</span>,car++);
+    }
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;EW: Time is up. %d cars passed.\n&quot;</span>,car);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./sync-pro.html" class="navigation navigation-prev " aria-label="Previous page: Producer-Consumer problem"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./intro.html" class="navigation navigation-next " aria-label="Next page: Semaphore"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

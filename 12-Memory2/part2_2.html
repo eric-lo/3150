@@ -1,0 +1,382 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Write to file | CSCI 3150 - Memory Management II</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./part2_3.html" />
+    
+    
+    <link rel="prev" href="./part2_1.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="1.2"
+        data-chapter-title="Write to file"
+        data-filepath="part2_2.md"
+        data-basepath="."
+        data-revision="Tue Nov 22 2016 10:32:08 GMT+0800 (HKT)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="part2.html">
+            
+                
+                    <a href="./part2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        MMAP
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="part2_1.html">
+            
+                
+                    <a href="./part2_1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Read file
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="part2_2.html">
+            
+                
+                    <a href="./part2_2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        Write to file
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="part2_3.html">
+            
+                
+                    <a href="./part2_3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        Cons and pros
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="part3.html">
+            
+                
+                    <a href="./part3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Program optimization
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="part3_1.html">
+            
+                
+                    <a href="./part3_1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Branch prediction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="part3_2.html">
+            
+                
+                    <a href="./part3_2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        Loops unrolling
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >CSCI 3150 - Memory Management II</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="write-to-file">Write to file</h1>
+<pre><code class="lang-C"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;fcntl.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/types.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/mman.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/stat.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;errno.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> *argv[])</span> </span>{
+    <span class="hljs-keyword">char</span> * <span class="hljs-built_in">map</span>;
+    <span class="hljs-keyword">int</span> fd, offset = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">struct</span> stat fileInfo;
+    <span class="hljs-keyword">size_t</span> fileSizeOld, fileSizeNew, textSize;
+    <span class="hljs-comment">// usage of running this program</span>
+    <span class="hljs-keyword">if</span> (argc != <span class="hljs-number">2</span>) {
+        <span class="hljs-built_in">fprintf</span>(<span class="hljs-built_in">stderr</span>, <span class="hljs-string">&quot;usage: mmap_write text\n&quot;</span>);
+        <span class="hljs-built_in">fprintf</span>(<span class="hljs-built_in">stderr</span>, <span class="hljs-string">&quot;       e.g., mmap_write &apos;hello world&apos;\n&quot;</span>);
+        <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);
+    }
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text = argv[<span class="hljs-number">1</span>];
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *filePath = <span class="hljs-string">&quot;./try_mmap_write&quot;</span>;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;We will write text &apos;%s&apos; to &apos;%s&apos;.\n&quot;</span>, text, filePath);
+    <span class="hljs-comment">// Open a file for writing.</span>
+    <span class="hljs-comment">// Creating the file if it doesn&apos;t exist.</span>
+    <span class="hljs-keyword">if</span> ((fd = open(filePath, O_RDWR | O_CREAT, (<span class="hljs-keyword">mode_t</span>)<span class="hljs-number">0664</span> )) == -<span class="hljs-number">1</span>) {
+        perror(<span class="hljs-string">&quot;open&quot;</span>);
+        <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);
+    }
+    <span class="hljs-keyword">if</span> (stat(filePath, &amp;fileInfo) == -<span class="hljs-number">1</span>) {
+        perror(<span class="hljs-string">&quot;stat&quot;</span>);
+        <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);
+    }
+    <span class="hljs-comment">// If the file is not empty, show its content</span>
+    <span class="hljs-keyword">if</span> (fileInfo.st_size != <span class="hljs-number">0</span>) {
+        <span class="hljs-built_in">map</span> = mmap(<span class="hljs-number">0</span>, fileInfo.st_size, PROT_READ, MAP_SHARED, fd, <span class="hljs-number">0</span>);
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">map</span> == MAP_FAILED) {
+            close(fd);
+            perror(<span class="hljs-string">&quot;mmap&quot;</span>);
+            <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);
+        }
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;The content in &apos;%s&apos; before writing:\n&quot;</span>, filePath);
+        <span class="hljs-keyword">while</span> (offset &lt; fileInfo.st_size) {
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c&quot;</span>, <span class="hljs-built_in">map</span>[offset]);
+            offset++;
+        }
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+        <span class="hljs-keyword">if</span> (munmap(<span class="hljs-built_in">map</span>, fileInfo.st_size) == -<span class="hljs-number">1</span>) {
+            close(fd);
+            perror(<span class="hljs-string">&quot;Error un-mmapping the file&quot;</span>);
+            <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);
+        }
+    }
+    <span class="hljs-comment">// Stretch the file size to write the array of char</span>
+    fileSizeOld = fileInfo.st_size;
+    <span class="hljs-comment">// printf(&quot;old: %zu\n&quot;, fileSizeOld);</span>
+    textSize = <span class="hljs-built_in">strlen</span>(text);
+    fileSizeNew = fileInfo.st_size + textSize;
+    <span class="hljs-comment">// printf(&quot;new: %zu\n&quot;, fileSizeNew);</span>
+    <span class="hljs-keyword">if</span> (ftruncate(fd, fileSizeNew) == -<span class="hljs-number">1</span>) {
+        close(fd);
+        perror(<span class="hljs-string">&quot;Error resizing the file&quot;</span>);
+        <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);
+    }
+    <span class="hljs-comment">// mmap to write</span>
+    <span class="hljs-built_in">map</span> = mmap(<span class="hljs-number">0</span>, fileSizeNew, PROT_READ | PROT_WRITE, MAP_SHARED, fd, <span class="hljs-number">0</span>);
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">map</span> == MAP_FAILED) {
+        close(fd);
+        perror(<span class="hljs-string">&quot;mmap&quot;</span>);
+        <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);
+    }
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">size_t</span> i = <span class="hljs-number">0</span>; i &lt; textSize; i++) {
+        <span class="hljs-comment">/* printf(&quot;Writing character %c at %zu\n&quot;, text[i], i); */</span>
+        <span class="hljs-built_in">map</span>[i+fileSizeOld] = text[i];
+    }
+    <span class="hljs-comment">// Write it now to disk</span>
+    <span class="hljs-keyword">if</span> (msync(<span class="hljs-built_in">map</span>, fileSizeNew, MS_SYNC) == -<span class="hljs-number">1</span>) {
+        perror(<span class="hljs-string">&quot;Could not sync the file to disk&quot;</span>);
+    }
+    <span class="hljs-comment">// Free the mmapped memory</span>
+    <span class="hljs-keyword">if</span> (munmap(<span class="hljs-built_in">map</span>, fileSizeNew) == -<span class="hljs-number">1</span>) {
+        close(fd);
+        perror(<span class="hljs-string">&quot;Error un-mmapping the file&quot;</span>);
+        <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);
+    }
+    <span class="hljs-comment">// Un-mmaping doesn&apos;t close the file, so we still need to do that</span>
+    close(fd);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p>Here is the output:
+<img src="img/img11.png" alt="img11"></p>
+<p><br><br>
+<strong>References</strong>:</p>
+<ul>
+<li><a href="https://gist.github.com/sanmarcos/991042" target="_blank">mmap and read/write string to file</a></li>
+</ul>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./part2_1.html" class="navigation navigation-prev " aria-label="Previous page: Read file"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./part2_3.html" class="navigation navigation-next " aria-label="Next page: Cons and pros"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

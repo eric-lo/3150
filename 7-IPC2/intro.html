@@ -1,0 +1,371 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Semaphore | CSCI3150 - IPC-Synchronization Problem</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./share-mem.html" />
+    
+    
+    <link rel="prev" href="./exercise-1.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="3"
+        data-chapter-title="Semaphore"
+        data-filepath="intro.md"
+        data-basepath="."
+        data-revision="Wed Oct 12 2016 13:40:42 GMT+0800 (HKT)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Goal of this lab
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" >
+            
+            <span><b>1.</b> Race condition</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="race_con.html">
+            
+                
+                    <a href="./race_con.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        An example of Race condition
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="solution.html">
+            
+                
+                    <a href="./solution.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        Solution:use semaphore
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" >
+            
+            <span><b>2.</b> More synchronization problems</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="mutual-ex.html">
+            
+                
+                    <a href="./mutual-ex.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Mutual exclusion
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="sync-pro.html">
+            
+                
+                    <a href="./sync-pro.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        Producer-Consumer problem
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="exercise-1.html">
+            
+                
+                    <a href="./exercise-1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        Exercise
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="3" data-path="intro.html">
+            
+                
+                    <a href="./intro.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Semaphore
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="share-mem.html">
+            
+                
+                    <a href="./share-mem.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Shared memory
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="reference.html">
+            
+                
+                    <a href="./reference.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Reference
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >CSCI3150 - IPC-Synchronization Problem</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="semaphore-api-in-linux">Semaphore API in Linux</h1>
+<hr>
+<p>POSIX named semaphore APIs we use in this lab are shown in the below table. You can look up manual pages for details of these functions. <a href="code/semaphore.c"><code>semaphore.c</code></a> shows how to use these functions to create, operate and remove named semaphore. Try it and make sure you understand it. Note that programs using the POSIX semaphores API must be compiled with <code>-pthread</code> to link against the real-time library. So you need compile <code>semaphore.c</code> like this:</p>
+<pre><code>gcc semaphore.c -pthreaad -o semaphore
+</code></pre><table>
+  <tr>
+    <td>Function</td>
+    <td>Description </td>
+  </tr>
+  <tr>
+    <td>sem_open</td>
+    <td>Opens/creates a named semaphore for use by a process</td>
+  </tr>
+  <tr>
+    <td>sem_wait</td>
+    <td>Wait on a semaphore </td>
+  </tr>
+  <tr>
+    <td>sem_post</td>
+    <td>Signal a semaphore</td>
+  </tr>
+  <tr>
+    <td>sem_close</td>
+    <td>     Deallocates the specified named semaphore </td>
+  </tr>
+  <tr>
+    <td>sem_unlink</td>
+    <td>Removes a specified named semaphore</td>
+  </tr>
+</table>
+
+<pre><code class="lang-c"><span class="hljs-comment">/*semaphore.c*/</span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;fcntl.h&gt;</span>           /* For O_* constants */</span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/stat.h&gt;</span>        /* For mode constants */</span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;semaphore.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> * argv[])</span></span>{
+  <span class="hljs-keyword">char</span> * name = <span class="hljs-string">&quot;my_semaphore&quot;</span>;
+  <span class="hljs-keyword">int</span> VALUE = <span class="hljs-number">2</span>;
+  <span class="hljs-keyword">sem_t</span> * sema;
+  <span class="hljs-comment">//If semaphore with name does not exist, then create it with VALUE</span>
+  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Open or Creat a named semaphore, %s, its value is %d\n&quot;</span>, name,VALUE);
+  sema = sem_open(name, O_CREAT, <span class="hljs-number">0666</span>, VALUE);
+  <span class="hljs-comment">//wait on semaphore sema and decrease it by 1</span>
+  sem_wait(sema);
+  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Decrease semaphore by 1\n&quot;</span>);
+  <span class="hljs-comment">//add semaphore sema by 1</span>
+  sem_post(sema);
+  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Add semaphore by 1\n&quot;</span>);
+  <span class="hljs-comment">//Before exit, you need to close semaphore and unlink it, when all  processes have</span>
+  <span class="hljs-comment">//finished using the semaphore, it can be removed from the system using sem_unlink</span>
+  sem_close(sema);
+  sem_unlink(name);
+  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><img src="assets/name_sema.png" alt=""></p>
+<h3 id="semaphore-specification">Semaphore specification</h3>
+<p>Under Linux, the IPC comes in two flavors, the traditional System V IPC and the newer POSIX IPC. Both of them support semaphore. You can see their difference <a href="http://stackoverflow.com/questions/368322/differences-between-system-v-and-posix-semaphores" target="_blank">here</a>.</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./exercise-1.html" class="navigation navigation-prev " aria-label="Previous page: Exercise"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./share-mem.html" class="navigation navigation-next " aria-label="Next page: Shared memory"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

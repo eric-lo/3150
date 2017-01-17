@@ -1,0 +1,25 @@
+- 2016-09-22
+  - Fix a typo on the last line of file_displayer.sh (inline in the lab page)
+- 2016-09-18
+  - Fix file_displayer.sh to print another file instead of itself
+  - Mention regular file and add reference to its definition
+- 2016-09-17
+  - Fix typos
+- 2016-09-14
+  - Fix typos
+- 2016-09-13
+  - Fix typos
+- 2016-09-12
+  - Content updates
+    - Always use scripts as/to include examples
+    - Explain
+      - "#!/bin/bash"
+      - value retrieve
+      - use of "$(())" and "(())"
+    - Refactor name to avoid confusion
+    - Update IFS
+    - Exercises
+  - Fix typos
+- 2016-09-11
+  - Add content
+  - Add code

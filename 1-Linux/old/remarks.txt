@@ -1,0 +1,10 @@
+## How the markdown files are converted to html
+1. Download the Atom IDE
+2. Install the "markdown-preview" plugin by developed by "Atom"
+   - "Edit" > "Preference" > "Install"
+   - Search using the keyword "markdown-preview"
+   - Allow the installation to finish
+3. Create a markdown file
+4. Press "Ctrl" + "Shift" + "m" to see the preview
+5. Right click on the preview and select "Save As HTML..."
+6. Replace any absolute path with relative path for links to files, e.g. figures

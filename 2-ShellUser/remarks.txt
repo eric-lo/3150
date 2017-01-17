@@ -1,0 +1,10 @@
+=== Problems ===
+- The example on precedence operator (no. 9) does not worked as expected
+  - It was said in `cmd1 && cmd2 || cmd3 && cmd4`, if `cmd1` fails, none of `cmd2`, `cmd3`, and `cmd4` is executed
+  - However, `false && echo "a" || echo "b" && echo "c"` gives "b" and "c" as output
+
+- The example on concatenation operator (no. 10) looks wired
+  - It looks like the use of "\" as an escape character instead
+
+=== Scope ===
+- Overlapping with the lab about processes on operators `&`, `|`, and `>`?
