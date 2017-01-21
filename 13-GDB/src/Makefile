@@ -1,8 +1,8 @@
 CXX = gcc
 FLAGS = -ggdb -Wall
 
-main: main.c
-	${CXX} ${FLAGS} -o main main.c
+segfault: segfault.c
+	${CXX} ${FLAGS} -o segfault segfault.c
 
 clean:
-	rm -f main
+	rm -f segfault
