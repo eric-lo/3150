@@ -615,8 +615,11 @@ pre.editor-colors .fold-marker:after,
 <p><code>grep</code> searches files and prints the lines in which keywords are found, with keywords highlighted.</p>
 <p><img src="figs\grep.png" alt="`grep` example"></p>
 <p>To search a phrase with one or more words, embrace the phrase with double quotes (<code>&quot;&quot;</code>).</p>
-<p>We can  search many files at the same time, e.g. <code>grep hello hello1.txt hello2.txt hello3.txt</code>.</p>
+
+<p><code>grep</code> supports searching many files at the same time, e.g. <code>grep hello hello1.txt hello2.txt hello3.txt</code>.</p>
 <p>Besides, <code>grep</code> supports regular expressions (regex) besides keywords in plaintext, and you may refer to <a href="https://www.gnu.org/software/findutils/manual/html_node/find_html/grep-regular-expression-syntax.html">this guide</a> for more details on the use of regex for <code>grep</code>. Beware that the syntax for regex may differ among commands, i.e., the one works for <code>grep</code> may or may not work for other commands.</p>
+<p>Another intersting thing is that we can use <code>grep -v </code>to search the lines that do not have the keywords. See the following example.</p>
+<p><img src="figs\grep_v.png"></p>
 <p><a href="#top">(Back to top)</a></p>
 <p><a name="operators"></a></p>
 <h2 id="useful-operators-for-bash-commands">Useful Operators for Bash Commands</h2>
@@ -648,6 +651,8 @@ pre.editor-colors .fold-marker:after,
 <p>By putting <code>|</code> between 2 commands, the output of the first command is <em>piped</em> to the second command as its input, e.g. to show the name of files with keyword <code>D</code> after listing the current directory,</p>
 <p><code>$ ls -1 | grep &quot;D&quot;</code></p>
 <p><img src="figs\pipe.png" alt="`ls -1 | grep &quot;D&quot;`"></p>
+
+<p>To search several words in a line, we can use the pipe operator and <code>grep</code>: <code>grep first_pattern file_name | grep second_pattern</code>.</p>
 <p><em>pipe</em> ensures that data</p>
 <ul>
 <li>flows in one-way and,</li>
