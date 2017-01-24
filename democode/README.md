@@ -1,6 +1,6 @@
 # CSCI 3150 Example Archive
 
-This archive contains all the examples used in the lectures of [CSCI 3150](http://course.cse.cuhk.edu.hk/~csci3150).
+This archive contains all the examples used in the lectures of [CSCI 3150].
 
 ## Compilation
 
