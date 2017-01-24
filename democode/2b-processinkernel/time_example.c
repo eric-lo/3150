@@ -22,7 +22,7 @@ int main(int argc, char **argv) {
 		exit(1);
 	}
 
-	for(i = 1; i <= 100000000; i++) {
+	for(i = 1; i <= 1000000; i++) {
 		x += i;
 		if(is_printf == 1)
 			printf("x = %.0f\n", x);
