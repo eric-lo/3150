@@ -7,7 +7,7 @@ function print_vars {
 	echo "local1:  "${local1}
 }
 
-global1="I am gloabl"
+global1="I am global"
 
 function foo {
 	local local1="I am local"
