@@ -29,6 +29,36 @@ gdb can do four main kinds of things (plus other things in support of these) to 
 |quit [EXPR]|Exit gdb.|
 
 ##  Source Code
-To help illustrate some of the debugging principles I will use a running example of a buggy program. As you progress through this tutorial, you will use the debugger to locate and fix errors in the code. The code can be downloaded [here](src/segfault.c) and a simple Makefile for the program can be downloaded [here](src/Makefile).
+To help illustrate some of the debugging principles I will use a running example of a buggy program as following:
+
+    #include <stdio.h>
+    #include <stdlib.h>
+
+    int main(int argc, char **argv)
+    {
+        char *buf = NULL;
+
+        buf = malloc(1<<31);
+
+        fgets(buf, 1024, stdin);
+        printf("%s\n", buf);
+
+        free(buf);
+        buf = NULL;
+
+        return 1;
+    }
+
+As you progress through this tutorial, you will use the debugger to locate and fix errors in the code. The code can be downloaded [here](src/segfault.c) and a simple Makefile for the program can be downloaded [here](src/Makefile) or copied as following:
+
+    CC = gcc
+    CXX = g++
+    FLAGS = -ggdb -Wall
+
+    segfault: segfault.c
+	    ${CC} ${FLAGS} -o segfault segfault.c
+
+    clean:
+	    rm -f segfault
 
 The code is very simple and consists of two class definitions, a node and a linked list. There is also a simple driver to test the list. All of the code was placed into a single file to make illustrating the process of debugging a little easier.
