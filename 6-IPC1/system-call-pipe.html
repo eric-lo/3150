@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Reference | CSCI3150 - IPC-Pipe</title>
+        <title>System Call pipe | CSCI3150 - IPC-Pipe</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -39,8 +39,10 @@
         
     
     
+    <link rel="next" href="./learn-to-use-pipe.html" />
     
-    <link rel="prev" href="./exercise.html" />
+    
+    <link rel="prev" href="./pipe-overview.html" />
     
 
         
@@ -49,9 +51,9 @@
         
         
     <div class="book"
-        data-level="4"
-        data-chapter-title="Reference"
-        data-filepath="reference.md"
+        data-level="1.2"
+        data-chapter-title="System Call pipe"
+        data-filepath="system-call-pipe.md"
         data-basepath="."
         data-revision="Mon Mar 06 2017 01:47:38 GMT+0800 (HKT)"
         data-innerlanguage="">
@@ -113,7 +115,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="system-call-pipe.html">
+        <li class="chapter active" data-level="1.2" data-path="system-call-pipe.html">
             
                 
                     <a href="./system-call-pipe.html">
@@ -250,7 +252,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="4" data-path="reference.html">
+        <li class="chapter " data-level="4" data-path="reference.html">
             
                 
                     <a href="./reference.html">
@@ -298,13 +300,15 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="reference">Reference</h1>
-<p><strong>Useful material</strong></p>
+                        <h1 id="system-call-pipe">System call <code>pipe()</code></h1>
+<p>In Linux, pipe is created by system call pipe(). Type <code>man 2 pipe</code> in terminal to see details.</p>
+<h2 id=""><img src="assets/man2pipe.png" alt=""></h2>
+<p>When you read the manual page, try to answer the following questions:</p>
 <ul>
-<li>If you want to know more IPC mechanism&#xFF0C; click <a href="http://beej.us/guide/bgipc/output/html/singlepage/bgipc.html" target="_blank">here</a>.</li>
-<li>The  <a href="https://www.kernel.org/doc/man-pages/" target="_blank">Linux man-pages project</a> documents the Linux kernel and C library interfaces that are employed by user-space programs. You can take it as an alternative of man command</li>
-<li>If you want to learn more about programming under Linux, <a href="http://www.apuebook.com/" target="_blank">Advanced Programming in the UNIX Environment</a> is a good material for you to read.</li>
-<li>Solutions of exercise(<a href="https://eric-lo.github.io/3150/6-IPC1/code/pipe-ex1_sol.c" target="_blank">pipe-ex1</a>,<a href="https://eric-lo.github.io/3150/6-IPC1/code/pipe-ex2_sol.c" target="_blank">pipe-ex2</a>)</li>
+<li><strong>Q5:</strong>
+ What is used for the parameter &quot;int pipefd[2]&quot;?</li>
+<li><strong>Q6:</strong>
+ What will be returned by pipe()?</li>
 </ul>
 
                     
@@ -316,8 +320,10 @@
         </div>
 
         
-        <a href="./exercise.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Exercise"><i class="fa fa-angle-left"></i></a>
+        <a href="./pipe-overview.html" class="navigation navigation-prev " aria-label="Previous page: Pipe Overview"><i class="fa fa-angle-left"></i></a>
         
+        
+        <a href="./learn-to-use-pipe.html" class="navigation navigation-next " aria-label="Next page: Learn to use pipe"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

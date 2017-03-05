@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Goal of this lab | CSCI3150 - IPC-Pipe</title>
+        <title>Introduction | CSCI3150 - IPC-Pipe</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="Pipe is a communication mechianism for sending information between processes. In this tutorial, you will learn more about pipe in Linux.">
         <meta name="generator" content="GitBook 2.6.7">
@@ -21,10 +21,6 @@
     <link rel="stylesheet" href="gitbook/style.css">
     
         
-        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-quiz/style.css">
-        
-    
-        
         <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
         
     
@@ -37,11 +33,13 @@
         
     
     
+        <link rel="stylesheet" href="./styles/website.css">
+    
 
         
     
     
-    <link rel="next" href="./man-pipe.html" />
+    <link rel="next" href="./knowing-about-pipe.html" />
     
     
 
@@ -52,10 +50,10 @@
         
     <div class="book"
         data-level="0"
-        data-chapter-title="Goal of this lab"
+        data-chapter-title="Introduction"
         data-filepath="README.md"
         data-basepath="."
-        data-revision="Thu Oct 06 2016 12:56:14 GMT+0800 (HKT)"
+        data-revision="Mon Mar 06 2017 01:47:38 GMT+0800 (HKT)"
         data-innerlanguage="">
     
 
@@ -78,45 +76,53 @@
                 
                         <i class="fa fa-check"></i>
                         
-                        Goal of this lab
+                        Introduction
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="1" >
+        <li class="chapter " data-level="1" data-path="knowing-about-pipe.html">
             
-            <span><b>1.</b> Knowing about pipe</span>
+                
+                    <a href="./knowing-about-pipe.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Knowing about pipe
+                    </a>
             
             
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.1" data-path="man-pipe.html">
+        <li class="chapter " data-level="1.1" data-path="pipe-overview.html">
             
                 
-                    <a href="./man-pipe.html">
+                    <a href="./pipe-overview.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>1.1.</b>
                         
-                        Pipe overview
+                        Pipe Overview
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="system-pipe.html">
+        <li class="chapter " data-level="1.2" data-path="system-call-pipe.html">
             
                 
-                    <a href="./system-pipe.html">
+                    <a href="./system-call-pipe.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>1.2.</b>
                         
-                        System call pipe
+                        System Call pipe
                     </a>
             
             
@@ -127,9 +133,17 @@
             
         </li>
     
-        <li class="chapter " data-level="2" >
+        <li class="chapter " data-level="2" data-path="learn-to-use-pipe.html">
             
-            <span><b>2.</b> Learn to use pipe</span>
+                
+                    <a href="./learn-to-use-pipe.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Learn to use pipe
+                    </a>
             
             
             <ul class="articles">
@@ -150,10 +164,10 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2" data-path="pipe-fork.html">
+        <li class="chapter " data-level="2.2" data-path="pipe-with-fork.html">
             
                 
-                    <a href="./pipe-fork.html">
+                    <a href="./pipe-with-fork.html">
                 
                         <i class="fa fa-check"></i>
                         
@@ -174,7 +188,7 @@
                         
                             <b>2.3.</b>
                         
-                        Exercise
+                        Exercise 1
                     </a>
             
             
@@ -185,18 +199,26 @@
             
         </li>
     
-        <li class="chapter " data-level="3" >
+        <li class="chapter " data-level="3" data-path="connecting-two-programs-with-pipe.html">
             
-            <span><b>3.</b> Pipe in shell</span>
+                
+                    <a href="./connecting-two-programs-with-pipe.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Connecting two programs with pipe
+                    </a>
             
             
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="3.1" data-path="pipe-shell.html">
+        <li class="chapter " data-level="3.1" data-path="implement-ls-less-in-c.html">
             
                 
-                    <a href="./pipe-shell.html">
+                    <a href="./implement-ls-less-in-c.html">
                 
                         <i class="fa fa-check"></i>
                         
@@ -208,10 +230,10 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" data-path="exercise-2.html">
+        <li class="chapter " data-level="3.2" data-path="exercise.html">
             
                 
-                    <a href="./exercise-2.html">
+                    <a href="./exercise.html">
                 
                         <i class="fa fa-check"></i>
                         
@@ -237,7 +259,7 @@
                         
                             <b>4.</b>
                         
-                        4. Reference
+                        Reference
                     </a>
             
             
@@ -278,27 +300,20 @@
                     
                         <h1 id="csci3150--ipcpipe">CSCI3150 - IPC-Pipe</h1>
 <p>Pipe is a communication mechianism for sending information between processes. In this tutorial, you will learn more about pipe in Linux.</p>
-<h4 id="you-need-to-do">You need to do:</h4>
+<p><strong>You need to do:</strong></p>
 <ul>
-<li><p>Follow the left content step by step to learn how to use pipe.</p>
-</li>
-<li><p>Answer the six questions (Q1-Q6) in Section 1 &quot;Knowing about pipe&quot;, the answers can all be found in Section 2 and 3 (A1-A6)</p>
-</li>
-<li><p>There are four programs in this tutorial, compile them, run them, understand them. Finish exercise 1 and 2.</p>
-</li>
+<li>Follow the left content step by step to learn how to use pipe.</li>
+<li>Answer the six questions (Q1-Q6) in Section 1 &quot;Knowing about pipe&quot;, the answers can all be found in Section 2 and 3 (A1-A6)</li>
+<li>There are four programs in this tutorial, compile them, run them, understand them. Finish exercise 1 and 2.</li>
 </ul>
-<h4 id="after-that-you-should-know">After that, you should know:</h4>
+<p><strong>After that, you should know:</strong></p>
 <ul>
-<li><p>What pipe really is.</p>
-</li>
-<li><p>How pipe works.</p>
-</li>
-<li><p>How to use pipe.</p>
-</li>
+<li>What pipe really is.</li>
+<li>How pipe works.</li>
+<li>How to use pipe.</li>
 </ul>
-<p>All the sample codes can be found at <a href="https://github.com/Grace-TL/csci3150-ipc" target="_blank">https://github.com/Grace-TL/csci3150-ipc</a>.</p>
 <hr>
-<p>Prepared by TANG Lu</p>
+<p>Prepared by TANG Lu and Calvin Kam</p>
 
                     
                     </section>
@@ -310,17 +325,13 @@
 
         
         
-        <a href="./man-pipe.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Pipe overview"><i class="fa fa-angle-right"></i></a>
+        <a href="./knowing-about-pipe.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Knowing about pipe"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
 
         
 <script src="gitbook/app.js"></script>
-
-    
-    <script src="gitbook/plugins/gitbook-plugin-quiz/script.js"></script>
-    
 
     
     <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
@@ -340,7 +351,7 @@
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"quiz":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
     gitbook.start(config);
 });
 </script>

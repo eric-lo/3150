@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Reference | CSCI3150 - IPC-Pipe</title>
+        <title>Implement ls | less in C | CSCI3150 - IPC-Pipe</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -39,8 +39,10 @@
         
     
     
+    <link rel="next" href="./exercise.html" />
     
-    <link rel="prev" href="./exercise.html" />
+    
+    <link rel="prev" href="./connecting-two-programs-with-pipe.html" />
     
 
         
@@ -49,9 +51,9 @@
         
         
     <div class="book"
-        data-level="4"
-        data-chapter-title="Reference"
-        data-filepath="reference.md"
+        data-level="3.1"
+        data-chapter-title="Implement ls | less in C"
+        data-filepath="implement-ls-less-in-c.md"
         data-basepath="."
         data-revision="Mon Mar 06 2017 01:47:38 GMT+0800 (HKT)"
         data-innerlanguage="">
@@ -215,7 +217,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="3.1" data-path="implement-ls-less-in-c.html">
+        <li class="chapter active" data-level="3.1" data-path="implement-ls-less-in-c.html">
             
                 
                     <a href="./implement-ls-less-in-c.html">
@@ -250,7 +252,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="4" data-path="reference.html">
+        <li class="chapter " data-level="4" data-path="reference.html">
             
                 
                     <a href="./reference.html">
@@ -298,14 +300,56 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="reference">Reference</h1>
-<p><strong>Useful material</strong></p>
-<ul>
-<li>If you want to know more IPC mechanism&#xFF0C; click <a href="http://beej.us/guide/bgipc/output/html/singlepage/bgipc.html" target="_blank">here</a>.</li>
-<li>The  <a href="https://www.kernel.org/doc/man-pages/" target="_blank">Linux man-pages project</a> documents the Linux kernel and C library interfaces that are employed by user-space programs. You can take it as an alternative of man command</li>
-<li>If you want to learn more about programming under Linux, <a href="http://www.apuebook.com/" target="_blank">Advanced Programming in the UNIX Environment</a> is a good material for you to read.</li>
-<li>Solutions of exercise(<a href="https://eric-lo.github.io/3150/6-IPC1/code/pipe-ex1_sol.c" target="_blank">pipe-ex1</a>,<a href="https://eric-lo.github.io/3150/6-IPC1/code/pipe-ex2_sol.c" target="_blank">pipe-ex2</a>)</li>
-</ul>
+                        <h1 id="implement-ls--less-in-c">Implement <code>ls | less</code> in C</h1>
+<p>In section 2.2, we see how pipe works for communication between parent and child processes. A familiar example of this kind of communication can be seen in all operating system shells.</p>
+<p>pipe4.c implements shell command &quot;ls | less&quot; in C.</p>
+<pre><code class="lang-c"><span class="hljs-comment">/* pipe4.c */</span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/types.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/wait.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc,<span class="hljs-keyword">char</span>* argv[])</span>
+</span>{
+    <span class="hljs-keyword">int</span> pipefds[<span class="hljs-number">2</span>];
+    <span class="hljs-keyword">pid_t</span> pid,pid1;
+    <span class="hljs-keyword">int</span> status;
+    <span class="hljs-keyword">if</span>(pipe(pipefds) == -<span class="hljs-number">1</span>) {
+        perror(<span class="hljs-string">&quot;pipe&quot;</span>);
+        <span class="hljs-built_in">exit</span>(EXIT_FAILURE);
+    }
+    pid = fork();
+    <span class="hljs-keyword">if</span>(pid == -<span class="hljs-number">1</span>) {
+        perror(<span class="hljs-string">&quot;fork&quot;</span>);
+        <span class="hljs-built_in">exit</span>(EXIT_FAILURE);
+    }
+    <span class="hljs-keyword">if</span>(pid == <span class="hljs-number">0</span>) {<span class="hljs-comment">//child</span>
+        close(pipefds[<span class="hljs-number">1</span>]);
+        dup2(pipefds[<span class="hljs-number">0</span>],STDIN_FILENO);
+        close(pipefds[<span class="hljs-number">0</span>]);
+        execlp(<span class="hljs-string">&quot;less&quot;</span>,<span class="hljs-string">&quot;less&quot;</span>,<span class="hljs-literal">NULL</span>);
+    }
+    <span class="hljs-keyword">else</span> { <span class="hljs-comment">//parent</span>
+        pid1 = fork();
+        <span class="hljs-keyword">if</span>(pid1 == <span class="hljs-number">0</span>) { <span class="hljs-comment">//child</span>
+            close(pipefds[<span class="hljs-number">0</span>]);
+            dup2(pipefds[<span class="hljs-number">1</span>],STDOUT_FILENO);
+            close(pipefds[<span class="hljs-number">1</span>]);
+            execlp(<span class="hljs-string">&quot;ls&quot;</span>,<span class="hljs-string">&quot;ls&quot;</span>,<span class="hljs-literal">NULL</span>);
+        }
+        close(pipefds[<span class="hljs-number">0</span>]);
+        close(pipefds[<span class="hljs-number">1</span>]);
+        waitpid(pid,&amp;status,WUNTRACED);
+        waitpid(pid1,&amp;status,WUNTRACED);
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+
+
+}
+</code></pre>
+<h2 id="analysis"><strong>Analysis:</strong></h2>
+<p>The parent uses the pipe for <code>ls</code> output. That means it needs to change its standard output file descriptor to the writing end of the pipe. It does this via <code>dup2()</code>system call and then executesls. The child will use the pipe for <code>less</code> input. It changes its standard input file descriptor to the reading end of pipe by <code>dup2(pfd[0], 0)</code>. Then child executes<code>less</code> and the result is send to standard output. Thus the output of <code>ls</code> flows into the pipe, and the input of <code>less</code> flows in from the pipe. This is how we connect the standard output of <code>ls</code> to the standard input of <code>less</code>.</p>
 
                     
                     </section>
@@ -316,8 +360,10 @@
         </div>
 
         
-        <a href="./exercise.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Exercise"><i class="fa fa-angle-left"></i></a>
+        <a href="./connecting-two-programs-with-pipe.html" class="navigation navigation-prev " aria-label="Previous page: Connecting two programs with pipe"><i class="fa fa-angle-left"></i></a>
         
+        
+        <a href="./exercise.html" class="navigation navigation-next " aria-label="Next page: Exercise"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

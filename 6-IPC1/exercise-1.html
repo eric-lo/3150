@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Exercise | CSCI3150 - IPC-Pipe</title>
+        <title>Exercise 1 | CSCI3150 - IPC-Pipe</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -21,10 +21,6 @@
     <link rel="stylesheet" href="gitbook/style.css">
     
         
-        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-quiz/style.css">
-        
-    
-        
         <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
         
     
@@ -37,14 +33,16 @@
         
     
     
+        <link rel="stylesheet" href="./styles/website.css">
+    
 
         
     
     
-    <link rel="next" href="./pipe-shell.html" />
+    <link rel="next" href="./connecting-two-programs-with-pipe.html" />
     
     
-    <link rel="prev" href="./pipe-fork.html" />
+    <link rel="prev" href="./pipe-with-fork.html" />
     
 
         
@@ -54,10 +52,10 @@
         
     <div class="book"
         data-level="2.3"
-        data-chapter-title="Exercise"
+        data-chapter-title="Exercise 1"
         data-filepath="exercise-1.md"
         data-basepath="."
-        data-revision="Thu Oct 06 2016 12:56:14 GMT+0800 (HKT)"
+        data-revision="Mon Mar 06 2017 01:47:38 GMT+0800 (HKT)"
         data-innerlanguage="">
     
 
@@ -80,45 +78,53 @@
                 
                         <i class="fa fa-check"></i>
                         
-                        Goal of this lab
+                        Introduction
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="1" >
+        <li class="chapter " data-level="1" data-path="knowing-about-pipe.html">
             
-            <span><b>1.</b> Knowing about pipe</span>
+                
+                    <a href="./knowing-about-pipe.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Knowing about pipe
+                    </a>
             
             
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.1" data-path="man-pipe.html">
+        <li class="chapter " data-level="1.1" data-path="pipe-overview.html">
             
                 
-                    <a href="./man-pipe.html">
+                    <a href="./pipe-overview.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>1.1.</b>
                         
-                        Pipe overview
+                        Pipe Overview
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="system-pipe.html">
+        <li class="chapter " data-level="1.2" data-path="system-call-pipe.html">
             
                 
-                    <a href="./system-pipe.html">
+                    <a href="./system-call-pipe.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>1.2.</b>
                         
-                        System call pipe
+                        System Call pipe
                     </a>
             
             
@@ -129,9 +135,17 @@
             
         </li>
     
-        <li class="chapter " data-level="2" >
+        <li class="chapter " data-level="2" data-path="learn-to-use-pipe.html">
             
-            <span><b>2.</b> Learn to use pipe</span>
+                
+                    <a href="./learn-to-use-pipe.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Learn to use pipe
+                    </a>
             
             
             <ul class="articles">
@@ -152,10 +166,10 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2" data-path="pipe-fork.html">
+        <li class="chapter " data-level="2.2" data-path="pipe-with-fork.html">
             
                 
-                    <a href="./pipe-fork.html">
+                    <a href="./pipe-with-fork.html">
                 
                         <i class="fa fa-check"></i>
                         
@@ -176,7 +190,7 @@
                         
                             <b>2.3.</b>
                         
-                        Exercise
+                        Exercise 1
                     </a>
             
             
@@ -187,18 +201,26 @@
             
         </li>
     
-        <li class="chapter " data-level="3" >
+        <li class="chapter " data-level="3" data-path="connecting-two-programs-with-pipe.html">
             
-            <span><b>3.</b> Pipe in shell</span>
+                
+                    <a href="./connecting-two-programs-with-pipe.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Connecting two programs with pipe
+                    </a>
             
             
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="3.1" data-path="pipe-shell.html">
+        <li class="chapter " data-level="3.1" data-path="implement-ls-less-in-c.html">
             
                 
-                    <a href="./pipe-shell.html">
+                    <a href="./implement-ls-less-in-c.html">
                 
                         <i class="fa fa-check"></i>
                         
@@ -210,10 +232,10 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" data-path="exercise-2.html">
+        <li class="chapter " data-level="3.2" data-path="exercise.html">
             
                 
-                    <a href="./exercise-2.html">
+                    <a href="./exercise.html">
                 
                         <i class="fa fa-check"></i>
                         
@@ -239,7 +261,7 @@
                         
                             <b>4.</b>
                         
-                        4. Reference
+                        Reference
                     </a>
             
             
@@ -278,18 +300,17 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h2 id="exercise-1--use-pipe-to-synchronize-processes">Exercise 1 : Use pipe to synchronize processes</h2>
-<hr>
-<p>After trying <code>pipe1.c</code> <code>pipe2.c</code> <code>pipe3.c</code>, you should be able to answer questions <strong>Q1-6</strong>. According to <strong>Q4</strong>, we know that when pipe is empty, the reader process blocks until writer process write something into pipe. Similarly, when pipe is full. the writer process blocks until reader process reads something from pipe. <a href="code/pipe-ex1.c"><code>pipe-ex1.c</code></a> use this property to synchronize processes. In <code>pipe-ex1.c</code>, parent and child processes need communicate with each other according to the following rules:</p>
+                        <h1 id="exercise-1--use-pipe-to-synchronize-processes"><strong>Exercise 1 : Use pipe to synchronize processes</strong></h1>
+<p>After trying <code>pipe1.c</code>, <code>pipe2.c</code> and <code>pipe3.c</code>, you should be able to answer questions <strong>Q1-6</strong>. According to <strong>Q4</strong>, we know that when pipe is empty, the reader process blocks until writer process write something into pipe. Similarly, when pipe is full. the writer process blocks until reader process reads something from pipe. <a href="https://eric-lo.github.io/3150/6-IPC1/code/pipe-ex1.c" target="_blank">pipe-ex1.c</a> use this property to synchronize processes. In <code>pipe-ex1.c</code>, parent and child processes need communicate with each other according to the following rules:</p>
 <ul>
 <li>Parent sends a message (a character &quot;p&quot;) to child.</li>
 <li>Child sends acknowledgment message (a character &quot;c&quot;) to parent on receiving &quot;p&quot;, otherwise, child waits and does nothing.</li>
-<li>When parent receives &quot;c&quot;, it sends the next &quot;p&quot; to child, otherwise, parent waits and does nothing.   </li>
+<li>When parent receives &quot;c&quot;, it sends the next &quot;p&quot; to child, otherwise, parent waits and does nothing.</li>
 </ul>
-<p>Before <code>fork</code>, we create two pipes as shown in the following figure. Parent writes the character &quot;p&quot; across the top pipe when <code>TELL_CHILD</code> is called, child writes &quot;c&quot; across the bottom pipe when <code>TELL_PARENT</code> is called.</p>
-<p><img src="assets/ex1.PNG" alt=""></p>
-<p><strong>Exercise-1</strong> Complete <code>TELL_PARENT</code>, <code>TELL_CHILD</code>, <code>WAIT_PARENT</code>, <code>WAIT_CHILD</code> to make parent and child communicate correctly. That is to say, <code>pipe-ex1.c</code> should output as bellow.</p>
-<p><img src="assets/ex1_1.PNG" alt=""></p>
+<p>Before <code>fork()</code>, we create two pipes as shown in the following figure. Parent writes the character &quot;p&quot; across the top pipe when TELL_CHILD is called, child writes &quot;c&quot; across the bottom pipe when TELL_PARENT is called.</p>
+<p><img src="assets/ex1.png" alt=""></p>
+<p><strong>Exercise-1</strong> CompleteTELL_PARENT,TELL_CHILD,WAIT_PARENT,WAIT_CHILDto make parent and child communicate correctly. That is to say,pipe-ex1.cshould output as below.</p>
+<h2 id=""><img src="assets/pipe_ex1.png" alt=""></h2>
 <pre><code class="lang-c"><span class="hljs-comment">/*pipe-ex1.c*/</span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
@@ -355,20 +376,16 @@
         </div>
 
         
-        <a href="./pipe-fork.html" class="navigation navigation-prev " aria-label="Previous page: Pipe with fork"><i class="fa fa-angle-left"></i></a>
+        <a href="./pipe-with-fork.html" class="navigation navigation-prev " aria-label="Previous page: Pipe with fork"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="./pipe-shell.html" class="navigation navigation-next " aria-label="Next page: Implement ls | less in C"><i class="fa fa-angle-right"></i></a>
+        <a href="./connecting-two-programs-with-pipe.html" class="navigation navigation-next " aria-label="Next page: Connecting two programs with pipe"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
 
         
 <script src="gitbook/app.js"></script>
-
-    
-    <script src="gitbook/plugins/gitbook-plugin-quiz/script.js"></script>
-    
 
     
     <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
@@ -388,7 +405,7 @@
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"quiz":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
     gitbook.start(config);
 });
 </script>

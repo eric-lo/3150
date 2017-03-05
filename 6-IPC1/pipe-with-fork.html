@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Pipe creation | CSCI3150 - IPC-Pipe</title>
+        <title>Pipe with fork | CSCI3150 - IPC-Pipe</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -39,10 +39,10 @@
         
     
     
-    <link rel="next" href="./pipe-with-fork.html" />
+    <link rel="next" href="./exercise-1.html" />
     
     
-    <link rel="prev" href="./learn-to-use-pipe.html" />
+    <link rel="prev" href="./pipe-creation.html" />
     
 
         
@@ -51,9 +51,9 @@
         
         
     <div class="book"
-        data-level="2.1"
-        data-chapter-title="Pipe creation"
-        data-filepath="pipe-creation.md"
+        data-level="2.2"
+        data-chapter-title="Pipe with fork"
+        data-filepath="pipe-with-fork.md"
         data-basepath="."
         data-revision="Mon Mar 06 2017 01:47:38 GMT+0800 (HKT)"
         data-innerlanguage="">
@@ -151,7 +151,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="2.1" data-path="pipe-creation.html">
+        <li class="chapter " data-level="2.1" data-path="pipe-creation.html">
             
                 
                     <a href="./pipe-creation.html">
@@ -166,7 +166,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2" data-path="pipe-with-fork.html">
+        <li class="chapter active" data-level="2.2" data-path="pipe-with-fork.html">
             
                 
                     <a href="./pipe-with-fork.html">
@@ -300,38 +300,101 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="pipe-creation">Pipe Creation</h1>
-<p><img src="assets/pipe.png" alt=""></p>
-<p>Pipe connect programs like garden hose. Anything can be written at the write end, and read from the read end in the order it came in. <strong>Pipe is unidirectional(A1)</strong>.</p>
-<p>In pipe1.c, you can see how to create, write to, and read from a pipe.</p>
-<pre><code class="lang-c"><span class="hljs-comment">/* pipe1.c */</span>
+                        <h1 id="pipe-with-fork">Pipe with <code>fork()</code></h1>
+<p><code>pipe1.c</code> shows you the basic operation on pipe. But it is not very useful for a single process to use a pipe to talk to itself. In typical use, a process creates a pipe just before it forks one or more child processes. The pipe is then used for communication either between the parent or child processes, or between two sibling processes <strong>(A2)</strong>.<code>pipe2.c</code> and <code>pipe3.c</code> show you how pipe works between related process.</p>
+<p>In <code>pipe2.c</code>, parent write &quot;CSCI3150&quot; to the pipe, child read from the pipe 1 byte at a time until the pipe is empty.</p>
+<pre><code class="lang-c"><span class="hljs-comment">/* pipe2.c */</span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/types.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/wait.h&gt;</span></span>
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span>* argv[])</span>
 </span>{
     <span class="hljs-keyword">int</span> pipefds[<span class="hljs-number">2</span>];
+    <span class="hljs-keyword">pid_t</span> pid;
     <span class="hljs-keyword">char</span> buf[<span class="hljs-number">30</span>];
     <span class="hljs-comment">//create pipe</span>
-    <span class="hljs-keyword">if</span> (pipe(pipefds) == -<span class="hljs-number">1</span>) {
+    <span class="hljs-keyword">if</span>(pipe(pipefds) == -<span class="hljs-number">1</span>){
         perror(<span class="hljs-string">&quot;pipe&quot;</span>);
         <span class="hljs-built_in">exit</span>(EXIT_FAILURE);
     }
-    <span class="hljs-comment">//write to pipe</span>
-    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;writing to file descriptor #%d\n&quot;</span>, pipefds[<span class="hljs-number">1</span>]);
-    write(pipefds[<span class="hljs-number">1</span>], <span class="hljs-string">&quot;CSCI3150&quot;</span>, <span class="hljs-number">9</span>);
-    <span class="hljs-comment">//read from pipe</span>
-    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;reading from file descriptor #%d\n&quot;</span>, pipefds[<span class="hljs-number">0</span>]);
-    read(pipefds[<span class="hljs-number">0</span>], buf, <span class="hljs-number">9</span>);
-    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;read \&quot;%s\&quot;\n&quot;</span>, buf);
+      <span class="hljs-built_in">memset</span>(buf,<span class="hljs-number">0</span>,<span class="hljs-number">30</span>);
+      pid = fork();
+    <span class="hljs-keyword">if</span> (pid &gt; <span class="hljs-number">0</span>) {
+      <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot; PARENT write in pipe\n&quot;</span>);
+    <span class="hljs-comment">//parent close the read end</span>
+          close(pipefds[<span class="hljs-number">0</span>]);
+    <span class="hljs-comment">//parent write in the pipe write end                 </span>
+      write(pipefds[<span class="hljs-number">1</span>], <span class="hljs-string">&quot;CSCI3150&quot;</span>, <span class="hljs-number">9</span>);
+    <span class="hljs-comment">//after finishing writing, parent close the write end</span>
+          close(pipefds[<span class="hljs-number">1</span>]);
+    <span class="hljs-comment">//parent wait for child                </span>
+      wait(<span class="hljs-literal">NULL</span>);                         
+    }<span class="hljs-keyword">else</span> {
+      <span class="hljs-comment">//child close the write end  </span>
+      close(pipefds[<span class="hljs-number">1</span>]);   <span class="hljs-comment">//-----line *</span>
+      <span class="hljs-comment">//child read from the pipe read end until the pipe is empty   </span>
+      <span class="hljs-keyword">while</span>(read(pipefds[<span class="hljs-number">0</span>], buf, <span class="hljs-number">1</span>)==<span class="hljs-number">1</span>)   
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CHILD read from pipe -- %s\n&quot;</span>, buf);
+      <span class="hljs-comment">//after finishing reading, child close the read end</span>
+      close(pipefds[<span class="hljs-number">0</span>]);
+      <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CHILD: EXITING!&quot;</span>);
+      <span class="hljs-built_in">exit</span>(EXIT_SUCCESS);
+    }
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }
 </code></pre>
-<h2 id=""><img src="assets/pipe1.png" alt=""></h2>
-<h2 id="analysis-"><strong>Analysis :</strong></h2>
-<p>As you can see, pipe() takes an array of two ints as an argument. <code>pipe()</code><strong> fills in that array with two file descriptors. </strong></p>
-<p><strong>The first element of the array is the reading-end of the pipe, the second is the writing end (A5)</strong>. When any bytes are written to pipefds[1],the operating system makes them available for reading from pipefds[0].</p>
-<p><strong>On success, pipe() will return 0, otherwise return -1 (A6).</strong></p>
+<p><img src="assets/pipe2.png" alt=""></p>
+<p><strong>Analysis:</strong><br>As you can see, the pipe works correctly. After fork(), pipe file descriptors are shared between the parent and child, as show in the picture below.</p>
+<p><img src="assets/pipe_fork.png" alt=""></p>
+<p>To ensure pipe work properly, you should: <strong> *Always be sure to close the end of pipe you aren&apos;t concerned with*.</strong> That is, if the parent wants to receive data from the child, it should close pipefds[1], and the child should close pipefds[0]. When processes finish reading or writting, close related file descriptors. Otherwise, there will be undesired synchronization problems.</p>
+<p>pipe3.c is almost the same with pipe2.c except line * is commented out. That means, child forget to close write end. What will happen?</p>
+<pre><code class="lang-c"><span class="hljs-comment">/* pipe3.c */</span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/types.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/wait.h&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span>* argv[])</span>
+</span>{
+    <span class="hljs-keyword">int</span> pipefds[<span class="hljs-number">2</span>];
+      <span class="hljs-keyword">pid_t</span> pid;
+    <span class="hljs-keyword">char</span> buf[<span class="hljs-number">30</span>];
+    <span class="hljs-comment">//create pipe</span>
+    <span class="hljs-keyword">if</span>(pipe(pipefds) == -<span class="hljs-number">1</span>){
+        perror(<span class="hljs-string">&quot;pipe&quot;</span>);
+        <span class="hljs-built_in">exit</span>(EXIT_FAILURE);
+    }
+      <span class="hljs-built_in">memset</span>(buf,<span class="hljs-number">0</span>,<span class="hljs-number">30</span>);
+      pid = fork();
+    <span class="hljs-keyword">if</span> (pid &gt; <span class="hljs-number">0</span>) {
+      <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot; PARENT write in pipe\n&quot;</span>);
+    <span class="hljs-comment">//parent close the read end</span>
+          close(pipefds[<span class="hljs-number">0</span>]);
+    <span class="hljs-comment">//parent write in the pipe write end                 </span>
+      write(pipefds[<span class="hljs-number">1</span>], <span class="hljs-string">&quot;CSCI3150&quot;</span>, <span class="hljs-number">9</span>);
+    <span class="hljs-comment">//after finishing writing, parent close the write end</span>
+          close(pipefds[<span class="hljs-number">1</span>]);
+    <span class="hljs-comment">//parent wait for child                </span>
+      wait(<span class="hljs-literal">NULL</span>);                         
+    }<span class="hljs-keyword">else</span> {  
+      <span class="hljs-comment">//child read from the pipe read end until the pipe is empty   </span>
+      <span class="hljs-keyword">while</span>(read(pipefds[<span class="hljs-number">0</span>], buf, <span class="hljs-number">1</span>)==<span class="hljs-number">1</span>)   
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CHILD read from pipe -- %s\n&quot;</span>, buf);
+      <span class="hljs-comment">//after finishing reading, child close the read end</span>
+      close(pipefds[<span class="hljs-number">0</span>]);
+      <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CHILD: EXITING!&quot;</span>);
+      <span class="hljs-built_in">exit</span>(EXIT_SUCCESS);
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><img src="assets/pipe3.png" alt=""></p>
+<h2 id="analysis"><strong>Analysis:</strong></h2>
+<p>We can see that the child process doesn&apos;t exit. What&apos;s going on? Note that the child process still has pipefds[1] open. The system will assume that a write could occur while any process has the write end open, even if the only such process is the one that is currently trying to read from the pipe, and the system will not report EOF <strong>(A4)</strong>, therefore. Thus child is waiting to read from pipefds[0], and the operating system doesn&apos;t know that no process will be writing to pipdfds[1]. So <strong>the child process blocks until data arrives to be read(A3)</strong></p>
 
                     
                     </section>
@@ -342,10 +405,10 @@
         </div>
 
         
-        <a href="./learn-to-use-pipe.html" class="navigation navigation-prev " aria-label="Previous page: Learn to use pipe"><i class="fa fa-angle-left"></i></a>
+        <a href="./pipe-creation.html" class="navigation navigation-prev " aria-label="Previous page: Pipe creation"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="./pipe-with-fork.html" class="navigation navigation-next " aria-label="Next page: Pipe with fork"><i class="fa fa-angle-right"></i></a>
+        <a href="./exercise-1.html" class="navigation navigation-next " aria-label="Next page: Exercise 1"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
