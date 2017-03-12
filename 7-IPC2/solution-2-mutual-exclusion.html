@@ -5,9 +5,9 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Introduction | CSCI3150 - IPC-Synchronization Problem</title>
+        <title>Shared Output: Use semaphore | CSCI3150 - IPC-Synchronization Problem</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta name="description" content="In this lab, you will see some synchronization problems between processes and learn how to solve them.">
+        <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
         
         
@@ -39,8 +39,10 @@
         
     
     
-    <link rel="next" href="./race-condition.html" />
+    <link rel="next" href="./semaphore-exercise.html" />
     
+    
+    <link rel="prev" href="./solution-use-semaphore.html" />
     
 
         
@@ -49,9 +51,9 @@
         
         
     <div class="book"
-        data-level="0"
-        data-chapter-title="Introduction"
-        data-filepath="README.md"
+        data-level="5"
+        data-chapter-title="Shared Output: Use semaphore"
+        data-filepath="solution-2-mutual-exclusion.md"
         data-basepath="."
         data-revision="Mon Mar 13 2017 05:49:00 GMT+0800 (HKT)"
         data-innerlanguage="">
@@ -69,7 +71,7 @@
 
             
     
-        <li class="chapter active" data-level="0" data-path="index.html">
+        <li class="chapter " data-level="0" data-path="index.html">
             
                 
                     <a href="./index.html">
@@ -184,7 +186,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5" data-path="solution-2-mutual-exclusion.html">
+        <li class="chapter active" data-level="5" data-path="solution-2-mutual-exclusion.html">
             
                 
                     <a href="./solution-2-mutual-exclusion.html">
@@ -262,26 +264,65 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="csci3150--ipcsynchronization-problem"><strong>CSCI3150 - IPC-Synchronization Problem</strong></h1>
-<p>In this lab, you will see some synchronization problems between processes and learn how to solve them.</p>
-<h2 id="you-need-to-do">You need to do:</h2>
-<ul>
-<li><p>Understand POSIX semaphore APIs (Section 3) and shared memory APIs (Section 4) before try programs in this lab.</p>
-</li>
-<li><p>There are few programs in this lab, compile them, run them, understand them.</p>
-</li>
-<li><p>Finish exercise.</p>
-</li>
-</ul>
-<h2 id="after-that-you-should-know">After that, you should know:</h2>
-<ul>
-<li>What race condition and critical region is.</li>
-<li>What semaphore and shared memory is.</li>
-<li>How to use POSIX named semaphores to solve synchronization problem between processes.</li>
-</ul>
-<h3 id="code-and-slides-can-be-found-at">Code and Slides can be found at</h3>
-<h2 id="httpsgithubcomcalvinkamcsci3150labs17"><a href="https://github.com/calvinkam/csci3150-labs-17" target="_blank">https://github.com/calvinkam/csci3150-labs-17</a></h2>
-<p>Prepared by TANG Lu, Calvin Kam</p>
+                        <h1 id="shared-output-use-semaphore">Shared Output: Use semaphore</h1>
+<p>We use semaphore to provide mutual exclusion to the standard error. If the process is using, the another process will wait until the semaphore is unlocked.</p>
+<p>After we use semaphore</p>
+<pre><code class="lang-sh">$ gcc process-<span class="hljs-number">1</span>.c -pthread -o process-<span class="hljs-number">1</span>
+$ gcc process-<span class="hljs-number">2</span>.c -pthread -o process-<span class="hljs-number">2</span>
+$ ./process-<span class="hljs-number">1</span> &amp; ./process-<span class="hljs-number">2</span> &amp;
+</code></pre>
+<pre><code class="lang-c"><span class="hljs-comment">/*process-1.c*/</span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;fcntl.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/stat.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;semaphore.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+       <span class="hljs-keyword">sem_t</span> * mutex;
+       <span class="hljs-keyword">char</span> * c = <span class="hljs-string">&quot;This is CSCI3150--An operating system course.\n&quot;</span>;
+    <span class="hljs-comment">// specify no buffering for stderr</span>
+    setbuf(<span class="hljs-built_in">stderr</span>, <span class="hljs-literal">NULL</span>);
+       mutex = sem_open(<span class="hljs-string">&quot;mutex_for_stderr&quot;</span>, O_CREAT, <span class="hljs-number">0666</span>, <span class="hljs-number">1</span>);
+       sem_wait(mutex);
+       <span class="hljs-keyword">while</span> (* c != <span class="hljs-string">&apos;\0&apos;</span>) {
+            fputc(* c, <span class="hljs-built_in">stderr</span>);
+            c++;
+            sleep(<span class="hljs-number">1</span>);
+         }
+    sem_post(mutex);
+    sem_close(mutex);
+    sem_unlink(<span class="hljs-string">&quot;mutex_for_stderr&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-c"><span class="hljs-comment">/*process-2.c*/</span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;fcntl.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/stat.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;semaphore.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+    <span class="hljs-keyword">sem_t</span> * mutex;
+    <span class="hljs-keyword">char</span> * c = <span class="hljs-string">&quot;This is CSCI3150--An operating system course.\n&quot;</span>;
+    <span class="hljs-comment">// specify no buffering for stderr</span>
+    setbuf(<span class="hljs-built_in">stderr</span>, <span class="hljs-literal">NULL</span>);  
+    mutex = sem_open(<span class="hljs-string">&quot;mutex_for_stderr&quot;</span>, O_CREAT, <span class="hljs-number">0666</span>, <span class="hljs-number">1</span>);
+    sem_wait(mutex);
+    <span class="hljs-keyword">while</span> (* c != <span class="hljs-string">&apos;\0&apos;</span>) {
+        fputc(* c, <span class="hljs-built_in">stderr</span>);
+        c++;
+        sleep(rand()%<span class="hljs-number">2</span>+<span class="hljs-number">1</span>);
+    }
+    sem_post(mutex);
+    sem_close(mutex);
+    sem_unlink(<span class="hljs-string">&quot;mutex_for_stderr&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
 
                     
                     </section>
@@ -292,8 +333,10 @@
         </div>
 
         
+        <a href="./solution-use-semaphore.html" class="navigation navigation-prev " aria-label="Previous page: Too Much Milk: Use semaphore"><i class="fa fa-angle-left"></i></a>
         
-        <a href="./race-condition.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Race Condition"><i class="fa fa-angle-right"></i></a>
+        
+        <a href="./semaphore-exercise.html" class="navigation navigation-next " aria-label="Next page: Traffic Control Problem"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

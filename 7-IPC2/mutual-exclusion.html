@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Reference | CSCI3150 - IPC-Synchronization Problem</title>
+        <title>Mutual Exclusion | CSCI3150 - IPC-Synchronization Problem</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -33,12 +33,16 @@
         
     
     
+        <link rel="stylesheet" href="./styles/website.css">
+    
 
         
     
     
+    <link rel="next" href="./examples-of-mutual-exclusion.html" />
     
-    <link rel="prev" href="./share-mem.html" />
+    
+    <link rel="prev" href="./too-much-milk-problem.html" />
     
 
         
@@ -47,11 +51,11 @@
         
         
     <div class="book"
-        data-level="5"
-        data-chapter-title="Reference"
-        data-filepath="reference.md"
+        data-level="2"
+        data-chapter-title="Mutual Exclusion"
+        data-filepath="mutual-exclusion.md"
         data-basepath="."
-        data-revision="Wed Oct 12 2016 13:40:42 GMT+0800 (HKT)"
+        data-revision="Mon Mar 13 2017 05:49:00 GMT+0800 (HKT)"
         data-innerlanguage="">
     
 
@@ -74,45 +78,38 @@
                 
                         <i class="fa fa-check"></i>
                         
-                        Goal of this lab
+                        Introduction
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="1" >
+        <li class="chapter " data-level="1" data-path="race-condition.html">
             
-            <span><b>1.</b> Race condition</span>
+                
+                    <a href="./race-condition.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Race Condition
+                    </a>
             
             
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.1" data-path="race_con.html">
+        <li class="chapter " data-level="1.1" data-path="too-much-milk-problem.html">
             
                 
-                    <a href="./race_con.html">
+                    <a href="./too-much-milk-problem.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>1.1.</b>
                         
-                        An example of Race condition
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2" data-path="solution.html">
-            
-                
-                    <a href="./solution.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.2.</b>
-                        
-                        Solution:use semaphore
+                        Too Much Milk Problem
                     </a>
             
             
@@ -123,54 +120,32 @@
             
         </li>
     
-        <li class="chapter " data-level="2" >
+        <li class="chapter active" data-level="2" data-path="mutual-exclusion.html">
             
-            <span><b>2.</b> More synchronization problems</span>
+                
+                    <a href="./mutual-exclusion.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Mutual Exclusion
+                    </a>
             
             
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1" data-path="mutual-ex.html">
+        <li class="chapter " data-level="2.1" data-path="examples-of-mutual-exclusion.html">
             
                 
-                    <a href="./mutual-ex.html">
+                    <a href="./examples-of-mutual-exclusion.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>2.1.</b>
                         
-                        Mutual exclusion
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2" data-path="sync-pro.html">
-            
-                
-                    <a href="./sync-pro.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.2.</b>
-                        
-                        Producer-Consumer problem
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.3" data-path="exercise-1.html">
-            
-                
-                    <a href="./exercise-1.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.3.</b>
-                        
-                        Exercise
+                        Shared Output
                     </a>
             
             
@@ -181,46 +156,76 @@
             
         </li>
     
-        <li class="chapter " data-level="3" data-path="intro.html">
+        <li class="chapter " data-level="3" data-path="semaphore-in-c.html">
             
                 
-                    <a href="./intro.html">
+                    <a href="./semaphore-in-c.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>3.</b>
                         
-                        Semaphore
+                        Semaphore in C
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="4" data-path="share-mem.html">
+        <li class="chapter " data-level="4" data-path="solution-use-semaphore.html">
             
                 
-                    <a href="./share-mem.html">
+                    <a href="./solution-use-semaphore.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>4.</b>
                         
-                        Shared memory
+                        Too Much Milk: Use semaphore
                     </a>
             
             
         </li>
     
-        <li class="chapter active" data-level="5" data-path="reference.html">
+        <li class="chapter " data-level="5" data-path="solution-2-mutual-exclusion.html">
             
                 
-                    <a href="./reference.html">
+                    <a href="./solution-2-mutual-exclusion.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>5.</b>
                         
-                        Reference
+                        Shared Output: Use semaphore
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="semaphore-exercise.html">
+            
+                
+                    <a href="./semaphore-exercise.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        Traffic Control Problem
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="traffic-control-solution.html">
+            
+                
+                    <a href="./traffic-control-solution.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        Traffic Control: Solution
                     </a>
             
             
@@ -259,12 +264,12 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="reference">Reference</h1>
-<hr>
+                        <h1 id="mutual-exclusion">Mutual Exclusion</h1>
+<p>Before we look into the solution, let&apos;s define some terminology.</p>
 <ul>
-<li>In section 3, we introduce POSIX named semaphore, it is usually used between processes. POSIX unnamed semaphore is widely used between related processes and threads, you can see <a href="http://www.linuxdevcenter.com/pub/a/linux/2007/05/24/semaphores-in-linux.html" target="_blank">here</a> to get more information.</li>
-<li>System V semaphore is widely supported, see <a href="https://docs.oracle.com/cd/E19683-01/806-4125/svipc-65382/index.html" target="_blank">here</a> to learn more.</li>
-<li><a href="code/solutions.tar">Solutions</a> of exercise.</li>
+<li><strong>Mutual exclusion</strong> prevents multiple threads from entering. </li>
+<li>The <strong>critical section</strong> is code that only one thread can execute at a time. </li>
+<li>A <em>*lock</em> is a mechanism for mutual exclusion.</li>
 </ul>
 
                     
@@ -276,8 +281,10 @@
         </div>
 
         
-        <a href="./share-mem.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Shared memory"><i class="fa fa-angle-left"></i></a>
+        <a href="./too-much-milk-problem.html" class="navigation navigation-prev " aria-label="Previous page: Too Much Milk Problem"><i class="fa fa-angle-left"></i></a>
         
+        
+        <a href="./examples-of-mutual-exclusion.html" class="navigation navigation-next " aria-label="Next page: Shared Output"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Semaphore | CSCI3150 - IPC-Synchronization Problem</title>
+        <title>Semaphore in C | CSCI3150 - IPC-Synchronization Problem</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -33,14 +33,16 @@
         
     
     
+        <link rel="stylesheet" href="./styles/website.css">
+    
 
         
     
     
-    <link rel="next" href="./share-mem.html" />
+    <link rel="next" href="./solution-use-semaphore.html" />
     
     
-    <link rel="prev" href="./exercise-1.html" />
+    <link rel="prev" href="./examples-of-mutual-exclusion.html" />
     
 
         
@@ -50,10 +52,10 @@
         
     <div class="book"
         data-level="3"
-        data-chapter-title="Semaphore"
-        data-filepath="intro.md"
+        data-chapter-title="Semaphore in C"
+        data-filepath="semaphore-in-c.md"
         data-basepath="."
-        data-revision="Wed Oct 12 2016 13:40:42 GMT+0800 (HKT)"
+        data-revision="Mon Mar 13 2017 05:49:00 GMT+0800 (HKT)"
         data-innerlanguage="">
     
 
@@ -76,45 +78,38 @@
                 
                         <i class="fa fa-check"></i>
                         
-                        Goal of this lab
+                        Introduction
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="1" >
+        <li class="chapter " data-level="1" data-path="race-condition.html">
             
-            <span><b>1.</b> Race condition</span>
+                
+                    <a href="./race-condition.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Race Condition
+                    </a>
             
             
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.1" data-path="race_con.html">
+        <li class="chapter " data-level="1.1" data-path="too-much-milk-problem.html">
             
                 
-                    <a href="./race_con.html">
+                    <a href="./too-much-milk-problem.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>1.1.</b>
                         
-                        An example of Race condition
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2" data-path="solution.html">
-            
-                
-                    <a href="./solution.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.2.</b>
-                        
-                        Solution:use semaphore
+                        Too Much Milk Problem
                     </a>
             
             
@@ -125,54 +120,32 @@
             
         </li>
     
-        <li class="chapter " data-level="2" >
+        <li class="chapter " data-level="2" data-path="mutual-exclusion.html">
             
-            <span><b>2.</b> More synchronization problems</span>
+                
+                    <a href="./mutual-exclusion.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Mutual Exclusion
+                    </a>
             
             
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1" data-path="mutual-ex.html">
+        <li class="chapter " data-level="2.1" data-path="examples-of-mutual-exclusion.html">
             
                 
-                    <a href="./mutual-ex.html">
+                    <a href="./examples-of-mutual-exclusion.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>2.1.</b>
                         
-                        Mutual exclusion
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2" data-path="sync-pro.html">
-            
-                
-                    <a href="./sync-pro.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.2.</b>
-                        
-                        Producer-Consumer problem
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.3" data-path="exercise-1.html">
-            
-                
-                    <a href="./exercise-1.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.3.</b>
-                        
-                        Exercise
+                        Shared Output
                     </a>
             
             
@@ -183,46 +156,76 @@
             
         </li>
     
-        <li class="chapter active" data-level="3" data-path="intro.html">
+        <li class="chapter active" data-level="3" data-path="semaphore-in-c.html">
             
                 
-                    <a href="./intro.html">
+                    <a href="./semaphore-in-c.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>3.</b>
                         
-                        Semaphore
+                        Semaphore in C
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="4" data-path="share-mem.html">
+        <li class="chapter " data-level="4" data-path="solution-use-semaphore.html">
             
                 
-                    <a href="./share-mem.html">
+                    <a href="./solution-use-semaphore.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>4.</b>
                         
-                        Shared memory
+                        Too Much Milk: Use semaphore
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="5" data-path="reference.html">
+        <li class="chapter " data-level="5" data-path="solution-2-mutual-exclusion.html">
             
                 
-                    <a href="./reference.html">
+                    <a href="./solution-2-mutual-exclusion.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>5.</b>
                         
-                        Reference
+                        Shared Output: Use semaphore
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="semaphore-exercise.html">
+            
+                
+                    <a href="./semaphore-exercise.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        Traffic Control Problem
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="traffic-control-solution.html">
+            
+                
+                    <a href="./traffic-control-solution.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        Traffic Control: Solution
                     </a>
             
             
@@ -261,37 +264,39 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="semaphore-api-in-linux">Semaphore API in Linux</h1>
-<hr>
-<p>POSIX named semaphore APIs we use in this lab are shown in the below table. You can look up manual pages for details of these functions. <a href="code/semaphore.c"><code>semaphore.c</code></a> shows how to use these functions to create, operate and remove named semaphore. Try it and make sure you understand it. Note that programs using the POSIX semaphores API must be compiled with <code>-pthread</code> to link against the real-time library. So you need compile <code>semaphore.c</code> like this:</p>
+                        <h1 id="semaphore-in-c">Semaphore in C</h1>
+<p>POSIX named semaphore APIs we use in this lab are shown in the below table. You can look up manual pages for details of these functions. <code>semaphore.c</code> shows how to use these functions to create, operate and remove named semaphore. Try it and make sure you understand it. Note that programs using the POSIX semaphores API must be compiled with -pthread to link against the real-time library. So you need compile semaphore.c like this:</p>
 <pre><code>gcc semaphore.c -pthreaad -o semaphore
 </code></pre><table>
-  <tr>
-    <td>Function</td>
-    <td>Description </td>
-  </tr>
-  <tr>
-    <td>sem_open</td>
-    <td>Opens/creates a named semaphore for use by a process</td>
-  </tr>
-  <tr>
-    <td>sem_wait</td>
-    <td>Wait on a semaphore </td>
-  </tr>
-  <tr>
-    <td>sem_post</td>
-    <td>Signal a semaphore</td>
-  </tr>
-  <tr>
-    <td>sem_close</td>
-    <td>     Deallocates the specified named semaphore </td>
-  </tr>
-  <tr>
-    <td>sem_unlink</td>
-    <td>Removes a specified named semaphore</td>
-  </tr>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sem_open</td>
+<td>Opens/creates a named semaphore for use by a process</td>
+</tr>
+<tr>
+<td>sem_wait</td>
+<td>lock a semaphore</td>
+</tr>
+<tr>
+<td>sem_post</td>
+<td>unlock a semaphore</td>
+</tr>
+<tr>
+<td>sem_close</td>
+<td>Deallocates the specified named semaphore</td>
+</tr>
+<tr>
+<td>sem_unlink</td>
+<td>Removes a specified named semaphore</td>
+</tr>
+</tbody>
 </table>
-
 <pre><code class="lang-c"><span class="hljs-comment">/*semaphore.c*/</span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;fcntl.h&gt;</span>           /* For O_* constants */</span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/stat.h&gt;</span>        /* For mode constants */</span>
@@ -303,7 +308,7 @@
   <span class="hljs-keyword">int</span> VALUE = <span class="hljs-number">2</span>;
   <span class="hljs-keyword">sem_t</span> * sema;
   <span class="hljs-comment">//If semaphore with name does not exist, then create it with VALUE</span>
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Open or Creat a named semaphore, %s, its value is %d\n&quot;</span>, name,VALUE);
+  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Open or Create a named semaphore, %s, its value is %d\n&quot;</span>, name,VALUE);
   sema = sem_open(name, O_CREAT, <span class="hljs-number">0666</span>, VALUE);
   <span class="hljs-comment">//wait on semaphore sema and decrease it by 1</span>
   sem_wait(sema);
@@ -318,9 +323,6 @@
   <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }
 </code></pre>
-<p><img src="assets/name_sema.png" alt=""></p>
-<h3 id="semaphore-specification">Semaphore specification</h3>
-<p>Under Linux, the IPC comes in two flavors, the traditional System V IPC and the newer POSIX IPC. Both of them support semaphore. You can see their difference <a href="http://stackoverflow.com/questions/368322/differences-between-system-v-and-posix-semaphores" target="_blank">here</a>.</p>
 
                     
                     </section>
@@ -331,10 +333,10 @@
         </div>
 
         
-        <a href="./exercise-1.html" class="navigation navigation-prev " aria-label="Previous page: Exercise"><i class="fa fa-angle-left"></i></a>
+        <a href="./examples-of-mutual-exclusion.html" class="navigation navigation-prev " aria-label="Previous page: Shared Output"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="./share-mem.html" class="navigation navigation-next " aria-label="Next page: Shared memory"><i class="fa fa-angle-right"></i></a>
+        <a href="./solution-use-semaphore.html" class="navigation navigation-next " aria-label="Next page: Too Much Milk: Use semaphore"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Exercise | CSCI3150 - IPC-Synchronization Problem</title>
+        <title>Traffic Control Problem | CSCI3150 - IPC-Synchronization Problem</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -33,14 +33,16 @@
         
     
     
+        <link rel="stylesheet" href="./styles/website.css">
+    
 
         
     
     
-    <link rel="next" href="./intro.html" />
+    <link rel="next" href="./traffic-control-solution.html" />
     
     
-    <link rel="prev" href="./sync-pro.html" />
+    <link rel="prev" href="./solution-2-mutual-exclusion.html" />
     
 
         
@@ -49,11 +51,11 @@
         
         
     <div class="book"
-        data-level="2.3"
-        data-chapter-title="Exercise"
-        data-filepath="exercise-1.md"
+        data-level="6"
+        data-chapter-title="Traffic Control Problem"
+        data-filepath="semaphore-exercise.md"
         data-basepath="."
-        data-revision="Wed Oct 12 2016 13:40:42 GMT+0800 (HKT)"
+        data-revision="Mon Mar 13 2017 05:49:00 GMT+0800 (HKT)"
         data-innerlanguage="">
     
 
@@ -76,45 +78,38 @@
                 
                         <i class="fa fa-check"></i>
                         
-                        Goal of this lab
+                        Introduction
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="1" >
+        <li class="chapter " data-level="1" data-path="race-condition.html">
             
-            <span><b>1.</b> Race condition</span>
+                
+                    <a href="./race-condition.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Race Condition
+                    </a>
             
             
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.1" data-path="race_con.html">
+        <li class="chapter " data-level="1.1" data-path="too-much-milk-problem.html">
             
                 
-                    <a href="./race_con.html">
+                    <a href="./too-much-milk-problem.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>1.1.</b>
                         
-                        An example of Race condition
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2" data-path="solution.html">
-            
-                
-                    <a href="./solution.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.2.</b>
-                        
-                        Solution:use semaphore
+                        Too Much Milk Problem
                     </a>
             
             
@@ -125,54 +120,32 @@
             
         </li>
     
-        <li class="chapter " data-level="2" >
+        <li class="chapter " data-level="2" data-path="mutual-exclusion.html">
             
-            <span><b>2.</b> More synchronization problems</span>
+                
+                    <a href="./mutual-exclusion.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Mutual Exclusion
+                    </a>
             
             
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1" data-path="mutual-ex.html">
+        <li class="chapter " data-level="2.1" data-path="examples-of-mutual-exclusion.html">
             
                 
-                    <a href="./mutual-ex.html">
+                    <a href="./examples-of-mutual-exclusion.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>2.1.</b>
                         
-                        Mutual exclusion
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2" data-path="sync-pro.html">
-            
-                
-                    <a href="./sync-pro.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.2.</b>
-                        
-                        Producer-Consumer problem
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter active" data-level="2.3" data-path="exercise-1.html">
-            
-                
-                    <a href="./exercise-1.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.3.</b>
-                        
-                        Exercise
+                        Shared Output
                     </a>
             
             
@@ -183,46 +156,76 @@
             
         </li>
     
-        <li class="chapter " data-level="3" data-path="intro.html">
+        <li class="chapter " data-level="3" data-path="semaphore-in-c.html">
             
                 
-                    <a href="./intro.html">
+                    <a href="./semaphore-in-c.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>3.</b>
                         
-                        Semaphore
+                        Semaphore in C
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="4" data-path="share-mem.html">
+        <li class="chapter " data-level="4" data-path="solution-use-semaphore.html">
             
                 
-                    <a href="./share-mem.html">
+                    <a href="./solution-use-semaphore.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>4.</b>
                         
-                        Shared memory
+                        Too Much Milk: Use semaphore
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="5" data-path="reference.html">
+        <li class="chapter " data-level="5" data-path="solution-2-mutual-exclusion.html">
             
                 
-                    <a href="./reference.html">
+                    <a href="./solution-2-mutual-exclusion.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>5.</b>
                         
-                        Reference
+                        Shared Output: Use semaphore
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="6" data-path="semaphore-exercise.html">
+            
+                
+                    <a href="./semaphore-exercise.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        Traffic Control Problem
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="traffic-control-solution.html">
+            
+                
+                    <a href="./traffic-control-solution.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        Traffic Control: Solution
                     </a>
             
             
@@ -261,17 +264,12 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="exercise1">Exercise-1</h1>
-<hr>
-<p><a href="code/NS-cars.c"><code>NS-cars.c</code></a> and<a href="code/EW-cars.c"> <code>EW-cars.c</code></a> are two programs that simulate traffic control. When North-South cars past the crossroads, they should ensure that road from north to south is available, if north-south road is not available, they keep waiting. This is similar to East-West cars. Please add semaphore synchronization in these two programs so that North-South cars and Easts-West cars can past the crossroads alternately and there will not be car accident. Note that when north-south road is available, east-west road is not available.
-The current result of these two programs is shown in figure 1, the expected result is shown in figure 2.
-<img src="assets/cross-1.png" alt="">
-Figure 1. current result
-<img src="assets/cross.png" alt="">
-Figure 2. Expected result</p>
+                        <h1 id="semaphore-exercise">Semaphore Exercise</h1>
+<p><code>NS-cars.c</code> and <code>EW-cars.c</code> are two programs that simulate traffic control. When North-South cars past the crossroads, they should ensure that road from north to south is available, if north-south road is not available, they keep waiting. This is similar to East-West cars. Please add <strong>semaphore synchronization</strong> in these two programs so that North-South cars and Easts-West cars can past the crossroads alternately and there will not be car accident. Note that when north-south road is available, east-west road is not available.</p>
 <pre><code class="lang-c"><span class="hljs-comment">/*NS-cars.c*/</span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span>
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> * argv[])</span>
 </span>{
     <span class="hljs-keyword">int</span> i, car=<span class="hljs-number">0</span>, loop=<span class="hljs-number">3</span>;
@@ -283,10 +281,11 @@ Figure 2. Expected result</p>
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;NS: Time is up. %d cars passed.\n&quot;</span>,car);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }
-
-<span class="hljs-comment">/*EW-cars.c*/</span>
+</code></pre>
+<pre><code class="lang-c"><span class="hljs-comment">/*EW-cars.c*/</span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span>
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> * argv[])</span>
 </span>{
     <span class="hljs-keyword">int</span> i,car=<span class="hljs-number">0</span>, loop=<span class="hljs-number">3</span>;
@@ -309,10 +308,10 @@ Figure 2. Expected result</p>
         </div>
 
         
-        <a href="./sync-pro.html" class="navigation navigation-prev " aria-label="Previous page: Producer-Consumer problem"><i class="fa fa-angle-left"></i></a>
+        <a href="./solution-2-mutual-exclusion.html" class="navigation navigation-prev " aria-label="Previous page: Shared Output: Use semaphore"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="./intro.html" class="navigation navigation-next " aria-label="Next page: Semaphore"><i class="fa fa-angle-right"></i></a>
+        <a href="./traffic-control-solution.html" class="navigation navigation-next " aria-label="Next page: Traffic Control: Solution"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

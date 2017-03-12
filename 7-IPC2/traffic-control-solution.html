@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Mutual exclusion | CSCI3150 - IPC-Synchronization Problem</title>
+        <title>Traffic Control: Solution | CSCI3150 - IPC-Synchronization Problem</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -33,14 +33,14 @@
         
     
     
+        <link rel="stylesheet" href="./styles/website.css">
+    
 
         
     
     
-    <link rel="next" href="./sync-pro.html" />
     
-    
-    <link rel="prev" href="./solution.html" />
+    <link rel="prev" href="./semaphore-exercise.html" />
     
 
         
@@ -49,11 +49,11 @@
         
         
     <div class="book"
-        data-level="2.1"
-        data-chapter-title="Mutual exclusion"
-        data-filepath="mutual-ex.md"
+        data-level="7"
+        data-chapter-title="Traffic Control: Solution"
+        data-filepath="traffic-control-solution.md"
         data-basepath="."
-        data-revision="Wed Oct 12 2016 13:40:42 GMT+0800 (HKT)"
+        data-revision="Mon Mar 13 2017 05:49:00 GMT+0800 (HKT)"
         data-innerlanguage="">
     
 
@@ -76,45 +76,38 @@
                 
                         <i class="fa fa-check"></i>
                         
-                        Goal of this lab
+                        Introduction
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="1" >
+        <li class="chapter " data-level="1" data-path="race-condition.html">
             
-            <span><b>1.</b> Race condition</span>
+                
+                    <a href="./race-condition.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Race Condition
+                    </a>
             
             
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.1" data-path="race_con.html">
+        <li class="chapter " data-level="1.1" data-path="too-much-milk-problem.html">
             
                 
-                    <a href="./race_con.html">
+                    <a href="./too-much-milk-problem.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>1.1.</b>
                         
-                        An example of Race condition
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2" data-path="solution.html">
-            
-                
-                    <a href="./solution.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.2.</b>
-                        
-                        Solution:use semaphore
+                        Too Much Milk Problem
                     </a>
             
             
@@ -125,54 +118,32 @@
             
         </li>
     
-        <li class="chapter " data-level="2" >
+        <li class="chapter " data-level="2" data-path="mutual-exclusion.html">
             
-            <span><b>2.</b> More synchronization problems</span>
+                
+                    <a href="./mutual-exclusion.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Mutual Exclusion
+                    </a>
             
             
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="2.1" data-path="mutual-ex.html">
+        <li class="chapter " data-level="2.1" data-path="examples-of-mutual-exclusion.html">
             
                 
-                    <a href="./mutual-ex.html">
+                    <a href="./examples-of-mutual-exclusion.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>2.1.</b>
                         
-                        Mutual exclusion
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2" data-path="sync-pro.html">
-            
-                
-                    <a href="./sync-pro.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.2.</b>
-                        
-                        Producer-Consumer problem
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.3" data-path="exercise-1.html">
-            
-                
-                    <a href="./exercise-1.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.3.</b>
-                        
-                        Exercise
+                        Shared Output
                     </a>
             
             
@@ -183,46 +154,76 @@
             
         </li>
     
-        <li class="chapter " data-level="3" data-path="intro.html">
+        <li class="chapter " data-level="3" data-path="semaphore-in-c.html">
             
                 
-                    <a href="./intro.html">
+                    <a href="./semaphore-in-c.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>3.</b>
                         
-                        Semaphore
+                        Semaphore in C
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="4" data-path="share-mem.html">
+        <li class="chapter " data-level="4" data-path="solution-use-semaphore.html">
             
                 
-                    <a href="./share-mem.html">
+                    <a href="./solution-use-semaphore.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>4.</b>
                         
-                        Shared memory
+                        Too Much Milk: Use semaphore
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="5" data-path="reference.html">
+        <li class="chapter " data-level="5" data-path="solution-2-mutual-exclusion.html">
             
                 
-                    <a href="./reference.html">
+                    <a href="./solution-2-mutual-exclusion.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>5.</b>
                         
-                        Reference
+                        Shared Output: Use semaphore
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="semaphore-exercise.html">
+            
+                
+                    <a href="./semaphore-exercise.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        Traffic Control Problem
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="7" data-path="traffic-control-solution.html">
+            
+                
+                    <a href="./traffic-control-solution.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        Traffic Control: Solution
                     </a>
             
             
@@ -261,64 +262,65 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="another-example-of-mutual-exclusion">Another example of mutual exclusion</h1>
-<hr>
-<p><a href="code/process-1.c"><code>process-1.c</code></a> and <a href="code/process-2.c"><code>process-2.c</code></a> are two processes need to display their outputs on the standard output. To ensure the output is right, these two processes should access the standard output exclusively. That is to say, process should wait until the other process that occupies the standard output finishes its display. Otherwise, the output may be confused as figure 1. We use semaphore to ensure mutual exclusion. The result is  shown in figure 2.</p>
-<p>Comment out semaphore related codes, run these two programs(<a href="code/proc-1.c">proc-1.c</a>,<a href="code/proc-2.c">proc-2.c</a>) and see what happens.</p>
-<p><img src="assets/output_1.png" alt="">
-Figure 1. Confused result<br><img src="assets/output.png" alt="">
-Figure 2. Correct result</p>
-<p>Compile and run like this:</p>
-<pre><code>$ gcc process-1.c -pthread -o process-1
-$ gcc process-2.c -pthread -o process-2
-$ ./process-1 &amp; ./process-2 &amp;
-</code></pre><pre><code class="lang-c"><span class="hljs-comment">/*process-1.c*/</span>
+                        <h1 id="traffic-control-solution">Traffic Control: Solution</h1>
+<pre><code class="lang-c"><span class="hljs-comment">/*NS-cars_sol.c*/</span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
-<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;fcntl.h&gt;</span></span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/stat.h&gt;</span></span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;semaphore.h&gt;</span></span>
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> * argv[])</span> </span>{
-       <span class="hljs-keyword">sem_t</span> * mutex;
-       <span class="hljs-keyword">char</span> * c = <span class="hljs-string">&quot;This is CSCI3150--An operating system course.\n&quot;</span>;
-    <span class="hljs-comment">// specify no buffering for stderr</span>
-    setbuf(<span class="hljs-built_in">stderr</span>, <span class="hljs-literal">NULL</span>);
-       mutex = sem_open(<span class="hljs-string">&quot;mutex_for_stderr&quot;</span>, O_CREAT, <span class="hljs-number">0666</span>, <span class="hljs-number">1</span>);
-       sem_wait(mutex);
-       <span class="hljs-keyword">while</span> (* c != <span class="hljs-string">&apos;\0&apos;</span>) {
-            fputc(* c, <span class="hljs-built_in">stderr</span>);
-            c++;
-            sleep(<span class="hljs-number">1</span>);
-         }
-    sem_post(mutex);
-    sem_close(mutex);
-    sem_unlink(<span class="hljs-string">&quot;mutex_for_stderr&quot;</span>);
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> *argv[])</span>
+</span>{
+    <span class="hljs-keyword">int</span> i,car=<span class="hljs-number">0</span>, loop=<span class="hljs-number">3</span>;
+    <span class="hljs-keyword">sem_t</span> *ns, *ew;
+    ns = sem_open(<span class="hljs-string">&quot;ns&quot;</span>, O_CREAT,<span class="hljs-number">0666</span>,<span class="hljs-number">1</span>);
+    ew = sem_open(<span class="hljs-string">&quot;ew&quot;</span>, O_CREAT, <span class="hljs-number">0666</span>, <span class="hljs-number">0</span>);
+    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;loop;i++){
+        sem_wait(ns);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Semaphore: The road from north to south is open\n&quot;</span>);
+        sleep(<span class="hljs-number">1</span>);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;NS-Car: car %d passed\n&quot;</span>,car++);
+        sem_post(ew);
+    }
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;NS: Time is up. %d cars passed.\n&quot;</span>,car);
+
+    sem_close(ns);
+    sem_close(ew);
+    sem_unlink(<span class="hljs-string">&quot;ns&quot;</span>);
+    sem_unlink(<span class="hljs-string">&quot;ew&quot;</span>);
+
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }
-
-<span class="hljs-comment">/*process-2.c*/</span>
+</code></pre>
+<pre><code class="lang-c"><span class="hljs-comment">/*EW-cars_sol.c*/</span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
-<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;fcntl.h&gt;</span></span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/stat.h&gt;</span></span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;semaphore.h&gt;</span></span>
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> * argv[])</span> </span>{
-    <span class="hljs-keyword">sem_t</span> * mutex;
-    <span class="hljs-keyword">char</span> * c = <span class="hljs-string">&quot;This is CSCI3150--An operating system course.\n&quot;</span>;
-    <span class="hljs-comment">// specify no buffering for stderr</span>
-    setbuf(<span class="hljs-built_in">stderr</span>, <span class="hljs-literal">NULL</span>);  
-    mutex = sem_open(<span class="hljs-string">&quot;mutex_for_stderr&quot;</span>, O_CREAT, <span class="hljs-number">0666</span>, <span class="hljs-number">1</span>);
-    sem_wait(mutex);
-    <span class="hljs-keyword">while</span> (* c != <span class="hljs-string">&apos;\0&apos;</span>) {
-        fputc(* c, <span class="hljs-built_in">stderr</span>);
-        c++;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> *argv[])</span>
+</span>{
+    <span class="hljs-keyword">int</span> i,car=<span class="hljs-number">0</span>, loop=<span class="hljs-number">3</span>;
+    <span class="hljs-keyword">sem_t</span> *ns, *ew;
+
+    ns = sem_open(<span class="hljs-string">&quot;ns&quot;</span>, O_CREAT,<span class="hljs-number">0666</span>,<span class="hljs-number">0</span>);
+    ew = sem_open(<span class="hljs-string">&quot;ew&quot;</span>, O_CREAT, <span class="hljs-number">0666</span>, <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;loop;i++){
+        sem_wait(ew);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Semaphore: The road from east to west is open\n&quot;</span>);
         sleep(rand()%<span class="hljs-number">2</span>+<span class="hljs-number">1</span>);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;EW-Car: car %d passed\n&quot;</span>,car++);
+        sem_post(ns);
     }
-    sem_post(mutex);
-    sem_close(mutex);
-    sem_unlink(<span class="hljs-string">&quot;mutex_for_stderr&quot;</span>);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;EW: Time is up. %d cars passed.\n&quot;</span>,car);
+
+    sem_close(ns);
+    sem_close(ew);
+    sem_unlink(<span class="hljs-string">&quot;ns&quot;</span>);
+    sem_unlink(<span class="hljs-string">&quot;ew&quot;</span>);
+
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }
 </code></pre>
@@ -332,10 +334,8 @@ $ ./process-1 &amp; ./process-2 &amp;
         </div>
 
         
-        <a href="./solution.html" class="navigation navigation-prev " aria-label="Previous page: Solution:use semaphore"><i class="fa fa-angle-left"></i></a>
+        <a href="./semaphore-exercise.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Traffic Control Problem"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="./sync-pro.html" class="navigation navigation-next " aria-label="Next page: Producer-Consumer problem"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
