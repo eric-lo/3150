@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Useful links | </title>
+        <title>Race Condition | Introduction to pThread</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -33,12 +33,16 @@
         
     
     
+        <link rel="stylesheet" href="./styles/website.css">
+    
 
         
     
     
+    <link rel="next" href="./solution-race-condition.html" />
     
-    <link rel="prev" href="./Answers.html" />
+    
+    <link rel="prev" href="./compile.html" />
     
 
         
@@ -47,11 +51,11 @@
         
         
     <div class="book"
-        data-level="9"
-        data-chapter-title="Useful links"
-        data-filepath="Useful.md"
+        data-level="3"
+        data-chapter-title="Race Condition"
+        data-filepath="race-condition.md"
         data-basepath="."
-        data-revision="Wed Nov 02 2016 10:04:53 GMT+0800 (CST)"
+        data-revision="Mon Mar 20 2017 08:40:38 GMT+0800 (HKT)"
         data-innerlanguage="">
     
 
@@ -74,35 +78,20 @@
                 
                         <i class="fa fa-check"></i>
                         
-                        Outline
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1" data-path="Introduction.html">
-            
-                
-                    <a href="./Introduction.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.</b>
-                        
                         Introduction
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="2" data-path="Configuration.html">
+        <li class="chapter " data-level="1" data-path="configuration.html">
             
                 
-                    <a href="./Configuration.html">
+                    <a href="./configuration.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>2.</b>
+                            <b>1.</b>
                         
                         Configuration
                     </a>
@@ -110,14 +99,14 @@
             
         </li>
     
-        <li class="chapter " data-level="3" data-path="Compile.html">
+        <li class="chapter " data-level="2" data-path="compile.html">
             
                 
-                    <a href="./Compile.html">
+                    <a href="./compile.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>3.</b>
+                            <b>2.</b>
                         
                         Compile
                     </a>
@@ -125,14 +114,14 @@
             
         </li>
     
-        <li class="chapter " data-level="4" data-path="Racing.html">
+        <li class="chapter active" data-level="3" data-path="race-condition.html">
             
                 
-                    <a href="./Racing.html">
+                    <a href="./race-condition.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>4.</b>
+                            <b>3.</b>
                         
                         Race Condition
                     </a>
@@ -140,10 +129,25 @@
             
         </li>
     
-        <li class="chapter " data-level="5" data-path="Deadlock.html">
+        <li class="chapter " data-level="4" data-path="solution-race-condition.html">
             
                 
-                    <a href="./Deadlock.html">
+                    <a href="./solution-race-condition.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Solution: Race Condition
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="deadlock.html">
+            
+                
+                    <a href="./deadlock.html">
                 
                         <i class="fa fa-check"></i>
                         
@@ -155,61 +159,46 @@
             
         </li>
     
-        <li class="chapter " data-level="6" data-path="Starvation.html">
+        <li class="chapter " data-level="6" data-path="solution-deadlock.html">
             
                 
-                    <a href="./Starvation.html">
+                    <a href="./solution-deadlock.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>6.</b>
                         
-                        Starvation
+                        Solution: Deadlock
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="7" data-path="Pass.html">
+        <li class="chapter " data-level="7" data-path="passing-arguments.html">
             
                 
-                    <a href="./Pass.html">
+                    <a href="./passing-arguments.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>7.</b>
                         
-                        Passing arguments
+                        Passing Arguments
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="8" data-path="Answers.html">
+        <li class="chapter " data-level="8" data-path="example-sorting-common-integers-in-two-lists.html">
             
                 
-                    <a href="./Answers.html">
+                    <a href="./example-sorting-common-integers-in-two-lists.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>8.</b>
                         
-                        Answers
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter active" data-level="9" data-path="Useful.html">
-            
-                
-                    <a href="./Useful.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>9.</b>
-                        
-                        Useful links
+                        Example: Sorting Common Integers in Two Lists
                     </a>
             
             
@@ -238,7 +227,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="./" ></a>
+        <a href="./" >Introduction to pThread</a>
     </h1>
 </div>
 
@@ -248,12 +237,40 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="useful-links">Useful links</h1>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/POSIX_Threads" target="_blank">wikipedia</a></li>
-<li><a href="https://computing.llnl.gov/tutorials/pthreads/" target="_blank">pthread tutorial</a></li>
-<li><a href="http://man7.org/linux/man-pages/man7/pthreads.7.html" target="_blank">man page</a></li>
-</ul>
+                        <h1 id="race-condition">Race Condition</h1>
+<p>ere we have a simple program <code>racing.c</code>:</p>
+<p>We have one global variable with 0 at the beginning, two threads all wants to perform + 1 to this variable 1000000 times, what is the result after these two threads end? Will the result be 20000000?</p>
+<pre><code class="lang-c"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;pthread.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+
+<span class="hljs-preprocessor">#<span class="hljs-keyword">define</span> NITERS <span class="hljs-number">10000000</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> *<span class="hljs-title">count</span> <span class="hljs-params">(<span class="hljs-keyword">void</span> *arg)</span></span>;
+<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">pthread_t</span> tid1, tid2;
+    pthread_create (&amp;tid1, <span class="hljs-literal">NULL</span>, count, <span class="hljs-literal">NULL</span>);
+    pthread_create (&amp;tid2, <span class="hljs-literal">NULL</span>, count, <span class="hljs-literal">NULL</span>);
+
+    pthread_join (tid1, <span class="hljs-literal">NULL</span>);
+    pthread_join (tid2, <span class="hljs-literal">NULL</span>);
+    <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;cnt:%d\n&quot;</span>, cnt);
+    <span class="hljs-built_in">exit</span> (<span class="hljs-number">0</span>);
+
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> *<span class="hljs-title">count</span> <span class="hljs-params">(<span class="hljs-keyword">void</span> *arg)</span> </span>{
+    <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (; i &lt; NITERS; i++) {
+        cnt++;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;
+}
+</code></pre>
+<p>Let&apos;s try this program now: 
+<img src="assets/race.png" alt=""></p>
+<p>We can find result is not 20000000 and each time we run this program we will get a different result. Why we get these result? How can we avoid this situation?</p>
 
                     
                     </section>
@@ -264,8 +281,10 @@
         </div>
 
         
-        <a href="./Answers.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Answers"><i class="fa fa-angle-left"></i></a>
+        <a href="./compile.html" class="navigation navigation-prev " aria-label="Previous page: Compile"><i class="fa fa-angle-left"></i></a>
         
+        
+        <a href="./solution-race-condition.html" class="navigation navigation-next " aria-label="Next page: Solution: Race Condition"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

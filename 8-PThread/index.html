@@ -5,9 +5,9 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Outline | </title>
+        <title>Introduction | Introduction to pThread</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta name="description" content="CSCI3150 - Pthreads (POSIX Threads Programming)">
+        <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
         
         
@@ -33,11 +33,13 @@
         
     
     
+        <link rel="stylesheet" href="./styles/website.css">
+    
 
         
     
     
-    <link rel="next" href="./Introduction.html" />
+    <link rel="next" href="./configuration.html" />
     
     
 
@@ -48,10 +50,10 @@
         
     <div class="book"
         data-level="0"
-        data-chapter-title="Outline"
+        data-chapter-title="Introduction"
         data-filepath="README.md"
         data-basepath="."
-        data-revision="Wed Nov 02 2016 10:04:53 GMT+0800 (CST)"
+        data-revision="Mon Mar 20 2017 08:40:38 GMT+0800 (HKT)"
         data-innerlanguage="">
     
 
@@ -74,35 +76,20 @@
                 
                         <i class="fa fa-check"></i>
                         
-                        Outline
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1" data-path="Introduction.html">
-            
-                
-                    <a href="./Introduction.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.</b>
-                        
                         Introduction
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="2" data-path="Configuration.html">
+        <li class="chapter " data-level="1" data-path="configuration.html">
             
                 
-                    <a href="./Configuration.html">
+                    <a href="./configuration.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>2.</b>
+                            <b>1.</b>
                         
                         Configuration
                     </a>
@@ -110,14 +97,14 @@
             
         </li>
     
-        <li class="chapter " data-level="3" data-path="Compile.html">
+        <li class="chapter " data-level="2" data-path="compile.html">
             
                 
-                    <a href="./Compile.html">
+                    <a href="./compile.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>3.</b>
+                            <b>2.</b>
                         
                         Compile
                     </a>
@@ -125,14 +112,14 @@
             
         </li>
     
-        <li class="chapter " data-level="4" data-path="Racing.html">
+        <li class="chapter " data-level="3" data-path="race-condition.html">
             
                 
-                    <a href="./Racing.html">
+                    <a href="./race-condition.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>4.</b>
+                            <b>3.</b>
                         
                         Race Condition
                     </a>
@@ -140,10 +127,25 @@
             
         </li>
     
-        <li class="chapter " data-level="5" data-path="Deadlock.html">
+        <li class="chapter " data-level="4" data-path="solution-race-condition.html">
             
                 
-                    <a href="./Deadlock.html">
+                    <a href="./solution-race-condition.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Solution: Race Condition
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="deadlock.html">
+            
+                
+                    <a href="./deadlock.html">
                 
                         <i class="fa fa-check"></i>
                         
@@ -155,61 +157,46 @@
             
         </li>
     
-        <li class="chapter " data-level="6" data-path="Starvation.html">
+        <li class="chapter " data-level="6" data-path="solution-deadlock.html">
             
                 
-                    <a href="./Starvation.html">
+                    <a href="./solution-deadlock.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>6.</b>
                         
-                        Starvation
+                        Solution: Deadlock
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="7" data-path="Pass.html">
+        <li class="chapter " data-level="7" data-path="passing-arguments.html">
             
                 
-                    <a href="./Pass.html">
+                    <a href="./passing-arguments.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>7.</b>
                         
-                        Passing arguments
+                        Passing Arguments
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="8" data-path="Answers.html">
+        <li class="chapter " data-level="8" data-path="example-sorting-common-integers-in-two-lists.html">
             
                 
-                    <a href="./Answers.html">
+                    <a href="./example-sorting-common-integers-in-two-lists.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>8.</b>
                         
-                        Answers
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="9" data-path="Useful.html">
-            
-                
-                    <a href="./Useful.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>9.</b>
-                        
-                        Useful links
+                        Example: Sorting Common Integers in Two Lists
                     </a>
             
             
@@ -238,7 +225,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="./" ></a>
+        <a href="./" >Introduction to pThread</a>
     </h1>
 </div>
 
@@ -248,14 +235,48 @@
                 
                     <section class="normal" id="section-">
                     
-                        <p>CSCI3150 - Pthreads (POSIX Threads Programming)</p>
-<p>In this lab:</p>
+                        <h1 id="introduction-to-pthread"><strong>Introduction to pThread</strong></h1>
 <ul>
-<li>A simple Introduction to pThread</li>
-<li>Configure your virtual machine to multi-cores</li>
-<li>Try some programs you learn in lecture</li>
-<li>You will get some programs which will show you about some problems like starvation problems ..</li>
-<li>Try to solve it, I believe you can find many solutions to these problems</li>
+<li>Pthreads are defined as a set of C language programming types and procedure calls, implemented with a pthread.h header/include file and a thread library - though this library may be part of another library, such as libc, in some implementations.</li>
+<li>To implement a multi-threads program using pThread library:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Function</th>
+<th style="text-align:left">Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">pthread_mutex_unlock</td>
+<td style="text-align:left">unlock a mutex in ptheadunlock a mutex in pthead</td>
+</tr>
+<tr>
+<td style="text-align:left">pthread_mutex_lock:</td>
+<td style="text-align:left">to lock a mutex in pthread</td>
+</tr>
+<tr>
+<td style="text-align:left">pthread_mutex_t:</td>
+<td style="text-align:left">to create a mutex in pthread</td>
+</tr>
+<tr>
+<td style="text-align:left">pthread_join:</td>
+<td style="text-align:left">join with a terminated thread</td>
+</tr>
+<tr>
+<td style="text-align:left">pthread_create:</td>
+<td style="text-align:left">to create a thread</td>
+</tr>
+<tr>
+<td style="text-align:left">pthread_t:</td>
+<td style="text-align:left">to define a thread id</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>We will have some example programs later</li>
+<li>There are many functions you can use in pthread, you can refer to materials in google. Also, we provide some materials in useful links.</li>
 </ul>
 
                     
@@ -268,7 +289,7 @@
 
         
         
-        <a href="./Introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Introduction"><i class="fa fa-angle-right"></i></a>
+        <a href="./configuration.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Configuration"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

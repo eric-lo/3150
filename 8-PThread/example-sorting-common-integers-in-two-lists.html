@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Race Condition | </title>
+        <title>Example: Sorting Common Integers in Two Lists | Introduction to pThread</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -33,14 +33,14 @@
         
     
     
+        <link rel="stylesheet" href="./styles/website.css">
+    
 
         
     
     
-    <link rel="next" href="./Deadlock.html" />
     
-    
-    <link rel="prev" href="./Compile.html" />
+    <link rel="prev" href="./passing-arguments.html" />
     
 
         
@@ -49,11 +49,11 @@
         
         
     <div class="book"
-        data-level="4"
-        data-chapter-title="Race Condition"
-        data-filepath="Racing.md"
+        data-level="8"
+        data-chapter-title="Example: Sorting Common Integers in Two Lists"
+        data-filepath="example-sorting-common-integers-in-two-lists.md"
         data-basepath="."
-        data-revision="Wed Nov 02 2016 10:04:53 GMT+0800 (CST)"
+        data-revision="Mon Mar 20 2017 08:40:38 GMT+0800 (HKT)"
         data-innerlanguage="">
     
 
@@ -76,35 +76,20 @@
                 
                         <i class="fa fa-check"></i>
                         
-                        Outline
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1" data-path="Introduction.html">
-            
-                
-                    <a href="./Introduction.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.</b>
-                        
                         Introduction
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="2" data-path="Configuration.html">
+        <li class="chapter " data-level="1" data-path="configuration.html">
             
                 
-                    <a href="./Configuration.html">
+                    <a href="./configuration.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>2.</b>
+                            <b>1.</b>
                         
                         Configuration
                     </a>
@@ -112,14 +97,14 @@
             
         </li>
     
-        <li class="chapter " data-level="3" data-path="Compile.html">
+        <li class="chapter " data-level="2" data-path="compile.html">
             
                 
-                    <a href="./Compile.html">
+                    <a href="./compile.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>3.</b>
+                            <b>2.</b>
                         
                         Compile
                     </a>
@@ -127,14 +112,14 @@
             
         </li>
     
-        <li class="chapter active" data-level="4" data-path="Racing.html">
+        <li class="chapter " data-level="3" data-path="race-condition.html">
             
                 
-                    <a href="./Racing.html">
+                    <a href="./race-condition.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>4.</b>
+                            <b>3.</b>
                         
                         Race Condition
                     </a>
@@ -142,10 +127,25 @@
             
         </li>
     
-        <li class="chapter " data-level="5" data-path="Deadlock.html">
+        <li class="chapter " data-level="4" data-path="solution-race-condition.html">
             
                 
-                    <a href="./Deadlock.html">
+                    <a href="./solution-race-condition.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Solution: Race Condition
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="deadlock.html">
+            
+                
+                    <a href="./deadlock.html">
                 
                         <i class="fa fa-check"></i>
                         
@@ -157,61 +157,46 @@
             
         </li>
     
-        <li class="chapter " data-level="6" data-path="Starvation.html">
+        <li class="chapter " data-level="6" data-path="solution-deadlock.html">
             
                 
-                    <a href="./Starvation.html">
+                    <a href="./solution-deadlock.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>6.</b>
                         
-                        Starvation
+                        Solution: Deadlock
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="7" data-path="Pass.html">
+        <li class="chapter " data-level="7" data-path="passing-arguments.html">
             
                 
-                    <a href="./Pass.html">
+                    <a href="./passing-arguments.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>7.</b>
                         
-                        Passing arguments
+                        Passing Arguments
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="8" data-path="Answers.html">
+        <li class="chapter active" data-level="8" data-path="example-sorting-common-integers-in-two-lists.html">
             
                 
-                    <a href="./Answers.html">
+                    <a href="./example-sorting-common-integers-in-two-lists.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>8.</b>
                         
-                        Answers
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="9" data-path="Useful.html">
-            
-                
-                    <a href="./Useful.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>9.</b>
-                        
-                        Useful links
+                        Example: Sorting Common Integers in Two Lists
                     </a>
             
             
@@ -240,7 +225,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="./" ></a>
+        <a href="./" >Introduction to pThread</a>
     </h1>
 </div>
 
@@ -250,47 +235,78 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="race-condition">Race Condition</h1>
-<p>Here we have a simple program <code>racing.c</code>:</p>
-<p>We have one global variable with 0 at the beginning, two threads all wants to perform <code>+ 1</code> to this variable 1000000 times, what is the result after these two threads end? Will the result be 20000000?</p>
-<pre><code class="lang-c"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;pthread.h&gt;</span></span>
+                        <h1 id="example-using-multithreading">Example using multi-threading</h1>
+<h2 id="problem">Problem</h2>
+<p>You are given two files, the program should output <em>a sorted list of unique integers that are common between two files</em>.</p>
+<h2 id="usage">Usage</h2>
+<p>To run the pthread program:</p>
+<pre><code class="lang-sh">./asg3-pthread [inputfile1] [inputfile2] [outputfile] [ThreadNum]
+</code></pre>
+<h2 id="sample-file">Sample File</h2>
+<p>input1.txt</p>
+<pre><code>10
+2 1 0 8 8 6 1 5 7 0
+</code></pre><p>input2.txt</p>
+<pre><code>15
+4 3 2 9 0 2 6 5 2 2 3 1 1 1 1
+</code></pre><p>If we execute the following:</p>
+<pre><code class="lang-sh">./asg3-openmp testcases/C0/input1.txt testcases/C0/input2.txt res/output.txt <span class="hljs-number">4</span>
+</code></pre>
+<h2 id="result">Result</h2>
+<pre><code>0
+1
+2
+5
+6
+</code></pre><h2 id="starter">Starter</h2>
+<pre><code class="lang-c"><span class="hljs-comment">/*
+* CSCI3150 Assignment 3 - Implement pthread and openmp program
+*
+*/</span>
+
+<span class="hljs-comment">/* Header Declaration */</span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;pthread.h&gt;</span></span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
 
-<span class="hljs-preprocessor">#<span class="hljs-keyword">define</span> NITERS <span class="hljs-number">10000000</span></span>
+<span class="hljs-comment">/* Function Declaration */</span>
+<span class="hljs-function"><span class="hljs-keyword">extern</span> <span class="hljs-keyword">int</span> *<span class="hljs-title">readdata</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *filename, <span class="hljs-keyword">long</span> *number)</span></span>;
+<span class="hljs-comment">/* Main */</span>
 
-<span class="hljs-function"><span class="hljs-keyword">void</span> *<span class="hljs-title">count</span> <span class="hljs-params">(<span class="hljs-keyword">void</span> *arg)</span></span>;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> *argv[])</span> </span>{
+    <span class="hljs-keyword">if</span>(argc!=<span class="hljs-number">5</span>) {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;usage:\n&quot;</span>);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;    ./asg3-pthread inputfile1 inputfile2 outputfile ThreadNum\n&quot;</span>);
 
-<span class="hljs-keyword">volatile</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;
-
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>{
-
-    <span class="hljs-keyword">pthread_t</span> tid1, tid2;
-    pthread_create (&amp;tid1, <span class="hljs-literal">NULL</span>, count, <span class="hljs-literal">NULL</span>);
-    pthread_create (&amp;tid2, <span class="hljs-literal">NULL</span>, count, <span class="hljs-literal">NULL</span>);
-
-    pthread_join (tid1, <span class="hljs-literal">NULL</span>);
-    pthread_join (tid2, <span class="hljs-literal">NULL</span>);
-    <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;cnt:%d\n&quot;</span>, cnt);
-    <span class="hljs-built_in">exit</span> (<span class="hljs-number">0</span>);
-
-}
-
-<span class="hljs-function"><span class="hljs-keyword">void</span> *<span class="hljs-title">count</span> <span class="hljs-params">(<span class="hljs-keyword">void</span> *arg)</span> </span>{
-
-    <span class="hljs-keyword">volatile</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
-
-    <span class="hljs-keyword">for</span> (; i &lt; NITERS; i++) {
-        cnt++;
+        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
     }
 
-    <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;
+    <span class="hljs-keyword">int</span> *array1, *array2;
+    <span class="hljs-keyword">long</span> num1, num2;
+
+    array1 = readdata(argv[<span class="hljs-number">1</span>], &amp;num1);
+    array2 = readdata(argv[<span class="hljs-number">2</span>], &amp;num2);
+
+    <span class="hljs-comment">/* do your assignment start from here */</span>
+
+
+
+
+
+
+
+
+    <span class="hljs-keyword">int</span> *res;<span class="hljs-comment">// initialize by yourself, this array will be used to output your result</span>
+    <span class="hljs-keyword">long</span> len;<span class="hljs-comment">// the length of res, will be used to output your result</span>
+
+    FILE *fp=fopen(argv[<span class="hljs-number">3</span>], <span class="hljs-string">&quot;w&quot;</span>);
+    <span class="hljs-comment">/* you should call &quot;output(fp, res, len)&quot; to output your result*/</span>
+
+    fclose(fp);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }
 </code></pre>
-<p>Let&apos;s try this program now:
-<img src="racingresult.png" alt=""></p>
-<p>We can find result is not 20000000 and each time we run this program we will get a different result.
-Why we get these result? How can we avoid this situation?</p>
 
                     
                     </section>
@@ -301,10 +317,8 @@ Why we get these result? How can we avoid this situation?</p>
         </div>
 
         
-        <a href="./Compile.html" class="navigation navigation-prev " aria-label="Previous page: Compile"><i class="fa fa-angle-left"></i></a>
+        <a href="./passing-arguments.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Passing Arguments"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="./Deadlock.html" class="navigation navigation-next " aria-label="Next page: Deadlock"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

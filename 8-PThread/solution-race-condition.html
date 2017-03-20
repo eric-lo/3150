@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Answers | </title>
+        <title>Solution: Race Condition | Introduction to pThread</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -33,14 +33,16 @@
         
     
     
+        <link rel="stylesheet" href="./styles/website.css">
+    
 
         
     
     
-    <link rel="next" href="./Useful.html" />
+    <link rel="next" href="./deadlock.html" />
     
     
-    <link rel="prev" href="./Pass.html" />
+    <link rel="prev" href="./race-condition.html" />
     
 
         
@@ -49,11 +51,11 @@
         
         
     <div class="book"
-        data-level="8"
-        data-chapter-title="Answers"
-        data-filepath="Answers.md"
+        data-level="4"
+        data-chapter-title="Solution: Race Condition"
+        data-filepath="solution-race-condition.md"
         data-basepath="."
-        data-revision="Wed Nov 02 2016 10:04:53 GMT+0800 (CST)"
+        data-revision="Mon Mar 20 2017 08:40:38 GMT+0800 (HKT)"
         data-innerlanguage="">
     
 
@@ -76,35 +78,20 @@
                 
                         <i class="fa fa-check"></i>
                         
-                        Outline
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1" data-path="Introduction.html">
-            
-                
-                    <a href="./Introduction.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.</b>
-                        
                         Introduction
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="2" data-path="Configuration.html">
+        <li class="chapter " data-level="1" data-path="configuration.html">
             
                 
-                    <a href="./Configuration.html">
+                    <a href="./configuration.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>2.</b>
+                            <b>1.</b>
                         
                         Configuration
                     </a>
@@ -112,14 +99,14 @@
             
         </li>
     
-        <li class="chapter " data-level="3" data-path="Compile.html">
+        <li class="chapter " data-level="2" data-path="compile.html">
             
                 
-                    <a href="./Compile.html">
+                    <a href="./compile.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>3.</b>
+                            <b>2.</b>
                         
                         Compile
                     </a>
@@ -127,14 +114,14 @@
             
         </li>
     
-        <li class="chapter " data-level="4" data-path="Racing.html">
+        <li class="chapter " data-level="3" data-path="race-condition.html">
             
                 
-                    <a href="./Racing.html">
+                    <a href="./race-condition.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>4.</b>
+                            <b>3.</b>
                         
                         Race Condition
                     </a>
@@ -142,10 +129,25 @@
             
         </li>
     
-        <li class="chapter " data-level="5" data-path="Deadlock.html">
+        <li class="chapter active" data-level="4" data-path="solution-race-condition.html">
             
                 
-                    <a href="./Deadlock.html">
+                    <a href="./solution-race-condition.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Solution: Race Condition
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="deadlock.html">
+            
+                
+                    <a href="./deadlock.html">
                 
                         <i class="fa fa-check"></i>
                         
@@ -157,61 +159,46 @@
             
         </li>
     
-        <li class="chapter " data-level="6" data-path="Starvation.html">
+        <li class="chapter " data-level="6" data-path="solution-deadlock.html">
             
                 
-                    <a href="./Starvation.html">
+                    <a href="./solution-deadlock.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>6.</b>
                         
-                        Starvation
+                        Solution: Deadlock
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="7" data-path="Pass.html">
+        <li class="chapter " data-level="7" data-path="passing-arguments.html">
             
                 
-                    <a href="./Pass.html">
+                    <a href="./passing-arguments.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>7.</b>
                         
-                        Passing arguments
+                        Passing Arguments
                     </a>
             
             
         </li>
     
-        <li class="chapter active" data-level="8" data-path="Answers.html">
+        <li class="chapter " data-level="8" data-path="example-sorting-common-integers-in-two-lists.html">
             
                 
-                    <a href="./Answers.html">
+                    <a href="./example-sorting-common-integers-in-two-lists.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>8.</b>
                         
-                        Answers
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="9" data-path="Useful.html">
-            
-                
-                    <a href="./Useful.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>9.</b>
-                        
-                        Useful links
+                        Example: Sorting Common Integers in Two Lists
                     </a>
             
             
@@ -240,7 +227,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="./" ></a>
+        <a href="./" >Introduction to pThread</a>
     </h1>
 </div>
 
@@ -250,13 +237,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="answers-to-the-exersise">Answers to the exersise</h1>
-<ul>
-<li><p>Here is only one possible answer of those problems. It&apos;s ok you solve those problem in a different way.</p>
-</li>
-<li><p>avoid_race.c</p>
-</li>
-</ul>
+                        <h1 id="solution-to-race-condition">Solution to Race Condition</h1>
 <pre><code class="lang-c"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;pthread.h&gt;</span></span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
 <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
@@ -265,7 +246,7 @@
 
 <span class="hljs-function"><span class="hljs-keyword">void</span> *<span class="hljs-title">count</span> <span class="hljs-params">(<span class="hljs-keyword">void</span> *arg)</span></span>;
 
-<span class="hljs-keyword">volatile</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;
 <span class="hljs-keyword">pthread_mutex_t</span> mutex = PTHREAD_MUTEX_INITIALIZER;
 
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>{
@@ -283,7 +264,7 @@
 
 <span class="hljs-function"><span class="hljs-keyword">void</span> *<span class="hljs-title">count</span> <span class="hljs-params">(<span class="hljs-keyword">void</span> *arg)</span> </span>{
 
-    <span class="hljs-keyword">volatile</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
 
     <span class="hljs-keyword">for</span> (; i &lt; NITERS; i++) {
         pthread_mutex_lock(&amp;mutex);
@@ -294,58 +275,7 @@
     <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;
 }
 </code></pre>
-<ul>
-<li>avoid_deadlock.c</li>
-</ul>
-<pre><code class="lang-c"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
-<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;pthread.h&gt;</span></span>
-<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
-
-<span class="hljs-function"><span class="hljs-keyword">void</span> *<span class="hljs-title">Allen</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *arg)</span></span>;
-<span class="hljs-function"><span class="hljs-keyword">void</span> *<span class="hljs-title">Bob</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *arg)</span></span>;
-
-<span class="hljs-keyword">pthread_mutex_t</span> book1;
-<span class="hljs-keyword">pthread_mutex_t</span> book2;
-<span class="hljs-keyword">pthread_cond_t</span> Allenfinish;
-
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
-    <span class="hljs-keyword">pthread_t</span> tid1, tid2;
-    pthread_create(&amp;tid1, <span class="hljs-literal">NULL</span>, &amp;Allen, <span class="hljs-literal">NULL</span>);
-    pthread_create(&amp;tid2, <span class="hljs-literal">NULL</span>, &amp;Bob, <span class="hljs-literal">NULL</span>);
-
-    pthread_join(tid1, <span class="hljs-literal">NULL</span>);
-    pthread_join(tid2, <span class="hljs-literal">NULL</span>);
-
-    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-}
-
-<span class="hljs-function"><span class="hljs-keyword">void</span> *<span class="hljs-title">Allen</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *arg)</span> </span>{
-    pthread_mutex_lock(&amp;book1);
-    sleep(<span class="hljs-number">5</span>);
-    pthread_mutex_lock(&amp;book2);
-    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Allen has collected all books he need, he is going to do homework!\n&quot;</span>);
-    sleep(<span class="hljs-number">5</span>);
-    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Allen has finished his homework, he has returned all books he borrowed!\n&quot;</span>);
-    pthread_mutex_unlock(&amp;book2);
-    pthread_mutex_unlock(&amp;book1);
-    pthread_cond_signal(&amp;Allenfinish);
-}
-
-<span class="hljs-function"><span class="hljs-keyword">void</span> *<span class="hljs-title">Bob</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *arg)</span> </span>{
-    pthread_mutex_lock(&amp;book2);
-    pthread_cond_wait(&amp;Allenfinish, &amp;book2);
-
-    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Bob knows he can borrow those two books now!\n&quot;</span>);
-    pthread_mutex_lock(&amp;book1);
-    sleep(<span class="hljs-number">5</span>);
-    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Bob has finished his homework now!\n&quot;</span>);
-    pthread_mutex_unlock(&amp;book1);
-    pthread_mutex_unlock(&amp;book2);
-}
-</code></pre>
-<ul>
-<li>No answers to Starvation to problem. It&apos;s really a easy one and you can solve it!</li>
-</ul>
+<p><img src="assets/race_sol.png" alt=""></p>
 
                     
                     </section>
@@ -356,10 +286,10 @@
         </div>
 
         
-        <a href="./Pass.html" class="navigation navigation-prev " aria-label="Previous page: Passing arguments"><i class="fa fa-angle-left"></i></a>
+        <a href="./race-condition.html" class="navigation navigation-prev " aria-label="Previous page: Race Condition"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="./Useful.html" class="navigation navigation-next " aria-label="Next page: Useful links"><i class="fa fa-angle-right"></i></a>
+        <a href="./deadlock.html" class="navigation navigation-next " aria-label="Next page: Deadlock"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
