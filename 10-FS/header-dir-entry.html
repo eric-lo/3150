@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Linux File System Calls | File System</title>
+        <title>Header: Dir Entry | File System</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -39,10 +39,10 @@
         
     
     
-    <link rel="next" href="./directory-related-calls.html" />
+    <link rel="next" href="./read-the-header.html" />
     
     
-    <link rel="prev" href="./endia-ness-in-fat32.html" />
+    <link rel="prev" href="./header-boot-sector.html" />
     
 
         
@@ -51,9 +51,9 @@
         
         
     <div class="book"
-        data-level="2"
-        data-chapter-title="Linux File System Calls"
-        data-filepath="linux-file-system-calls.md"
+        data-level="5.1.2"
+        data-chapter-title="Header: Dir Entry"
+        data-filepath="header-dir-entry.md"
         data-basepath="."
         data-revision="Mon Apr 03 2017 04:36:23 GMT+0800 (HKT)"
         data-innerlanguage="">
@@ -216,7 +216,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2" data-path="linux-file-system-calls.html">
+        <li class="chapter " data-level="2" data-path="linux-file-system-calls.html">
             
                 
                     <a href="./linux-file-system-calls.html">
@@ -308,7 +308,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.1.2" data-path="header-dir-entry.html">
+        <li class="chapter active" data-level="5.1.2" data-path="header-dir-entry.html">
             
                 
                     <a href="./header-dir-entry.html">
@@ -441,38 +441,84 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="linux-file-system-calls">Linux File System Calls</h1>
-<p>To the kernel, all open files are referred to by File Descriptors. A file descriptor is a non-negative number. When we open an existing file or create a new file, the kernel returns a file descriptor to the process. When we want to read or write a file, we identify the file with the file descriptor.</p>
-<p>Each Linux process (except perhaps a daemon) should expect to have three standard POSIX file descriptors:</p>
+                        <h1 id="header-dir-entry">Header: Dir Entry</h1>
+<pre><code class="lang-c"><span class="hljs-keyword">struct</span> msdos_dir_entry {
+        __u8    name[MSDOS_NAME];<span class="hljs-comment">/* name and extension */</span>
+        __u8    attr;           <span class="hljs-comment">/* attribute bits */</span>
+        __u8    lcase;          <span class="hljs-comment">/* Case for base and extension */</span>
+        __u8    ctime_cs;       <span class="hljs-comment">/* Creation time, centiseconds (0-199) */</span>
+        __le16  ctime;          <span class="hljs-comment">/* Creation time */</span>
+        __le16  cdate;          <span class="hljs-comment">/* Creation date */</span>
+        __le16  adate;          <span class="hljs-comment">/* Last access date */</span>
+        __le16  starthi;        <span class="hljs-comment">/* High 16 bits of cluster in FAT32 */</span>
+        __le16  time,date,start;<span class="hljs-comment">/* time, date and first cluster */</span>
+        __le32  size;           <span class="hljs-comment">/* file size (in bytes) */</span>
+};
+</code></pre>
+<p>This is the predefined structure for each directory entry. Once you reach the beginning of that cluster, <code>fread</code> the size of the structure, and you can get all the parameters in the variables respectively.</p>
+<h2 id="attributes">Attributes</h2>
+<p>In the structure, we can locate 1 byte of data storing the attribute of the file. Actually this tells us a lot:</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">POSIX Constants Name</th>
-<th style="text-align:left">File Descriptors</th>
-<th style="text-align:left">Description</th>
+<th>Bit</th>
+<th>Mask</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">STDIN_FILENO</td>
-<td style="text-align:left">0</td>
-<td style="text-align:left">Standard input</td>
+<td>0</td>
+<td>0x01</td>
+<td>Read-Only</td>
 </tr>
 <tr>
-<td style="text-align:left">STDOUT_FILENO</td>
-<td style="text-align:left">1</td>
-<td style="text-align:left">Standard output</td>
+<td>1</td>
+<td>0x02</td>
+<td>Hidden</td>
 </tr>
 <tr>
-<td style="text-align:left">STDERR_FILENO</td>
-<td style="text-align:left">2</td>
-<td style="text-align:left">Standard error</td>
+<td>2</td>
+<td>0x04</td>
+<td>System Files</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0x08</td>
+<td>Volume Label</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0x10</td>
+<td>Subdirectory</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0x20</td>
+<td>Archive</td>
+</tr>
+<tr>
+<td>6</td>
+<td>0x40</td>
+<td>Device</td>
+</tr>
+<tr>
+<td>7</td>
+<td>0x80</td>
+<td>Reserved</td>
+</tr>
+<tr>
+<td>8</td>
+<td>0x0F</td>
+<td>Long File Name (LFN)</td>
 </tr>
 </tbody>
 </table>
-<p>There are three &quot;system file tables&quot;: There is a file descriptor table that maps file descriptors (small integers) to entries in the open file table. Each entry in the open file table contains (among other things) a file offset and a pointer to the in-memory inode table. In open file table, one file table entry per open() call, and it is shared if the file descriptor is dup()ed or fork()ed.</p>
-<p><img src="assets/fd.png" alt=""></p>
-<p>File descriptors for a single process, file table and inode table. Note that multiple file descriptors can refer to the same file table entry (e.g., as a result of the dup system call) and that multiple file table entries can in turn refer to the same inode (if it has been opened multiple times; the table is still simplified because it represents inodes by file names, even though an inode can have multiple names). File descriptor 3 does not refer to anything in the file table, signifying that it has been closed.</p>
+<p>In C programming, we can apply bitwise AND (&amp;) to check a particular attribute, eg:</p>
+<pre><code class="lang-c"><span class="hljs-keyword">if</span>((dir_entry.attr &amp; <span class="hljs-number">0x10</span>) != <span class="hljs-number">0</span>) {
+  <span class="hljs-comment">/* It is a subdirectory */</span>
+ }
+</code></pre>
 
                     
                     </section>
@@ -483,10 +529,10 @@
         </div>
 
         
-        <a href="./endia-ness-in-fat32.html" class="navigation navigation-prev " aria-label="Previous page: Endian-ness in FAT32"><i class="fa fa-angle-left"></i></a>
+        <a href="./header-boot-sector.html" class="navigation navigation-prev " aria-label="Previous page: Header: Boot Sector"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="./directory-related-calls.html" class="navigation navigation-next " aria-label="Next page: Directory Related Calls"><i class="fa fa-angle-right"></i></a>
+        <a href="./read-the-header.html" class="navigation navigation-next " aria-label="Next page: Read the header"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

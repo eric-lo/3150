@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Linux File System Calls | File System</title>
+        <title>Read the header | File System</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -39,10 +39,10 @@
         
     
     
-    <link rel="next" href="./directory-related-calls.html" />
+    <link rel="next" href="./8+3-file-name.html" />
     
     
-    <link rel="prev" href="./endia-ness-in-fat32.html" />
+    <link rel="prev" href="./header-dir-entry.html" />
     
 
         
@@ -51,9 +51,9 @@
         
         
     <div class="book"
-        data-level="2"
-        data-chapter-title="Linux File System Calls"
-        data-filepath="linux-file-system-calls.md"
+        data-level="5.1.3"
+        data-chapter-title="Read the header"
+        data-filepath="read-the-header.md"
         data-basepath="."
         data-revision="Mon Apr 03 2017 04:36:23 GMT+0800 (HKT)"
         data-innerlanguage="">
@@ -216,7 +216,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2" data-path="linux-file-system-calls.html">
+        <li class="chapter " data-level="2" data-path="linux-file-system-calls.html">
             
                 
                     <a href="./linux-file-system-calls.html">
@@ -323,7 +323,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.1.3" data-path="read-the-header.html">
+        <li class="chapter active" data-level="5.1.3" data-path="read-the-header.html">
             
                 
                     <a href="./read-the-header.html">
@@ -441,38 +441,38 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="linux-file-system-calls">Linux File System Calls</h1>
-<p>To the kernel, all open files are referred to by File Descriptors. A file descriptor is a non-negative number. When we open an existing file or create a new file, the kernel returns a file descriptor to the process. When we want to read or write a file, we identify the file with the file descriptor.</p>
-<p>Each Linux process (except perhaps a daemon) should expect to have three standard POSIX file descriptors:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">POSIX Constants Name</th>
-<th style="text-align:left">File Descriptors</th>
-<th style="text-align:left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">STDIN_FILENO</td>
-<td style="text-align:left">0</td>
-<td style="text-align:left">Standard input</td>
-</tr>
-<tr>
-<td style="text-align:left">STDOUT_FILENO</td>
-<td style="text-align:left">1</td>
-<td style="text-align:left">Standard output</td>
-</tr>
-<tr>
-<td style="text-align:left">STDERR_FILENO</td>
-<td style="text-align:left">2</td>
-<td style="text-align:left">Standard error</td>
-</tr>
-</tbody>
-</table>
-<p>There are three &quot;system file tables&quot;: There is a file descriptor table that maps file descriptors (small integers) to entries in the open file table. Each entry in the open file table contains (among other things) a file offset and a pointer to the in-memory inode table. In open file table, one file table entry per open() call, and it is shared if the file descriptor is dup()ed or fork()ed.</p>
-<p><img src="assets/fd.png" alt=""></p>
-<p>File descriptors for a single process, file table and inode table. Note that multiple file descriptors can refer to the same file table entry (e.g., as a result of the dup system call) and that multiple file table entries can in turn refer to the same inode (if it has been opened multiple times; the table is still simplified because it represents inodes by file names, even though an inode can have multiple names). File descriptor 3 does not refer to anything in the file table, signifying that it has been closed.</p>
+                        <h1 id="read-the-header">Read the header</h1>
+<p>After you declare the structure for boot sector, you can read the device now.</p>
+<h2 id="examples">Examples</h2>
+<p><strong> IMPORTANT </strong>
+Please create a virtual disk beforehand.</p>
+<pre><code class="lang-c">  FILE *fp = <span class="hljs-literal">NULL</span>;
+    <span class="hljs-keyword">struct</span> fat_boot_sector boot_entry;
+
+    fp = fopen(device_name, <span class="hljs-string">&quot;r+&quot;</span>);
+    <span class="hljs-keyword">if</span>(fp == <span class="hljs-literal">NULL</span>)
+        <span class="hljs-built_in">exit</span>(-<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">uint32_t</span> boot_entry_size = fread(&amp;boot_entry, <span class="hljs-number">1</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> fat_boot_sector), fp);
+    <span class="hljs-keyword">if</span>(boot_entry_size != <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> fat_boot_sector))
+        <span class="hljs-built_in">exit</span>(-<span class="hljs-number">1</span>);
+    <span class="hljs-comment">//  Bytes per sector. Allowed values include 512, 1024, 2048, and 4096</span>
+    <span class="hljs-keyword">uint16_t</span> bps = boot_entry.sector_size[<span class="hljs-number">0</span>] + ((<span class="hljs-keyword">uint16_t</span>) boot_entry.sector_size[<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-number">8</span>);
+    <span class="hljs-keyword">off_t</span> root_entry_offset = ( boot_entry.reserved +
+                                boot_entry.fats * boot_entry.fat32.length) * bps;
+    <span class="hljs-keyword">uint32_t</span> bpc = bps * boot_entry.sec_per_clus;
+    <span class="hljs-keyword">off_t</span> fat_offset = bps * boot_entry.reserved;
+
+    disk_info-&gt;fp = fp;
+    disk_info-&gt;root_entry_offset = root_entry_offset;
+    disk_info-&gt;bpc = bpc;
+    disk_info-&gt;bps = bps;
+    disk_info-&gt;spc = boot_entry.sec_per_clus;
+    disk_info-&gt;reserved_sectors = boot_entry.reserved;
+    disk_info-&gt;fat_offset = fat_offset;
+    disk_info-&gt;num_fats = boot_entry.fats;
+    disk_info-&gt;fat_size = boot_entry.fat32.length;
+</code></pre>
+<p>In the example, the program takes in a <code>device_name</code>, and read it from the beginning to the size of <code>fat_boot_sector</code> structure. After that the parameters have been stored and can be retrieved from the variables in the structure.</p>
 
                     
                     </section>
@@ -483,10 +483,10 @@
         </div>
 
         
-        <a href="./endia-ness-in-fat32.html" class="navigation navigation-prev " aria-label="Previous page: Endian-ness in FAT32"><i class="fa fa-angle-left"></i></a>
+        <a href="./header-dir-entry.html" class="navigation navigation-prev " aria-label="Previous page: Header: Dir Entry"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="./directory-related-calls.html" class="navigation navigation-next " aria-label="Next page: Directory Related Calls"><i class="fa fa-angle-right"></i></a>
+        <a href="./8+3-file-name.html" class="navigation navigation-next " aria-label="Next page: 8+3 File Name"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

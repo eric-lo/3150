@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Linux File System Calls | File System</title>
+        <title>Overview of FAT32 | File System</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -39,10 +39,10 @@
         
     
     
-    <link rel="next" href="./directory-related-calls.html" />
+    <link rel="next" href="./accessing-fat-using-c.html" />
     
     
-    <link rel="prev" href="./endia-ness-in-fat32.html" />
+    <link rel="prev" href="./directory-related-calls.html" />
     
 
         
@@ -51,9 +51,9 @@
         
         
     <div class="book"
-        data-level="2"
-        data-chapter-title="Linux File System Calls"
-        data-filepath="linux-file-system-calls.md"
+        data-level="4"
+        data-chapter-title="Overview of FAT32"
+        data-filepath="overview-of-fat32.md"
         data-basepath="."
         data-revision="Mon Apr 03 2017 04:36:23 GMT+0800 (HKT)"
         data-innerlanguage="">
@@ -216,7 +216,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2" data-path="linux-file-system-calls.html">
+        <li class="chapter " data-level="2" data-path="linux-file-system-calls.html">
             
                 
                     <a href="./linux-file-system-calls.html">
@@ -246,7 +246,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4" data-path="overview-of-fat32.html">
+        <li class="chapter active" data-level="4" data-path="overview-of-fat32.html">
             
                 
                     <a href="./overview-of-fat32.html">
@@ -441,38 +441,154 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="linux-file-system-calls">Linux File System Calls</h1>
-<p>To the kernel, all open files are referred to by File Descriptors. A file descriptor is a non-negative number. When we open an existing file or create a new file, the kernel returns a file descriptor to the process. When we want to read or write a file, we identify the file with the file descriptor.</p>
-<p>Each Linux process (except perhaps a daemon) should expect to have three standard POSIX file descriptors:</p>
+                        <h1 id="overview-of-fat32">Overview of FAT32</h1>
+<p><img src="assets/FATOverview.png" alt=""></p>
+<h2 id="overview">Overview</h2>
+<p>This figure summarized the FAT32 filesystem.</p>
+<p>The first area contains the <em>reserved area</em> and <em>FAT Area</em>. They are counted in term of <strong>sectors</strong>.</p>
+<p>Immediately after <em>FAT area</em> , it is the starting point of <strong>cluster 2</strong>. It contains the information on the root directory and all data stored. In these areas they are counted in term of <strong>clusters</strong>.</p>
+<h2 id="boot-sector">Boot sector</h2>
+<p>It is always at the <em>first</em> sector of the disk, and it is used for starting up your computer. It contains:</p>
+<ul>
+<li><p>An x86-based CPU jump instruction.</p>
+</li>
+<li><p>The original equipment manufacturer identification (OEM ID).</p>
+</li>
+<li><p>The BIOS parameter block (BPB), a data structure.</p>
+</li>
+<li><p>The extended BPB.</p>
+</li>
+<li><p>The executable boot code (or bootstrap code) that starts the operating system.</p>
+</li>
+</ul>
+<p>Among these elements, the important thing is the <strong>BIOS parameter block (BPB)</strong>, which allows us to obtain the fundamental information about the FAT file system.</p>
+<p>Here is the summary table on the fields for FAT32.</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">POSIX Constants Name</th>
-<th style="text-align:left">File Descriptors</th>
-<th style="text-align:left">Description</th>
+<th style="text-align:left"><strong>Byte Offset</strong></th>
+<th style="text-align:left"><strong>Field Length</strong></th>
+<th style="text-align:left"><strong>Sample Value</strong></th>
+<th style="text-align:left"><strong>Field Name and Definition</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">STDIN_FILENO</td>
-<td style="text-align:left">0</td>
-<td style="text-align:left">Standard input</td>
+<td style="text-align:left">0x0B</td>
+<td style="text-align:left">2 bytes</td>
+<td style="text-align:left">00 02</td>
+<td style="text-align:left"><strong>Bytes Per Sector</strong>. The size of a hardware sector. Valid decimal values for this field are 512, 1024, 2048, and 4096.</td>
 </tr>
 <tr>
-<td style="text-align:left">STDOUT_FILENO</td>
-<td style="text-align:left">1</td>
-<td style="text-align:left">Standard output</td>
+<td style="text-align:left">0x0D</td>
+<td style="text-align:left">1 byte</td>
+<td style="text-align:left">10</td>
+<td style="text-align:left"><strong>Sectors Per Cluster</strong>.The number of sectors in a cluster. The default cluster size for a volume depends on the volume size. Valid decimal values for this field are 1, 2, 4, 8, 16, 32, 64, and 128. The Windows Server 2003 implementation of FAT32 allows for creation of volumes up to a maximum of 32 GB. However, larger volumes created by other operating systems (Windows 95 OSR2 and later) are accessible in Windows Server 2003.</td>
 </tr>
 <tr>
-<td style="text-align:left">STDERR_FILENO</td>
-<td style="text-align:left">2</td>
-<td style="text-align:left">Standard error</td>
+<td style="text-align:left">0x0E</td>
+<td style="text-align:left">2 bytes</td>
+<td style="text-align:left">24 00</td>
+<td style="text-align:left"><strong>Reserved Sectors</strong>. The number of sectors that precede the start of the first FAT, including the boot sector.</td>
+</tr>
+<tr>
+<td style="text-align:left">0x10</td>
+<td style="text-align:left">1 byte</td>
+<td style="text-align:left">02</td>
+<td style="text-align:left"><strong>Number of FATs</strong>. The number of copies of the FAT on the volume. The value of this field is always 2.</td>
+</tr>
+<tr>
+<td style="text-align:left">0x11</td>
+<td style="text-align:left">2 bytes</td>
+<td style="text-align:left">00 00</td>
+<td style="text-align:left"><strong>Root Entries (FAT12/FAT16 only)</strong>. For FAT32 volumes, this field must be set to zero.</td>
+</tr>
+<tr>
+<td style="text-align:left">0x13</td>
+<td style="text-align:left">2 bytes</td>
+<td style="text-align:left">00 00</td>
+<td style="text-align:left"><strong>Small Sectors (FAT12/FAT16 only)</strong>. For FAT32 volumes, this field must be set to zero.</td>
+</tr>
+<tr>
+<td style="text-align:left">0x15</td>
+<td style="text-align:left">1 byte</td>
+<td style="text-align:left">F8</td>
+<td style="text-align:left"><strong>Media Descriptor</strong>. Provides information about the media being used. A value of 0xF8 indicates a hard disk and 0xF0 indicates a high-density 3.5-inch floppy disk. Media descriptor entries are a legacy of MS-DOS FAT16 disks and are not used in Windows Server 2003.</td>
+</tr>
+<tr>
+<td style="text-align:left">0x16</td>
+<td style="text-align:left">2 bytes</td>
+<td style="text-align:left">00 00</td>
+<td style="text-align:left"><strong>Sectors Per FAT (FAT12/FAT16 only)</strong>. For FAT32 volumes, this field must be set to zero.</td>
+</tr>
+<tr>
+<td style="text-align:left">0x18</td>
+<td style="text-align:left">2 bytes</td>
+<td style="text-align:left">3F 00</td>
+<td style="text-align:left"><strong>Sectors Per Track</strong>. Contains the &quot;sectors per track&quot; geometry value for disks that use INT 13h. The volume is broken down into tracks by multiple heads and cylinders.</td>
+</tr>
+<tr>
+<td style="text-align:left">0x1A</td>
+<td style="text-align:left">2 bytes</td>
+<td style="text-align:left">FF 00</td>
+<td style="text-align:left"><strong>Number of Heads</strong>. Contains the &quot;count of heads&quot; geometry value for disks that use INT 13h. For example, on a 1.44-MB, 3.5-inch floppy disk this value is 2.</td>
+</tr>
+<tr>
+<td style="text-align:left">0x1C</td>
+<td style="text-align:left">4 bytes</td>
+<td style="text-align:left">3F 00 00 00</td>
+<td style="text-align:left"><strong>Hidden Sectors</strong>. The number of sectors on the volume before the boot sector. This value is used during the boot sequence to calculate the absolute offset to the root directory and data areas. This field is generally only relevant for media that are visible on interrupt 13h. It must always be zero on media that are not partitioned.</td>
+</tr>
+<tr>
+<td style="text-align:left">0x20</td>
+<td style="text-align:left">4 bytes</td>
+<td style="text-align:left">1D 91 11 01</td>
+<td style="text-align:left"><strong>Large Sectors</strong>. Contains the total number of sectors in the FAT32 volume.</td>
+</tr>
+<tr>
+<td style="text-align:left">0x24</td>
+<td style="text-align:left">4 bytes</td>
+<td style="text-align:left">2A 22 00 00</td>
+<td style="text-align:left"><strong>Sectors Per FAT (FAT32 only)</strong>. The number of sectors occupied by each FAT on the volume. The computer uses this number and the number of FATs and reserved sectors (described in this table) to determine where the root directory begins. The computer can also determine where the user data area of the volume begins based on the number of entries in the root directory.</td>
+</tr>
+<tr>
+<td style="text-align:left">0x28</td>
+<td style="text-align:left">2 bytes</td>
+<td style="text-align:left">00 00</td>
+<td style="text-align:left">Not used by Windows Server 2003.</td>
+</tr>
+<tr>
+<td style="text-align:left">0x2A</td>
+<td style="text-align:left">2 bytes</td>
+<td style="text-align:left">00 00</td>
+<td style="text-align:left"><strong>File System Version (FAT32 only)</strong>. The high byte is the major revision number; the low byte is the minor revision number. This field supports the ability to extend the FAT32 media type in the future with concern for old FAT32 drivers mounting the volume. Both bytes are zero in Windows Server 2003, Windows 2000, and Windows Me and earlier.</td>
+</tr>
+<tr>
+<td style="text-align:left">0x2C</td>
+<td style="text-align:left">4 bytes</td>
+<td style="text-align:left">02 00 00 00</td>
+<td style="text-align:left"><strong>Root Cluster Number (FAT32 only)</strong>. The cluster number of the first cluster of the root directory. This value is typically, but not always, 2.</td>
+</tr>
+<tr>
+<td style="text-align:left">0x30</td>
+<td style="text-align:left">2 bytes</td>
+<td style="text-align:left">01 00</td>
+<td style="text-align:left"><strong>File System Information Sector Number (FAT32 only)</strong>. The sector number of the File System Information (FSINFO) structure in the reserved area of the FAT32 volume. The value is typically 1. A copy of the FSINFO structure is kept in the Backup Boot Sector, but it is not kept up-to-date.</td>
+</tr>
+<tr>
+<td style="text-align:left">0x32</td>
+<td style="text-align:left">2 bytes</td>
+<td style="text-align:left">06 00</td>
+<td style="text-align:left"><strong>Backup Boot Sector (FAT32 only)</strong>. A value other than zero specifies the sector number in the reserved area of the volume where a copy of the boot sector is stored. The value of this field is typically 6. No other value is recommended.</td>
+</tr>
+<tr>
+<td style="text-align:left">0x34</td>
+<td style="text-align:left">12 bytes</td>
+<td style="text-align:left">00 00 00 00 00 00 00 00 00 00 00 00</td>
+<td style="text-align:left"><strong>Reserved (FAT32 only)</strong>. Reserved space for future expansion. The value of this field must always be zero.</td>
 </tr>
 </tbody>
 </table>
-<p>There are three &quot;system file tables&quot;: There is a file descriptor table that maps file descriptors (small integers) to entries in the open file table. Each entry in the open file table contains (among other things) a file offset and a pointer to the in-memory inode table. In open file table, one file table entry per open() call, and it is shared if the file descriptor is dup()ed or fork()ed.</p>
-<p><img src="assets/fd.png" alt=""></p>
-<p>File descriptors for a single process, file table and inode table. Note that multiple file descriptors can refer to the same file table entry (e.g., as a result of the dup system call) and that multiple file table entries can in turn refer to the same inode (if it has been opened multiple times; the table is still simplified because it represents inodes by file names, even though an inode can have multiple names). File descriptor 3 does not refer to anything in the file table, signifying that it has been closed.</p>
 
                     
                     </section>
@@ -483,10 +599,10 @@
         </div>
 
         
-        <a href="./endia-ness-in-fat32.html" class="navigation navigation-prev " aria-label="Previous page: Endian-ness in FAT32"><i class="fa fa-angle-left"></i></a>
+        <a href="./directory-related-calls.html" class="navigation navigation-prev " aria-label="Previous page: Directory Related Calls"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="./directory-related-calls.html" class="navigation navigation-next " aria-label="Next page: Directory Related Calls"><i class="fa fa-angle-right"></i></a>
+        <a href="./accessing-fat-using-c.html" class="navigation navigation-next " aria-label="Next page: Accessing FAT using C"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

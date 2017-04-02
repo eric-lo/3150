@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Linux File System Calls | File System</title>
+        <title>Reference | File System</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -39,10 +39,8 @@
         
     
     
-    <link rel="next" href="./directory-related-calls.html" />
     
-    
-    <link rel="prev" href="./endia-ness-in-fat32.html" />
+    <link rel="prev" href="./finding-next-cluster.html" />
     
 
         
@@ -51,9 +49,9 @@
         
         
     <div class="book"
-        data-level="2"
-        data-chapter-title="Linux File System Calls"
-        data-filepath="linux-file-system-calls.md"
+        data-level="6"
+        data-chapter-title="Reference"
+        data-filepath="reference.md"
         data-basepath="."
         data-revision="Mon Apr 03 2017 04:36:23 GMT+0800 (HKT)"
         data-innerlanguage="">
@@ -216,7 +214,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2" data-path="linux-file-system-calls.html">
+        <li class="chapter " data-level="2" data-path="linux-file-system-calls.html">
             
                 
                     <a href="./linux-file-system-calls.html">
@@ -393,7 +391,7 @@
             
         </li>
     
-        <li class="chapter " data-level="6" data-path="reference.html">
+        <li class="chapter active" data-level="6" data-path="reference.html">
             
                 
                     <a href="./reference.html">
@@ -441,38 +439,15 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="linux-file-system-calls">Linux File System Calls</h1>
-<p>To the kernel, all open files are referred to by File Descriptors. A file descriptor is a non-negative number. When we open an existing file or create a new file, the kernel returns a file descriptor to the process. When we want to read or write a file, we identify the file with the file descriptor.</p>
-<p>Each Linux process (except perhaps a daemon) should expect to have three standard POSIX file descriptors:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">POSIX Constants Name</th>
-<th style="text-align:left">File Descriptors</th>
-<th style="text-align:left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">STDIN_FILENO</td>
-<td style="text-align:left">0</td>
-<td style="text-align:left">Standard input</td>
-</tr>
-<tr>
-<td style="text-align:left">STDOUT_FILENO</td>
-<td style="text-align:left">1</td>
-<td style="text-align:left">Standard output</td>
-</tr>
-<tr>
-<td style="text-align:left">STDERR_FILENO</td>
-<td style="text-align:left">2</td>
-<td style="text-align:left">Standard error</td>
-</tr>
-</tbody>
-</table>
-<p>There are three &quot;system file tables&quot;: There is a file descriptor table that maps file descriptors (small integers) to entries in the open file table. Each entry in the open file table contains (among other things) a file offset and a pointer to the in-memory inode table. In open file table, one file table entry per open() call, and it is shared if the file descriptor is dup()ed or fork()ed.</p>
-<p><img src="assets/fd.png" alt=""></p>
-<p>File descriptors for a single process, file table and inode table. Note that multiple file descriptors can refer to the same file table entry (e.g., as a result of the dup system call) and that multiple file table entries can in turn refer to the same inode (if it has been opened multiple times; the table is still simplified because it represents inodes by file names, even though an inode can have multiple names). File descriptor 3 does not refer to anything in the file table, signifying that it has been closed.</p>
+                        <h1 id="reference">Reference</h1>
+<p>If you wish to know more about the FAT32 file system, please take a look at the following resources.</p>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Design_of_the_FAT_file_system#File_Allocation_Table" target="_blank">https://en.wikipedia.org/wiki/Design_of_the_FAT_file_system#File_Allocation_Table</a></li>
+<li>FAT32 White Paper: <a href="https://staff.washington.edu/dittrich/misc/fatgen103.pdf" target="_blank">https://staff.washington.edu/dittrich/misc/fatgen103.pdf</a></li>
+<li><a href="https://technet.microsoft.com/en-us/library/cc976796.aspx" target="_blank">https://technet.microsoft.com/en-us/library/cc976796.aspx</a></li>
+<li><a href="https://www.pjrc.com/tech/8051/ide/fat32.html" target="_blank">https://www.pjrc.com/tech/8051/ide/fat32.html</a> </li>
+<li><a href="http://www.easeus.com/resource/fat32-disk-structure.htm" target="_blank">http://www.easeus.com/resource/fat32-disk-structure.htm</a></li>
+</ol>
 
                     
                     </section>
@@ -483,10 +458,8 @@
         </div>
 
         
-        <a href="./endia-ness-in-fat32.html" class="navigation navigation-prev " aria-label="Previous page: Endian-ness in FAT32"><i class="fa fa-angle-left"></i></a>
+        <a href="./finding-next-cluster.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Finding Next Cluster"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="./directory-related-calls.html" class="navigation navigation-next " aria-label="Next page: Directory Related Calls"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

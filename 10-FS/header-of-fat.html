@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Linux File System Calls | File System</title>
+        <title>Header of FAT | File System</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -39,10 +39,10 @@
         
     
     
-    <link rel="next" href="./directory-related-calls.html" />
+    <link rel="next" href="./header-boot-sector.html" />
     
     
-    <link rel="prev" href="./endia-ness-in-fat32.html" />
+    <link rel="prev" href="./accessing-fat-using-c.html" />
     
 
         
@@ -51,9 +51,9 @@
         
         
     <div class="book"
-        data-level="2"
-        data-chapter-title="Linux File System Calls"
-        data-filepath="linux-file-system-calls.md"
+        data-level="5.1"
+        data-chapter-title="Header of FAT"
+        data-filepath="header-of-fat.md"
         data-basepath="."
         data-revision="Mon Apr 03 2017 04:36:23 GMT+0800 (HKT)"
         data-innerlanguage="">
@@ -216,7 +216,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2" data-path="linux-file-system-calls.html">
+        <li class="chapter " data-level="2" data-path="linux-file-system-calls.html">
             
                 
                     <a href="./linux-file-system-calls.html">
@@ -277,7 +277,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="5.1" data-path="header-of-fat.html">
+        <li class="chapter active" data-level="5.1" data-path="header-of-fat.html">
             
                 
                     <a href="./header-of-fat.html">
@@ -441,38 +441,12 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="linux-file-system-calls">Linux File System Calls</h1>
-<p>To the kernel, all open files are referred to by File Descriptors. A file descriptor is a non-negative number. When we open an existing file or create a new file, the kernel returns a file descriptor to the process. When we want to read or write a file, we identify the file with the file descriptor.</p>
-<p>Each Linux process (except perhaps a daemon) should expect to have three standard POSIX file descriptors:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">POSIX Constants Name</th>
-<th style="text-align:left">File Descriptors</th>
-<th style="text-align:left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">STDIN_FILENO</td>
-<td style="text-align:left">0</td>
-<td style="text-align:left">Standard input</td>
-</tr>
-<tr>
-<td style="text-align:left">STDOUT_FILENO</td>
-<td style="text-align:left">1</td>
-<td style="text-align:left">Standard output</td>
-</tr>
-<tr>
-<td style="text-align:left">STDERR_FILENO</td>
-<td style="text-align:left">2</td>
-<td style="text-align:left">Standard error</td>
-</tr>
-</tbody>
-</table>
-<p>There are three &quot;system file tables&quot;: There is a file descriptor table that maps file descriptors (small integers) to entries in the open file table. Each entry in the open file table contains (among other things) a file offset and a pointer to the in-memory inode table. In open file table, one file table entry per open() call, and it is shared if the file descriptor is dup()ed or fork()ed.</p>
-<p><img src="assets/fd.png" alt=""></p>
-<p>File descriptors for a single process, file table and inode table. Note that multiple file descriptors can refer to the same file table entry (e.g., as a result of the dup system call) and that multiple file table entries can in turn refer to the same inode (if it has been opened multiple times; the table is still simplified because it represents inodes by file names, even though an inode can have multiple names). File descriptor 3 does not refer to anything in the file table, signifying that it has been closed.</p>
+                        <h1 id="c-header-of-fat">C Header of FAT</h1>
+<p>In Linux, there is already predefined header for accessing the FAT32 system. Just include :</p>
+<pre><code class="lang-c"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;linux/msdos_fs.h&gt;</span></span>
+</code></pre>
+<p>You can check the whole file in <code>/usr/include/linux/</code> folder.
+Inside this header, there is a predefined structure, called <strong>fat_boot_sector</strong> and <strong>msdos_dir_entry</strong>. This provides a simple way to get all the parameters</p>
 
                     
                     </section>
@@ -483,10 +457,10 @@
         </div>
 
         
-        <a href="./endia-ness-in-fat32.html" class="navigation navigation-prev " aria-label="Previous page: Endian-ness in FAT32"><i class="fa fa-angle-left"></i></a>
+        <a href="./accessing-fat-using-c.html" class="navigation navigation-prev " aria-label="Previous page: Accessing FAT using C"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="./directory-related-calls.html" class="navigation navigation-next " aria-label="Next page: Directory Related Calls"><i class="fa fa-angle-right"></i></a>
+        <a href="./header-boot-sector.html" class="navigation navigation-next " aria-label="Next page: Header: Boot Sector"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
