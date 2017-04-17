@@ -5,9 +5,9 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Introduction | Memory II</title>
+        <title>Pros and Cons of using mmap | Memory II</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta name="description" content="In this lab, we will learn about the advanced C functions of manipulating the memory.">
+        <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
         
         
@@ -37,8 +37,10 @@
         
     
     
-    <link rel="next" href="./shared-memory.html" />
+    <link rel="next" href="./program-optimization.html" />
     
+    
+    <link rel="prev" href="./write-to-file.html" />
     
 
         
@@ -47,9 +49,9 @@
         
         
     <div class="book"
-        data-level="0"
-        data-chapter-title="Introduction"
-        data-filepath="README.md"
+        data-level="2.3"
+        data-chapter-title="Pros and Cons of using mmap"
+        data-filepath="pros-and-cons-of-using-mmap.md"
         data-basepath="."
         data-revision="Mon Apr 17 2017 17:18:01 GMT+0800 (HKT)"
         data-innerlanguage="">
@@ -67,7 +69,7 @@
 
             
     
-        <li class="chapter active" data-level="0" data-path="index.html">
+        <li class="chapter " data-level="0" data-path="index.html">
             
                 
                     <a href="./index.html">
@@ -192,7 +194,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.3" data-path="pros-and-cons-of-using-mmap.html">
+        <li class="chapter active" data-level="2.3" data-path="pros-and-cons-of-using-mmap.html">
             
                 
                     <a href="./pros-and-cons-of-using-mmap.html">
@@ -281,8 +283,32 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="memory-ii">Memory II</h1>
-<p>In this lab, we will learn about the advanced C functions of manipulating the memory.</p>
+                        <h1 id="pros-and-cons-of-using-mmap">Pros and Cons of using mmap</h1>
+<p>Cons and pros</p>
+<p>Maybe you are wondering why do we use <code>mmap</code> for file access instead of the standard <code>read</code> and <code>write</code> system calls. We will list some advantages and disadvantages of <code>mmap</code> below.</p>
+<h2 id="advantages-of-mmap">Advantages of <code>mmap</code></h2>
+<ul>
+<li><p>Reading from and writing to a memory-mapped file avoids the extraneous copy that occurs when using the read or write system calls, where the data must be copied to and from a user-space buffer.</p>
+</li>
+<li><p>Aside from any potential page faults, reading from and writing to a memory-mapped file does not incur any system call or context switch overhead. It is as simple as accessing memory.</p>
+</li>
+<li><p>When multiple processes map the same object into memory, the data is shared among all the processes. This can save a lot of memory, which is common in the kind of server systems. Read-only and shared writable mappings are shared in their entirety; private writable mappings have their not-yet-COW (<a href="https://en.wikipedia.org/wiki/Copy-on-write" target="_blank">copy-on-write</a>) pages shared.</p>
+</li>
+</ul>
+<h2 id="disadvantages-of-mmap">Disadvantages of <code>mmap</code></h2>
+<ul>
+<li><p>Memory mappings are always an integer number of pages in size. Thus, the difference between the size of the backing file and an integer number of pages is &quot;wasted&quot; as slack space. For small files, a significant percentage of the mapping may be wasted. For example, with 4 KB pages, a 7 byte mapping wastes 4,089 bytes.</p>
+</li>
+<li><p>The memory mappings must fit into the process&apos; address space. With a 32-bit address space, a very large number of various-sized mappings can result in fragmentation of the address space, making it hard to find large free contiguous regions. This problem, of course, is much less apparent with a 64-bit address space.</p>
+</li>
+<li><p>There is overhead in creating and maintaining the memory mappings and associated data structures inside the kernel. This overhead is generally obviated by the elimination of the double copy mentioned in the previous section, particularly for larger and frequently accessed files.</p>
+</li>
+</ul>
+<p><strong>References:</strong></p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/258091/when-should-i-use-mmap-for-file-access" target="_blank">When should I use mmap for file access</a></li>
+<li><a href="https://www.safaribooksonline.com/library/view/linux-system-programming/0596009585/ch04s03.html" target="_blank">Linux System Programming</a></li>
+</ul>
 
                     
                     </section>
@@ -293,8 +319,10 @@
         </div>
 
         
+        <a href="./write-to-file.html" class="navigation navigation-prev " aria-label="Previous page: Write to file"><i class="fa fa-angle-left"></i></a>
         
-        <a href="./shared-memory.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Shared Memory"><i class="fa fa-angle-right"></i></a>
+        
+        <a href="./program-optimization.html" class="navigation navigation-next " aria-label="Next page: Program Optimization"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
