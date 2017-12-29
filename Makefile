@@ -1,11 +1,11 @@
-SUBDIRS = 1-c/program \
-    1-c/multiple_file \
-    2a-processbasic \
-	2b-processinkernel \
-	2e-pthread \
-	3-fs \
-	4a-memory-user \
-	4b-memory-kernel \
+SUBDIRS = 3-ProcessUser \
+	4-ProcessKernel \
+	5-Signal \
+	6-Memory \
+	7-Threading \
+	8-Synchronization \
+	9-File \
+	12-VirtualMemory \
 
 
 all:
