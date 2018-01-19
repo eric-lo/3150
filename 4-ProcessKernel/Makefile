@@ -7,15 +7,7 @@ EXE=\
 	printf_example_fast \
 	zombie\
 	share_opened_file \
-	suicide \
-        handle_int \
-        break_sleep \
-        many_signal \
         segv \
-        pause \
-        infinite_loop \
-        alarm \
-        alarm_fgets \
 	reparent \
 
 
