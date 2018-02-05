@@ -11,6 +11,6 @@ int main(void) {
 	printf("malloc() space  = %15p\n", malloc_ptr);
 	printf("Global variable = %15p\n", &global_int);
 	printf("Code & constant = %15p\n", constant_ptr);
-	printf("Code & constant = %15p\n", main);
+	printf("Main            = %15p\n", main);
 	return 0;
 }
