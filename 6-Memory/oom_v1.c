@@ -16,8 +16,8 @@ int main(void) {
 			break;
 		}
 		counter++;
-		printf("Allocated %lld MB (%10p)\n",
-			counter, ptr - 8);
+//		printf("Allocated %lld MB (%10p)\n",
+//			counter, ptr - 8);
 	}
 
 	printf("Take a look on me. I'm %d\n", getpid());

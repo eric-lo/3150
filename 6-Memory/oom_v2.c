@@ -18,7 +18,7 @@ int main(void) {
 			break;
 		}
 		counter++;
-		printf("Allocated %lld MB\n", counter);
+//		printf("Allocated %lld MB\n", counter);
 	}
 
 	return 0;

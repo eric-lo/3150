@@ -7,6 +7,7 @@ EXE= \
 	normal_strtok \
 	pthread_strtok \
 	pthread_strtok_r \
+	pthread_race_condition
 
 all: ${EXE}
 
