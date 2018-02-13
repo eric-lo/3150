@@ -6,7 +6,6 @@ EXE= \
 	pthread_hello_world \
 	pthread_sharing \
 	pthread_exit \
-	pthread_producer_consumer \
 
 all: ${EXE}
 

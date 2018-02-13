@@ -6,7 +6,8 @@
 
 void * do_your_job(void *input) {
 	printf("child thread:\tinitial input\t= %d\n", *((int *) input));
-	*((int *) input) = rand() % MAX;
+	*((int *) input) = 20;
+//	*((int *) input) = rand() % MAX;
 	printf("child thread:\tfinal input\t= %d\n", *((int *) input));
 	pthread_exit(NULL);
 }
