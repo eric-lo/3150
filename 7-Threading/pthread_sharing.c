@@ -2,25 +2,46 @@
 #include <stdlib.h>
 #include <pthread.h>
 
-#define MAX	100
+int shared = 10;
 
-void * do_your_job(void *input) {
-	printf("child thread:\tinitial input\t= %d\n", *((int *) input));
-	*((int *) input) = 20;
-//	*((int *) input) = rand() % MAX;
-	printf("child thread:\tfinal input\t= %d\n", *((int *) input));
+void * add(void *input) {
+	
+    int mylocal1 = shared;
+    
+    mylocal1 +=10;
+    
+    srand(time(NULL));
+    sleep(rand()%6);
+    
+    shared = mylocal1;
+    
 	pthread_exit(NULL);
 }
 
+void * minus(void *input) {
+    
+    int mylocal2 = shared;
+    
+    mylocal2 -=10;
+    
+    srand(time(NULL));
+    sleep(rand()%12);
+    
+    
+    shared = mylocal2;
+    
+    pthread_exit(NULL);
+}
+
+
+
 int main(void) {
-	int input;
-	pthread_t tid;
-
-	input = 10;
-
-	printf("main thread:\tinitial input\t= %d\n", input);
-	pthread_create(&tid, NULL, do_your_job, &input);
-	pthread_join(tid, NULL);
-	printf("main thread:\tfinal input\t= %d\n", input);
+	pthread_t tid1, tid2;
+    int input=0;
+	pthread_create(&tid1, NULL, add, &input);
+    pthread_create(&tid2, NULL, minus, &input);
+	pthread_join(tid1, NULL);
+    pthread_join(tid2, NULL);
+	printf("main thread:\tshared\t= %d\n", shared);
 	return 0;
 }

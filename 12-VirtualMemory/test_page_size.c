@@ -15,7 +15,7 @@ int main(int argc, char **argv) {
 	char c;
 
 	signal(SIGSEGV, handler);
-	prev_ptr = ptr = sbrk(0);	// mark the start of the heap.
+	prev_ptr = ptr = sbrk(0);	// current value of program break.
 	sbrk(1);			// force 1-page allocation.
 	while(1)
 		c = *(++ptr);
