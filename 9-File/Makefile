@@ -12,6 +12,8 @@ EXE=\
 	simple_ls \
 	endian \
 	read_part \
+	buffer_mode \
+
 
 all: ${EXE}
 

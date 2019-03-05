@@ -9,6 +9,7 @@ EXE=\
 	share_opened_file \
         segv \
 	reparent \
+	process_group \
 
 
 all: ${EXE}
